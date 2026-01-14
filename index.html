@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fernand Hosri Group — Demo Layout</title>
+  <!-- Link to external CSS file (styles.css) -->
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="page-1-2" >
+  <!--
+    BIG SECTION / "Page 1" with background image bg1.jpeg
+    Contains: header, About Us, spacer, partners row
+  -->
+  <section class="page page-1" id="page1" aria-label="Main section with background 1">
+
+    <!-- Header: two logos — left and right. The header area visually occupies 95% width (centered)
+         but the logos are positioned flush toward the viewport edges to match your request.
+    -->
+    <header class="site-header">
+      <div class="header-inner">
+        <!-- Left logo (flush to left edge of viewport) -->
+        <img src="fhg-logo.png" alt="FH Group Left Logo" class="logo logo-left" />
+        <!-- Right logo (flush to right edge of viewport) -->
+        <img src="fhg-h-logo.png" alt="FH Group Right Logo" class="logo logo-right" />
+      </div>
+    </header>
+
+    <!-- About us block: white large title + centered paragraph
+         The content block width is 60% as requested and centered within the section.
+    -->
+    <div class="about-wrap">
+      <h1 class="about-title">About Us</h1>
+      <p class="about-text">
+        Established in 1966, the Fernand Hosri Group is a multinational company serving the Middle East region, with established offices in Lebanon, the UAE, and Saudi Arabia. Over the years, the group has expanded its presence across various sectors in both local and international markets, focusing on Security, Telecommunications, Building Automation & Communication, Renewable Energy, B2B and B2C Distribution, as well as Insurance consultancy and brokerage.
+      </p>
+    </div>
+
+    <!-- Space separator: 200px high empty area -->
+    <!-- <div class="big-space" aria-hidden="true"></div> -->
+
+    <!-- Partners: horizontally scrollable row of simple cards (logo + company name)
+         The row occupies 70% of the section width, centered. Cards are visually "bare" (no background)
+         — just logo + company name (white text). Logos listed per your names.
+    -->
+    <div class="partners-wrap">
+      <button class="scroll-btn left" aria-label="Scroll left"></button>
+      <div class="partners-row">
+        <!-- Each partner card contains a logo image and the company name below it -->
+    <div class="partner-card">
+  <a href="https://example.com/sacotel">
+    <img src="sacotel-Logo.png" alt="Sacotel" />
+  </a>
+  <!-- <div class="partner-name">Sacotel</div> -->
+</div>
+
+<div class="partner-card">
+  <a href="https://example.com/urmet">
+    <img src="s_urmet-Logo.png" alt="Sacotel Urmet" />
+  </a>
+  <!-- <div class="partner-name">Sacotel Urmet</div> -->
+</div>
+
+<div class="partner-card">
+  <a href="https://example.com/his">
+    <img src="HIS-Logo.gif" alt="HIS" />
+  </a>
+  <!-- <div class="partner-name">HIS</div> -->
+</div>
+
+<div class="partner-card">
+  <a href="https://example.com/7express">
+    <img src="7express-Logo.png" alt="7express Store" />
+  </a>
+  <!-- <div class="partner-name">7express Store</div> -->
+</div>
+
+<div class="partner-card">
+  <a href="https://example.com/znshine">
+    <img src="s_znshine-logo.png" alt="Sacotel Znshine" />
+  </a>
+  <!-- <div class="partner-name">Sacotel Znshine</div> -->
+</div>
+
+<div class="partner-card">
+  <a href="https://example.com/mese">
+    <img src="MESE-logo.png" alt="MESE" class="logo-mese" />
+  </a>
+  <!-- <div class="partner-name">MESE</div> -->
+</div>
+
+      </div>
+       <button class="scroll-btn right" aria-label="Scroll right"></button>
+
+    </div>
+
+  </section>
+
+  <!--
+    BIG SECTION / "Page 2" with background image bg2.jpeg
+    Contains: Our SRC area (50% width content) + two simple cards (same style as partners) + footer
+  -->
+  <section class="page page-2" id="page2" aria-label="Secondary section with background 2">
+
+    <!-- Our SRC block: heading + two cards. The block width is 50% of the page width.
+         The two cards reuse the minimal card style from partners but only two items.
+    -->
+    <div class="src-wrap">
+      <h2 class="src-title">Our SRC</h2>
+      <div class="src-cards">
+        <div class="src-card">
+          <img src="eywa-logo.png" alt="Eywa" />
+          <!-- <div class="src-name">Eywa</div> -->
+        </div>
+        <div class="src-card">
+          <img src="unleash-logo.png" alt="Unleash" />
+          <!-- <div class="src-name">Unleash</div> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer: 3 columns (location, social media, numbers), width 80% centered.
+         No extra background provided — default / transparent.
+    -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4>Location</h4>
+          <p>162 Badaro Street 2058162 <br>
+            Beirut - Lebanon</p>
+        </div>
+        <div class="footer-col">
+          <h4>Social</h4>
+          <p>@fhgroup</p>
+        </div>
+        <div class="footer-col">
+          <h4>Numbers</h4>
+          <p>Tel +961 1 38 68 68 <br>
+             Fax +961 1 38 68 68 <br>
+             31 317508, Dubai – UAE <br>
+             Tel +971 50 104 2550</p>
+        </div>
+      </div>
+    </footer>
+
+  </section>
+<div>
+<script>
+  // select elements by class (because no IDs are used)
+  const partnersRow = document.querySelector('.partners-row');
+  const leftBtn = document.querySelector('.scroll-btn.left');
+  const rightBtn = document.querySelector('.scroll-btn.right');
+
+  const scrollAmount = 300;
+
+  leftBtn.addEventListener('click', () => {
+    partnersRow.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth'
+    });
+  });
+
+  rightBtn.addEventListener('click', () => {
+    partnersRow.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
+</body>
+
+
+</html>
