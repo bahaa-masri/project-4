@@ -260,6 +260,7 @@ height: 50px !important;
         max-width: 100%;
         word-wrap: break-word;
         overflow-wrap: anywhere; */
+        height:80px !important;
         font-size: 14px;
         line-height: 1.3;
     }
