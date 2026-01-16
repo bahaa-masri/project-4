@@ -52,9 +52,9 @@
   <button class="scroll-btn left" aria-label="Scroll left"></button>
   <div class="partners-row">
 
-    <div class="partner-card">
+    <div class="partner-card small">
       <a href="https://sacotel.com">
-        <img src="sacotel-Logo.png" alt="Sacotel" />
+        <img class="img-small" src="sacotel-Logo.png" alt="Sacotel" />
       </a>
       <div class="partner-text">
         <div class="partner-description">
@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <div class="partner-card double">
+    <div class="partner-card large">
       <a href="https://sacotelurmet.com">
         <img src="s_urmet-Logo.png" alt="Sacotel Urmet" />
       </a>
@@ -114,8 +114,7 @@
             <br>
             You can always ask for our menu of daily dish prepared by our experienced chef at Queasine.
           </div>
-          <span class="read-more">Read more</span>
-          <br>
+          <!-- <span class="read-more">Read more</span> -->
           <a href="https://7express.store" class="partner-click-here">Visit our website</a>
         </div>
       </div>
@@ -143,16 +142,38 @@
             ,
             Residential
           </div>
-          <span class="read-more">Read more</span>
-          <br>
+          <!-- <span class="read-more">Read more</span> -->
           <a href="https://www.sacotelznshine.com" class="partner-click-here">Visit our website</a>
         </div>
       </div>
     </div>
 
-    <div class="partner-card">
+      <div class="partner-card medium">
+        <a href="">
+          <img  class="img-medium" src="OfficeOnLine-Logo.gif" alt="OfficeOnLine" />
+        </a>
+      
+        <div class="partner-text">
+          <div class="partner-description">
+            <div class="text-preview">
+              57 Years Local Partner Middle East & GCC Experience.
+              <br>
+              Member of UN Global Compact.
+              <br>
+              32 Years Manufacturing Experience.
+              <br>
+              Extensive PV Project Development.
+            </div>
+            <!-- <span class="read-more">Read more</span> -->
+            <a href="" class="partner-click-here">Visit our website</a>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="partner-card xsmall">
       <a href="https://mese-co.com/">
-        <img src="MESE-logo.png" alt="MESE" class="logo-mese" />
+        <img class="img-xsmall" src="MESE-logo.png" alt="MESE" />
       </a>
 
       <div class="partner-text">
@@ -182,8 +203,7 @@
               necessary drills mitigating all potential risks.
 
             </div>
-            <span class="read-more">Read more</span>
-            <br>
+            <!-- <span class="read-more">Read more</span> -->
           </div>
           <a href="https://mese-co.com/" class="partner-click-here">Visit our website</a>
         </div>
@@ -202,7 +222,7 @@
   -->
   <section class="page page-2" id="page2" aria-label="Secondary section with background 2">
 
-    <!-- <div class="csr-wrap">
+    <div class="csr-wrap">
   <h2 class="csr-title">Our CSR</h2>
 
   <div class="csr-cards">
@@ -229,7 +249,7 @@
             need of caring for their children and not affording Day Care services.
           </div>
 
-          <span class="csr-read-more">Read more</span>
+          <!-- <span class="csr-read-more">Read more</span> -->
           <br>
           <a href="https://eywa-lb.org/" class="csr-click-here">Visit our website</a>
         </div>
@@ -250,15 +270,14 @@
             the bar in this 11th edition.
           </div>
 
-          <!-- <span class="csr-read-more">Read more</span> 
-          <br>
+          <!-- <span class="csr-read-more">Read more</span> -->
           <a href="https://unleashyourcreativitylb.com/" class="csr-click-here">Visit our website</a>
         </div>
       </div>
     </div>
 
   </div>
-    </div> -->
+    </div>
 
 
 
@@ -290,8 +309,10 @@
       <div class="footer-inner">
         <div class="footer-col">
           <h4>Location</h4>
-          <p>162 Badaro Street 2058162 <br>
-            Beirut - Lebanon</p>
+<p>📍 162 Badaro Street 2058162 &nbsp; Beirut – Lebanon</p>
+<p>📍 Dubai Airport Free Zone 6EA 110</p>
+<p>📍 Jeddah – Saudi Arabia</p>
+
         </div>
 <div class="footer-col">
   <h4>Social</h4>
@@ -307,11 +328,19 @@
 
 
         <div class="footer-col">
-          <h4>Numbers</h4>
+          <!-- <h4>Numbers</h4> -->
+          <h4>Contact Information</h4>
           <p>Tel +961 1 38 68 68 <br>
              Fax +961 1 38 68 68 <br>
              31 317508, Dubai – UAE <br>
              Tel +971 50 104 2550</p>
+            <!-- <h4>Contact Information</h4>
+            <h5>Lebanon</h5>
+            Tel: +961 1 38 68 68<br>
+            Fax: +961 1 38 68 68
+            <h5>Dubai – UAE</h5>
+            31 317508, Dubai – UAE<br>
+            Tel: +971 50 104 2550 -->
         </div>
       </div>
     </footer>
@@ -319,26 +348,170 @@
   </section>
 <div>
 <script>
-  // select elements by class (because no IDs are used)
-  const partnersRow = document.querySelector('.partners-row');
-  const leftBtn = document.querySelector('.scroll-btn.left');
-  const rightBtn = document.querySelector('.scroll-btn.right');
+  // select elements
+    const partnersRow = document.querySelector('.partners-row');
+    const leftBtn = document.querySelector('.scroll-btn.left');
+    const rightBtn = document.querySelector('.scroll-btn.right');
 
-  const scrollAmount = 300;
+    // settings
+    const clickScroll = 120;      // مسافة صغيرة للكبسة السريعة
+    const holdSpeed = 6;          // سرعة التمرير بالكبسة الطويلة (px per frame)
+    const holdDelay = 200;        // بعد قديش ms تتحول لكبسة طويلة
 
-  leftBtn.addEventListener('click', () => {
-    partnersRow.scrollBy({
-      left: -scrollAmount,
-      behavior: 'smooth'
+    let holdInterval = null;
+    let holdTimeout = null;
+    let isHolding = false;
+
+    function startHold(direction) {
+      holdInterval = setInterval(() => {
+        partnersRow.scrollLeft += direction * holdSpeed;
+      }, 16); // ~60fps
+    }
+
+    function stopHold() {
+      clearInterval(holdInterval);
+      clearTimeout(holdTimeout);
+      holdInterval = null;
+      holdTimeout = null;
+      isHolding = false;
+    }
+
+    function setupButton(btn, direction) {
+      btn.addEventListener('pointerdown', () => {
+        // نوقف auto scroll (إذا موجود)
+        if (typeof pauseAuto === 'function') pauseAuto();
+
+        isHolding = false;
+        holdTimeout = setTimeout(() => {
+          isHolding = true;
+          startHold(direction);
+        }, holdDelay);
+      });
+
+      btn.addEventListener('pointerup', () => {
+        if (!isHolding) {
+          // كبسة سريعة → scroll خفيف
+          partnersRow.scrollBy({
+            left: direction * clickScroll,
+            behavior: 'smooth'
+          });
+        }
+        stopHold();
+
+        // رجّع auto scroll
+        if (typeof resumeAuto === 'function') resumeAuto(2000);
+      });
+
+      btn.addEventListener('pointerleave', () => {
+        stopHold();
+        if (typeof resumeAuto === 'function') resumeAuto(1500);
+      });
+
+      btn.addEventListener('touchcancel', stopHold);
+    }
+
+    // init buttons
+    setupButton(leftBtn, -1);
+    setupButton(rightBtn, 1);
+
+  // // select elements by class (because no IDs are used)
+  // const partnersRow = document.querySelector('.partners-row');
+  // const leftBtn = document.querySelector('.scroll-btn.left');
+  // const rightBtn = document.querySelector('.scroll-btn.right');
+
+  // const scrollAmount = 300;
+
+  // leftBtn.addEventListener('click', () => {
+  //   partnersRow.scrollBy({
+  //     left: -scrollAmount,
+  //     behavior: 'smooth'
+  //   });
+  // });
+
+  // rightBtn.addEventListener('click', () => {
+  //   partnersRow.scrollBy({
+  //     left: scrollAmount,
+  //     behavior: 'smooth'
+  //   });
+  // });
+
+
+//auto scroling code
+  // ------- auto gentle continuous scrolling (add this below your existing code) -------
+    const autoSpeed = 0.03; // pixels per millisecond (عندك: 0.03 ≈ 30px/sec). غيّره إذا بدك أسرع/أبطأ
+    let autoDirection = 1; // 1 => يمين، -1 => يسار
+    let isPaused = false;
+    let lastTime = null;
+    let resumeTimeout = null;
+
+    function pauseAuto() {
+      isPaused = true;
+      if (resumeTimeout) {
+        clearTimeout(resumeTimeout);
+        resumeTimeout = null;
+      }
+    }
+
+    function resumeAuto(shortDelay = 2000) {
+      // ترجع التشغيل بعد delay (ms) — القيمة الافتراضية 2000ms
+      if (resumeTimeout) clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(() => {
+        isPaused = false;
+        lastTime = null; // reset to avoid big jump
+      }, shortDelay);
+    }
+
+    function autoStep(timestamp) {
+      if (!lastTime) lastTime = timestamp;
+      const delta = timestamp - lastTime;
+      lastTime = timestamp;
+
+      if (!isPaused) {
+        // move
+        partnersRow.scrollLeft += autoSpeed * delta * autoDirection;
+
+        // reverse direction when hitting ends
+        if (partnersRow.scrollLeft <= 0) {
+          partnersRow.scrollLeft = 0;
+          autoDirection = 1;
+        } else if (partnersRow.scrollLeft + partnersRow.clientWidth >= partnersRow.scrollWidth) {
+          partnersRow.scrollLeft = partnersRow.scrollWidth - partnersRow.clientWidth;
+          autoDirection = -1;
+        }
+      }
+
+      requestAnimationFrame(autoStep);
+    }
+
+    // start the loop
+    requestAnimationFrame(autoStep);
+
+    // pause/resume on user interaction (hover, focus, drag, touch)
+    partnersRow.addEventListener('mouseenter', pauseAuto);
+    partnersRow.addEventListener('mouseleave', () => resumeAuto(1000)); // يرجع بسرعة بعد ما يطلع الفأرة
+    partnersRow.addEventListener('focusin', pauseAuto);
+    partnersRow.addEventListener('focusout', () => resumeAuto(2000));
+    partnersRow.addEventListener('pointerdown', () => { pauseAuto(); }); // لو بدّك تجرّك يوقف فوراً
+    partnersRow.addEventListener('pointerup', () => resumeAuto(2500));
+    partnersRow.addEventListener('touchstart', pauseAuto, { passive: true });
+    partnersRow.addEventListener('touchend', () => resumeAuto(2500), { passive: true });
+
+    // إذا بدك، خلي الأزرار توقف التمرير المؤقت أثناء النقر ثم ترجّعه:
+    [leftBtn, rightBtn].forEach(btn => {
+      btn.addEventListener('pointerdown', pauseAuto);
+      btn.addEventListener('pointerup', () => resumeAuto(2000));
+      btn.addEventListener('mouseleave', () => resumeAuto(1000));
     });
-  });
 
-  rightBtn.addEventListener('click', () => {
-    partnersRow.scrollBy({
-      left: scrollAmount,
-      behavior: 'smooth'
-    });
-  });
+  //end of auto scroling code
+
+
+
+
+
+
+
+
 
 
 
