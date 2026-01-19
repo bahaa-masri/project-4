@@ -1,0 +1,141 @@
+  :root {
+      --header-height: 120px;
+      --topbar-height: 72px;
+      --accent: #ffffff;
+      --muted: rgba(255, 255, 255, 0.7);
+      --glass-bg: rgba(0, 0, 0, 0.35);
+      --glass-blur: 6px;
+  }
+
+  html {
+      scroll-behavior: smooth;
+  }
+
+  /* Header */
+  .site-header {
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.20));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      backdrop-filter: blur(var(--glass-blur));
+      z-index: 1200;
+  }
+
+  .header-inner {
+      width: min(1200px, 95%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+  }
+
+  /* Topbar */
+  .topbar {
+      position: sticky;
+      top: 0;
+      height: var(--topbar-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      z-index: 1100;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.12));
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  .topbar-inner {
+      width: min(1200px, 95%);
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      justify-content: center;
+  }
+
+  .topbar .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+
+  .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+  }
+
+  .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: .2px;
+      font-size: 15px;
+      padding: 8px 6px;
+      border-radius: 6px;
+  }
+
+  .nav-links a:hover {
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.03);
+  }
+
+  .topbar-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+  }
+
+  .btn-ghost {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+  }
+
+  .btn-primary {
+      background: rgba(255, 255, 255, 0.95);
+      color: #111;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+  }
+
+  section[id] {
+      scroll-margin-top: calc(var(--topbar-height) + 12px);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  #about,
+  #brands,
+  #csr,
+  #contact {
+      scroll-margin-top: 120px;
+  }
