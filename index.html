@@ -1,553 +1,531 @@
+<!--
+  Fernand Hosri Group — Demo Layout (Commented Version)
+  Purpose: Demo landing layout with partners carousel, CSR section, and contact footer.
+  Notes: Professional inline comments were added to clarify structure, accessibility, and behaviour.
+  Keep asset files (images, CSS) in the same folder or update paths as needed.
+-->
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fernand Hosri Group — Demo Layout</title>
- <link rel="icon" type="image/png" href="fhg-h-logo.png" />
-  <!-- Link to external CSS file (styles.css) -->
+  <link rel="icon" type="image/png" href="fhg-h-logo.png" />
+
+  <!--
+      Stylesheets:
+      - Style.css: main layout & components
+      - Topbar.css: styles specifically for the top navigation
+      Keep CSS separate for maintainability and easier overrides.
+    -->
   <link rel="stylesheet" href="Style.css" />
+  <link rel="stylesheet" href="Topbar.css" />
+
+  <!-- Google font used across the site for a clean, professional UI -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-<div class="page-1-2" >
-  <!--
-  
-    
-    BIG SECTION / "Page 1" with background image bg1.jpeg
-    Contains: header, About Us, spacer, partners row
-  -->
-  <section class="page page-1" id="page1" aria-label="Main section with background 1">
 
-    <!-- Header: two logos — left and right. The header area visually occupies 95% width (centered)
-         but the logos are positioned flush toward the viewport edges to match your request.
+<body>
+  <!--
+      Page wrapper (page-1-2) contains two main visual sections (page-1, page-2).
+      Using semantic and ARIA attributes improves accessibility for screen readers.
     -->
+  <div class="page-1-2">
+
+    <!-- Header: company logos / primary branding -->
     <header class="site-header">
       <div class="header-inner">
-        <!-- Left logo (flush to left edge of viewport) -->
+        <!-- Left and right logos: use descriptive alt text for accessibility -->
         <img src="fhg-logo.png" alt="FH Group Left Logo" class="logo logo-left" />
-        <!-- Right logo (flush to right edge of viewport) -->
         <img src="fhg-h-logo.png" alt="FH Group Right Logo" class="logo logo-right" />
       </div>
     </header>
 
-    <!-- About us block: white large title + centered paragraph
-         The content block width is 60% as requested and centered within the section.
-    -->
-    <div class="about-wrap">
-      <h1 class="about-title">About Us</h1>
-      <p class="about-text">
-        Established in 1966, the Fernand Hosri Group is a multinational company serving the Middle East region, with established offices in Lebanon, the UAE, and Saudi Arabia. Over the years, the group has expanded its presence across various sectors in both local and international markets, focusing on Security, Telecommunications, Building Automation & Communication, Renewable Energy, B2B and B2C Distribution, as well as Insurance consultancy and brokerage.
-      </p>
-    </div>
-
-    <!-- Space separator: 200px high empty area -->
-    <!-- <div class="big-space" aria-hidden="true"></div> -->
-
-    <!-- Partners: horizontally scrollable row of simple cards (logo + company name)
-         The row occupies 70% of the section width, centered. Cards are visually "bare" (no background)
-         — just logo + company name (white text). Logos listed per your names.
-    -->
-<div class="partners-wrap">
-  <button class="scroll-btn left" aria-label="Scroll left"></button>
-  <div class="partners-row">
-
-    <div class="partner-card small">
-      <a href="https://sacotel.com">
-        <img class="img-small" src="sacotel-Logo.png" alt="Sacotel" />
-      </a>
-      <div class="partner-text">
-        <div class="partner-description">
-          Telecom, Security, Automation and Renewable Energy.
-          <br>
+    <!--
+          Topbar navigation: keep links in a logical order. Using role="navigation" and
+          aria-label helps assistive technologies identify the main menu quickly.
+        -->
+    <nav class="topbar" role="navigation" aria-label="Main navigation">
+      <div class="topbar-inner">
+        <div class="nav-links" role="menubar" aria-label="Primary">
+          <a href="#about" role="menuitem">About Us</a>
+          <a href="#join" role="menuitem">Join Us</a>
+          <a href="#brands" role="menuitem">Our Brands</a>
+          <a href="#csr" role="menuitem">Our CSR</a>
+          <a href="#contact" role="menuitem">Contact</a>
         </div>
-        <a href="https://sacotel.com" class="partner-click-here">Visit our website</a>
       </div>
-    </div>
+    </nav>
 
-    <div class="partner-card large">
-      <a href="https://sacotelurmet.com">
-        <img src="s_urmet-Logo.png" alt="Sacotel Urmet" />
-      </a>
-      <div class="partner-text">
-        <div class="partner-description">
-          specification, trade, design, installation and after sales service for the Building communication, Automation
-          and
-          Security systems
-          <br>
-          solutions of all Urmet Group Brands in the Middle east Territory.
-          <br>
-        </div>
-          <a href="https://sacotelurmet.com" class="partner-click-here">Visit our website</a>
+    <!--
+          Section: page-1
+          Contains: About text + partners carousel. Use descriptive aria-label for assistive tools.
+        -->
+    <section class="page page-1" id="page1" aria-label="Main section with background 1">
+
+      <!-- About block: short company description. Keep copy concise and factual. -->
+      <div id="about" class="about-wrap">
+        <h1 class="about-title">About Us</h1>
+        <p class="about-text">
+          Established in 1966, the Fernand Hosri Group is a multinational company serving the Middle East
+          region, with established offices in Lebanon, the UAE, and Saudi Arabia. Over the years, the group
+          has expanded its presence across various sectors in both local and international markets, focusing
+          on Security, Telecommunications, Building Automation & Communication, Renewable Energy, B2B and B2C
+          Distribution, as well as Insurance consultancy and brokerage.
+        </p>
       </div>
-    </div>
 
-    <div class="partner-card">
-      <a href="https://hosri-insurance-services.com/">
-        <img src="HIS-Logo.gif" alt="HIS" />
-      </a>
-      <div class="partner-text">
-        <div class="partner-description">
-          Insurance, Telecom, Security, Firefighting, Engineering, Import & Distribution as well as Editing and
-          Publishing
-          <br>
-        </div>
-          <a href="https://hosri-insurance-services.com/" class="partner-click-here">Visit our website</a>
+      <!--
+              Partners / Brands carousel. The visual row is horizontally scrollable and controls are provided.
+              Each partner-card should be a consistent, focusable unit for keyboard users.
+            -->
+      <div id="brands" class="partners-wrap">
+        <!-- Scroll buttons provide quick navigation for keyboard / pointer users -->
+        <button class="scroll-btn left" aria-label="Scroll left"></button>
+        <div class="partners-row">
 
-      </div>
-    </div>
-
-    <div class="partner-card">
-      <a href="https://7express.store">
-        <img src="7express-Logo.png" alt="7express Store" />
-      </a>
-
-      <div class="partner-text">
-        <div class="partner-description">
-          <div class="text-preview">
-            In addition to groceries, we sell chilled foods, fresh bread, milk, juices, fresh fruit and vegetables along
-            with a
-            range of household items.
-            <br>
-            We are also introducing our renown butcher, and guarantee to serve fresh chicken, beef, turkey, lamb, pork,
-            fish, and
-            sea food.
-            <br>
-            You can always ask for our menu of daily dish prepared by our experienced chef at Queasine.
-          </div>
-          <!-- <span class="read-more">Read more</span> -->
-        </div>
-          <a href="https://7express.store" class="partner-click-here">Visit our website</a>
-
-      </div>
-    </div>
-
-    <div class="partner-card">
-      <a href="https://www.sacotelznshine.com">
-        <img src="s_znshine-logo.png" alt="Sacotel Znshine" />
-      </a>
-
-      <div class="partner-text">
-        <div class="partner-description">
-          <div class="text-preview">
-            57 Years Local Partner Middle East & GCC Experience.
-            <br>
-            Member of UN Global Compact.
-            <br>
-            32 Years Manufacturing Experience.
-            <br>
-            Extensive PV Project Development.
-            <br>
-            Utility
-            ,
-            Commercial
-            ,
-            Residential
-          </div>
-          <!-- <span class="read-more">Read more</span> -->
-        </div>
-          <a href="https://www.sacotelznshine.com" class="partner-click-here">Visit our website</a>
-
-      </div>
-    </div>
-
-      <div class="partner-card medium">
-        <a href="">
-          <img  class="img-medium" src="OfficeOnLine-Logo.gif" alt="OfficeOnLine" />
-        </a>
-      
-        <div class="partner-text">
-          <div class="partner-description">
-            <div class="text-preview">
-              57 Years Local Partner Middle East & GCC Experience.
-              <br>
-              Member of UN Global Compact.
-              <br>
-              32 Years Manufacturing Experience.
-              <br>
-              Extensive PV Project Development.
+          <!-- Example partner card (small). Keep link targets explicit and include alt text. -->
+          <div class="partner-card small">
+            <a href="https://sacotel.com">
+              <img class="img-small" src="sacotel-Logo.png" alt="Sacotel" />
+            </a>
+            <div class="partner-text">
+              <div class="partner-description">
+                Telecom, Security, Automation and Renewable Energy.
+                <br>
+              </div>
+              <a href="https://sacotel.com" class="partner-click-here">Visit our website</a>
             </div>
-            <!-- <span class="read-more">Read more</span> -->
           </div>
-            <a href="" class="partner-click-here">Visit our website</a>
 
-        </div>
-      </div>
+          <!-- Larger card demonstrates variety in card sizes for the carousel -->
+          <div class="partner-card large">
+            <a href="https://sacotelurmet.com">
+              <img src="s_urmet-Logo.png" alt="Sacotel Urmet" />
+            </a>
+            <div class="partner-text">
+              <div class="partner-description">
+                specification, trade, design, installation and after sales service for the Building
+                communication, Automation
+                and
+                Security systems
+                <br>
+                solutions of all Urmet Group Brands in the Middle east Territory.
+                <br>
+              </div>
+              <a href="https://sacotelurmet.com" class="partner-click-here">Visit our website</a>
+            </div>
+          </div>
 
-
-    <div class="partner-card xsmall">
-      <a href="https://mese-co.com/">
-        <img class="img-xsmall" src="MESE-logo.png" alt="MESE" />
-      </a>
-
-      <div class="partner-text">
-        <div class="partner-description">
-          <div>
-            <div class="text-preview">
-              <h6>Fire Protection</h6>
-              <p>
-                We are experts in fire protection solutions including alarm systems,
-                sprinkler systems, fire extinguishers, and emergency lights.
-                Our team will ensure that all installations comply with local regulations
-                and the highest international standards.
-                With us you can rest assured and focus on running your operation smoothly.
-              </p>
-
-              <h6>Security Systems</h6>
-              <p>
-                We provide state of the art security systems, including CCTV surveillance,
-                access control, intruder alarms, and intercom systems.
-                Our solutions enhance the safety and security of our client premises.
-              </p>
-
-              <h6>Maintenance Support and Civil Defence Licencing</h6>
-              We offer regular maintenance and support services to ensure our clients'
-              fire protection and security systems are always in optimal condition.
-              Our team is available to offer the necessary support and perform the
-              necessary drills mitigating all potential risks.
+          <!-- Repeatable partner-card pattern: keep markup consistent for easy styling and JS control -->
+          <div class="partner-card">
+            <a href="https://hosri-insurance-services.com/">
+              <img src="HIS-Logo.gif" alt="HIS" />
+            </a>
+            <div class="partner-text">
+              <div class="partner-description">
+                Insurance, Telecom, Security, Firefighting, Engineering, Import & Distribution as well
+                as Editing and
+                Publishing
+                <br>
+              </div>
+              <a href="https://hosri-insurance-services.com/" class="partner-click-here">Visit our
+                website</a>
 
             </div>
-            <!-- <span class="read-more">Read more</span> -->
-          </div>
-        </div>
-        <br>
-         <a href="https://mese-co.com/" class="partner-click-here">Visit our website</a>
-
-      </div>
-    </div>
-
-  </div>
-  <button class="scroll-btn right" aria-label="Scroll right"></button>
-</div>
-
-  </section>
-
-  <!--
-    BIG SECTION / "Page 2" with background image bg2.jpeg
-    Contains: Our SRC area (50% width content) + two simple cards (same style as partners) + footer
-  -->
-  <section class="page page-2" id="page2" aria-label="Secondary section with background 2">
-
-    <div class="csr-wrap">
-  <h2 class="csr-title">Our CSR</h2>
-
-  <div class="csr-cards">
-
-    <div class="csr-card">
-      <a href="https://eywa-lb.org/">
-        <img src="eywa-logo.png" alt="Eywa" />
-      </a>
-
-      <div class="csr-text">
-        <div class="csr-description">
-          <div class="csr-text-preview">
-            EYWA enables women to recreate what they can be and what it is they can accomplish through assisting them to
-            proper
-            education. Increased literacy and status will allow those women to raise better generations and enhance the
-            quality of
-            our human resources.
-            <br>
-            <br>
-            EYWA empowers women economically by matching them with appropriate jobs and drafting their CVs and tackling
-            their main
-            concern, their time constraints. 80% of underprivileged non-working moms are deprived from access to jobs
-            due to the
-            need of caring for their children and not affording Day Care services.
           </div>
 
-          <!-- <span class="csr-read-more">Read more</span> -->
-          <br>
-          <a href="https://eywa-lb.org/" class="csr-click-here">Visit our website</a>
-        </div>
-      </div>
-    </div>
+          <div class="partner-card">
+            <a href="https://7express.store">
+              <img src="7express-Logo.png" alt="7express Store" />
+            </a>
 
-    <div class="csr-card">
-      <a href="https://unleashyourcreativitylb.com/">
-        <img src="unleash-logo.png" alt="Unleash" />
-      </a>
+            <div class="partner-text">
+              <div class="partner-description">
+                <div class="text-preview">
+                  In addition to groceries, we sell chilled foods, fresh bread, milk, juices, fresh
+                  fruit and vegetables along
+                  with a
+                  range of household items.
+                  <br>
+                  We are also introducing our renown butcher, and guarantee to serve fresh chicken,
+                  beef, turkey, lamb, pork,
+                  fish, and
+                  sea food.
+                  <br>
+                  You can always ask for our menu of daily dish prepared by our experienced chef at
+                  Queasine.
+                </div>
+              </div>
+              <a href="https://7express.store" class="partner-click-here">Visit our website</a>
 
-      <div class="csr-text">
-        <div class="csr-description">
-          <div class="csr-text-preview">
-            <h6>UNLEASH YOUR CREATIVITY</h6>
-            The annual interuniversity competition has amplified the challenge for 2025. After 10 successful years we
-            have lifted
-            the bar in this 11th edition.
+            </div>
           </div>
 
-          <!-- <span class="csr-read-more">Read more</span> -->
-          <a href="https://unleashyourcreativitylb.com/" class="csr-click-here">Visit our website</a>
+          <div class="partner-card">
+            <a href="https://www.sacotelznshine.com">
+              <img src="s_znshine-logo.png" alt="Sacotel Znshine" />
+            </a>
+
+            <div class="partner-text">
+              <div class="partner-description">
+                <div class="text-preview">
+                  57 Years Local Partner Middle East & GCC Experience.
+                  <br>
+                  Member of UN Global Compact.
+                  <br>
+                  32 Years Manufacturing Experience.
+                  <br>
+                  Extensive PV Project Development.
+                  <br>
+                  Utility
+                  ,
+                  Commercial
+                  ,
+                  Residential
+                </div>
+              </div>
+              <a href="https://www.sacotelznshine.com" class="partner-click-here">Visit our website</a>
+
+            </div>
+          </div>
+
+          <div class="partner-card medium">
+            <a href="">
+              <img class="img-medium" src="OfficeOnLine-Logo.gif" alt="OfficeOnLine" />
+            </a>
+
+            <div class="partner-text">
+              <div class="partner-description">
+                <div class="text-preview">
+                  57 Years Local Partner Middle East & GCC Experience.
+                  <br>
+                  Member of UN Global Compact.
+                  <br>
+                  32 Years Manufacturing Experience.
+                  <br>
+                  Extensive PV Project Development.
+                </div>
+              </div>
+              <a href="" class="partner-click-here">Visit our website</a>
+
+            </div>
+          </div>
+
+
+          <div class="partner-card xsmall">
+            <a href="https://mese-co.com/">
+              <img class="img-xsmall" src="MESE-logo.png" alt="MESE" />
+            </a>
+
+            <div class="partner-text">
+              <div class="partner-description">
+                <div>
+                  <div class="text-preview">
+                    <h6>Fire Protection</h6>
+                    <p>
+                      We are experts in fire protection solutions including alarm systems,
+                      sprinkler systems, fire extinguishers, and emergency lights.
+                      Our team will ensure that all installations comply with local regulations
+                      and the highest international standards.
+                      With us you can rest assured and focus on running your operation smoothly.
+                    </p>
+
+                    <h6>Security Systems</h6>
+                    <p>
+                      We provide state of the art security systems, including CCTV surveillance,
+                      access control, intruder alarms, and intercom systems.
+                      Our solutions enhance the safety and security of our client premises.
+                    </p>
+
+                    <h6>Maintenance Support and Civil Defence Licencing</h6>
+                    We offer regular maintenance and support services to ensure our clients'
+                    fire protection and security systems are always in optimal condition.
+                    Our team is available to offer the necessary support and perform the
+                    necessary drills mitigating all potential risks.
+
+                  </div>
+                </div>
+              </div>
+              <br>
+              <a href="https://mese-co.com/" class="partner-click-here">Visit our website</a>
+
+            </div>
+          </div>
+
+        </div>
+        <button class="scroll-btn right" aria-label="Scroll right"></button>
+      </div>
+
+    </section>
+
+    <!--
+          Section: page-2 contains CSR cards and footer contact details.
+          Keep CSR short but meaningful — link to full pages for long descriptions.
+        -->
+    <section class="page page-2" id="page2" aria-label="Secondary section with background 2">
+
+      <div id="csr" class="csr-wrap">
+        <h2 class="csr-title">Our CSR</h2>
+
+        <div class="csr-cards">
+
+          <div class="csr-card">
+            <a href="https://eywa-lb.org/">
+              <img src="eywa-logo.png" alt="Eywa" />
+            </a>
+
+            <div class="csr-text">
+              <div class="csr-description">
+                <div class="csr-text-preview">
+                  EYWA enables women to recreate what they can be and what it is they can accomplish
+                  through assisting them to
+                  proper
+                  education. Increased literacy and status will allow those women to raise better
+                  generations and enhance the
+                  quality of
+                  our human resources.
+                  <br>
+                  <br>
+                  EYWA empowers women economically by matching them with appropriate jobs and drafting
+                  their CVs and tackling
+                  their main
+                  concern, their time constraints. 80% of underprivileged non-working moms are
+                  deprived from access to jobs
+                  due to the
+                  need of caring for their children and not affording Day Care services.
+                </div>
+
+                <br>
+                <a href="https://eywa-lb.org/" class="csr-click-here">Visit our website</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="csr-card">
+            <a href="https://unleashyourcreativitylb.com/">
+              <img src="unleash-logo.png" alt="Unleash" />
+            </a>
+
+            <div class="csr-text">
+              <div class="csr-description">
+                <div class="csr-text-preview">
+                  <h6>UNLEASH YOUR CREATIVITY</h6>
+                  The annual interuniversity competition has amplified the challenge for 2025. After
+                  10 successful years we
+                  have lifted
+                  the bar in this 11th edition.
+                </div>
+
+                <a href="https://unleashyourcreativitylb.com/" class="csr-click-here">Visit our
+                  website</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
 
-  </div>
-    </div>
+      <!-- Footer: company location and contact details. Keep contact details up-to-date. -->
+      <footer id="contact" class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-col">
+            <h4>Location</h4>
+            <p>📍 162 Badaro Street 2058162 &nbsp; Beirut – Lebanon</p>
+            <p>📍 Dubai Airport Free Zone 6EA 110</p>
+            <p>📍 Jeddah – Saudi Arabia</p>
 
+          </div>
+          <div class="footer-col">
+            <h4>Social</h4>
+            <div class="social-links">
+              <a class="social-item" href="https://www.linkedin.com/company/40817162/" target="_blank">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Footer: 3 columns (location, social media, numbers), width 80% centered.
-         No extra background provided — default / transparent.
-    -->
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <div class="footer-col">
-          <h4>Location</h4>
-<p>📍 162 Badaro Street 2058162 &nbsp; Beirut – Lebanon</p>
-<p>📍 Dubai Airport Free Zone 6EA 110</p>
-<p>📍 Jeddah – Saudi Arabia</p>
-
+          <div class="footer-col">
+            <h4>Contact Information</h4>
+            <p>Tel +961 1 38 68 68 <br>
+              Fax +961 1 38 68 68 <br>
+              31 317508, Dubai – UAE <br>
+              Tel +971 50 104 2550</p>
+          </div>
         </div>
-<div class="footer-col">
-  <h4>Social</h4>
-  <div class="social-links">
-    <a class="social-item" href="https://www.linkedin.com/company/40817162/" target="_blank">
-      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
-      <span>LinkedIn</span>
-    </a>
-  </div>
-</div>
+      </footer>
 
+    </section>
 
+    <!--
+          Inline script: carousel behaviour and user interaction.
+          Consider moving to an external JS file (e.g. main.js) and adding the "defer" attribute
+          to improve performance and cacheability in production.
+        -->
+    <div>
+      <script>
+        // Cache key DOM references for better performance
+        const partnersRow = document.querySelector('.partners-row');
+        const leftBtn = document.querySelector('.scroll-btn.left');
+        const rightBtn = document.querySelector('.scroll-btn.right');
 
+        // Configuration: click distance, hold scrolling speed and delay before hold activates
+        const clickScroll = 120;
+        const holdSpeed = 6;
+        const holdDelay = 200;
 
-        <div class="footer-col">
-          <!-- <h4>Numbers</h4> -->
-          <h4>Contact Information</h4>
-          <p>Tel +961 1 38 68 68 <br>
-             Fax +961 1 38 68 68 <br>
-             31 317508, Dubai – UAE <br>
-             Tel +971 50 104 2550</p>
-            <!-- <h4>Contact Information</h4>
-            <h5>Lebanon</h5>
-            Tel: +961 1 38 68 68<br>
-            Fax: +961 1 38 68 68
-            <h5>Dubai – UAE</h5>
-            31 317508, Dubai – UAE<br>
-            Tel: +971 50 104 2550 -->
-        </div>
-      </div>
-    </footer>
+        // Internal state used by the hold/auto-scrolling logic
+        let holdInterval = null;
+        let holdTimeout = null;
+        let isHolding = false;
 
-  </section>
-<div>
-<script>
-  // select elements
-    const partnersRow = document.querySelector('.partners-row');
-    const leftBtn = document.querySelector('.scroll-btn.left');
-    const rightBtn = document.querySelector('.scroll-btn.right');
+        // Start a continuous hold scroll in the chosen direction (-1 left, +1 right)
+        function startHold(direction) {
+          holdInterval = setInterval(() => {
+            partnersRow.scrollLeft += direction * holdSpeed;
+          }, 16); // ~60fps
+        }
 
-    // settings
-    const clickScroll = 120;      // مسافة صغيرة للكبسة السريعة
-    const holdSpeed = 6;          // سرعة التمرير بالكبسة الطويلة (px per frame)
-    const holdDelay = 200;        // بعد قديش ms تتحول لكبسة طويلة
+        // Stop any hold behaviour and clear timeouts
+        function stopHold() {
+          clearInterval(holdInterval);
+          clearTimeout(holdTimeout);
+          holdInterval = null;
+          holdTimeout = null;
+          isHolding = false;
+        }
 
-    let holdInterval = null;
-    let holdTimeout = null;
-    let isHolding = false;
+        // Attach pointer/touch behaviour to scroll buttons in a reusable way
+        function setupButton(btn, direction) {
+          btn.addEventListener('pointerdown', () => {
+            // If there is an auto-animation, pause it while the user interacts
+            if (typeof pauseAuto === 'function') pauseAuto();
 
-    function startHold(direction) {
-      holdInterval = setInterval(() => {
-        partnersRow.scrollLeft += direction * holdSpeed;
-      }, 16); // ~60fps
-    }
-
-    function stopHold() {
-      clearInterval(holdInterval);
-      clearTimeout(holdTimeout);
-      holdInterval = null;
-      holdTimeout = null;
-      isHolding = false;
-    }
-
-    function setupButton(btn, direction) {
-      btn.addEventListener('pointerdown', () => {
-        // نوقف auto scroll (إذا موجود)
-        if (typeof pauseAuto === 'function') pauseAuto();
-
-        isHolding = false;
-        holdTimeout = setTimeout(() => {
-          isHolding = true;
-          startHold(direction);
-        }, holdDelay);
-      });
-
-      btn.addEventListener('pointerup', () => {
-        if (!isHolding) {
-          // كبسة سريعة → scroll خفيف
-          partnersRow.scrollBy({
-            left: direction * clickScroll,
-            behavior: 'smooth'
+            isHolding = false;
+            // If the user holds the pointer, begin smooth continuous scrolling
+            holdTimeout = setTimeout(() => {
+              isHolding = true;
+              startHold(direction);
+            }, holdDelay);
           });
+
+          btn.addEventListener('pointerup', () => {
+            // If not a hold, perform a single click scroll; otherwise stop the hold
+            if (!isHolding) {
+              partnersRow.scrollBy({
+                left: direction * clickScroll,
+                behavior: 'smooth'
+              });
+            }
+            stopHold();
+
+            // Resume auto scrolling after a short delay (if auto exists)
+            if (typeof resumeAuto === 'function') resumeAuto(2000);
+          });
+
+          // If the pointer leaves, stop holding and resume auto behaviour
+          btn.addEventListener('pointerleave', () => {
+            stopHold();
+            if (typeof resumeAuto === 'function') resumeAuto(1500);
+          });
+
+          btn.addEventListener('touchcancel', stopHold);
         }
-        stopHold();
 
-        // رجّع auto scroll
-        if (typeof resumeAuto === 'function') resumeAuto(2000);
-      });
+        // Initialize both left and right scroll buttons
+        setupButton(leftBtn, -1);
+        setupButton(rightBtn, 1);
 
-      btn.addEventListener('pointerleave', () => {
-        stopHold();
-        if (typeof resumeAuto === 'function') resumeAuto(1500);
-      });
+        // Auto scroll configuration — subtle auto-scroll to create motion
+        const autoSpeed = 0.03;
+        let autoDirection = 1;
+        let isPaused = false;
+        let lastTime = null;
+        let resumeTimeout = null;
 
-      btn.addEventListener('touchcancel', stopHold);
-    }
-
-    // init buttons
-    setupButton(leftBtn, -1);
-    setupButton(rightBtn, 1);
-
-  // // select elements by class (because no IDs are used)
-  // const partnersRow = document.querySelector('.partners-row');
-  // const leftBtn = document.querySelector('.scroll-btn.left');
-  // const rightBtn = document.querySelector('.scroll-btn.right');
-
-  // const scrollAmount = 300;
-
-  // leftBtn.addEventListener('click', () => {
-  //   partnersRow.scrollBy({
-  //     left: -scrollAmount,
-  //     behavior: 'smooth'
-  //   });
-  // });
-
-  // rightBtn.addEventListener('click', () => {
-  //   partnersRow.scrollBy({
-  //     left: scrollAmount,
-  //     behavior: 'smooth'
-  //   });
-  // });
-
-
-//auto scroling code
-  // ------- auto gentle continuous scrolling (add this below your existing code) -------
-    const autoSpeed = 0.03; // pixels per millisecond (عندك: 0.03 ≈ 30px/sec). غيّره إذا بدك أسرع/أبطأ
-    let autoDirection = 1; // 1 => يمين، -1 => يسار
-    let isPaused = false;
-    let lastTime = null;
-    let resumeTimeout = null;
-
-    function pauseAuto() {
-      isPaused = true;
-      if (resumeTimeout) {
-        clearTimeout(resumeTimeout);
-        resumeTimeout = null;
-      }
-    }
-
-    function resumeAuto(shortDelay = 2000) {
-      // ترجع التشغيل بعد delay (ms) — القيمة الافتراضية 2000ms
-      if (resumeTimeout) clearTimeout(resumeTimeout);
-      resumeTimeout = setTimeout(() => {
-        isPaused = false;
-        lastTime = null; // reset to avoid big jump
-      }, shortDelay);
-    }
-
-    function autoStep(timestamp) {
-      if (!lastTime) lastTime = timestamp;
-      const delta = timestamp - lastTime;
-      lastTime = timestamp;
-
-      if (!isPaused) {
-        // move
-        partnersRow.scrollLeft += autoSpeed * delta * autoDirection;
-
-        // reverse direction when hitting ends
-        if (partnersRow.scrollLeft <= 0) {
-          partnersRow.scrollLeft = 0;
-          autoDirection = 1;
-        } else if (partnersRow.scrollLeft + partnersRow.clientWidth >= partnersRow.scrollWidth) {
-          partnersRow.scrollLeft = partnersRow.scrollWidth - partnersRow.clientWidth;
-          autoDirection = -1;
+        function pauseAuto() {
+          isPaused = true;
+          if (resumeTimeout) {
+            clearTimeout(resumeTimeout);
+            resumeTimeout = null;
+          }
         }
-      }
 
-      requestAnimationFrame(autoStep);
-    }
+        function resumeAuto(shortDelay = 2000) {
+          if (resumeTimeout) clearTimeout(resumeTimeout);
+          resumeTimeout = setTimeout(() => {
+            isPaused = false;
+            lastTime = null;
+          }, shortDelay);
+        }
 
-    // start the loop
-    requestAnimationFrame(autoStep);
+        // Main animation loop — use requestAnimationFrame for smoothness and low CPU use
+        function autoStep(timestamp) {
+          if (!lastTime) lastTime = timestamp;
+          const delta = timestamp - lastTime;
+          lastTime = timestamp;
 
-    // pause/resume on user interaction (hover, focus, drag, touch)
-    partnersRow.addEventListener('mouseenter', pauseAuto);
-    partnersRow.addEventListener('mouseleave', () => resumeAuto(1000)); // يرجع بسرعة بعد ما يطلع الفأرة
-    partnersRow.addEventListener('focusin', pauseAuto);
-    partnersRow.addEventListener('focusout', () => resumeAuto(2000));
-    partnersRow.addEventListener('pointerdown', () => { pauseAuto(); }); // لو بدّك تجرّك يوقف فوراً
-    partnersRow.addEventListener('pointerup', () => resumeAuto(2500));
-    partnersRow.addEventListener('touchstart', pauseAuto, { passive: true });
-    partnersRow.addEventListener('touchend', () => resumeAuto(2500), { passive: true });
+          if (!isPaused) {
+            partnersRow.scrollLeft += autoSpeed * delta * autoDirection;
 
-    // إذا بدك، خلي الأزرار توقف التمرير المؤقت أثناء النقر ثم ترجّعه:
-    [leftBtn, rightBtn].forEach(btn => {
-      btn.addEventListener('pointerdown', pauseAuto);
-      btn.addEventListener('pointerup', () => resumeAuto(2000));
-      btn.addEventListener('mouseleave', () => resumeAuto(1000));
-    });
+            // Reverse direction at the bounds for a natural back-and-forth motion
+            if (partnersRow.scrollLeft <= 0) {
+              partnersRow.scrollLeft = 0;
+              autoDirection = 1;
+            } else if (partnersRow.scrollLeft + partnersRow.clientWidth >= partnersRow.scrollWidth) {
+              partnersRow.scrollLeft = partnersRow.scrollWidth - partnersRow.clientWidth;
+              autoDirection = -1;
+            }
+          }
 
-  //end of auto scroling code
+          requestAnimationFrame(autoStep);
+        }
+
+        requestAnimationFrame(autoStep);
+
+        // Pause auto on hover/focus/interaction to improve UX for keyboard & pointer users
+        partnersRow.addEventListener('mouseenter', pauseAuto);
+        partnersRow.addEventListener('mouseleave', () => resumeAuto(1000));
+        partnersRow.addEventListener('focusin', pauseAuto);
+        partnersRow.addEventListener('focusout', () => resumeAuto(2000));
+        partnersRow.addEventListener('pointerdown', () => { pauseAuto(); });
+        partnersRow.addEventListener('pointerup', () => resumeAuto(2500));
+        partnersRow.addEventListener('touchstart', pauseAuto, { passive: true });
+        partnersRow.addEventListener('touchend', () => resumeAuto(2500), { passive: true });
+
+        // Buttons also pause/resume auto behaviour when interacted with
+        [leftBtn, rightBtn].forEach(btn => {
+          btn.addEventListener('pointerdown', pauseAuto);
+          btn.addEventListener('pointerup', () => resumeAuto(2000));
+          btn.addEventListener('mouseleave', () => resumeAuto(1000));
+        });
+
+        // Utility: toggles for 'Read more' / 'Read less' interaction on partner descriptions
+        document.querySelectorAll('.read-more').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const wrapper = btn.closest('.partner-description');
+            const text = wrapper.querySelector('.text-preview');
+
+            const expanded = text.classList.toggle('expanded');
+            btn.textContent = expanded ? 'Read less' : 'Read more';
+          });
+        });
 
 
+        document.querySelectorAll('.csr-read-more').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const wrapper = btn.closest('.csr-description');
+            const text = wrapper.querySelector('.csr-text-preview');
 
+            const expanded = text.classList.toggle('expanded');
+            btn.textContent = expanded ? 'Read less' : 'Read more';
+          });
+        });
 
-
-
-
-
-
-
-
-
-
-
- document.querySelectorAll('.read-more').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const wrapper = btn.closest('.partner-description');
-      const text = wrapper.querySelector('.text-preview');
-
-      const expanded = text.classList.toggle('expanded');
-      btn.textContent = expanded ? 'Read less' : 'Read more';
-    });
-  });
-
-
-  document.querySelectorAll('.csr-read-more').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const wrapper = btn.closest('.csr-description');
-      const text = wrapper.querySelector('.csr-text-preview');
-
-      const expanded = text.classList.toggle('expanded');
-      btn.textContent = expanded ? 'Read less' : 'Read more';
-    });
-  });
-
-</script>
+      </script>
 
 </body>
-
 
 </html>

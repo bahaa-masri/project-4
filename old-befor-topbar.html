@@ -9,369 +9,269 @@
     <!-- Link to external CSS file (styles.css) -->
     <link rel="stylesheet" href="Style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Topbar / nav CSS (updated so nav is sticky at top after header) -->
-    <style>
-        /* --- Topbar / Navigation styles --- */
-        :root {
-            --header-height: 120px;
-            /* height of the header area */
-            --topbar-height: 72px;
-            /* height of the nav bar */
-            --accent: #ffffff;
-            --muted: rgba(255, 255, 255, 0.7);
-            --glass-bg: rgba(0, 0, 0, 0.35);
-            --glass-blur: 6px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Header styling (keeps logos aligned and gives consistent height) */
-        .site-header {
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 18px;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.20));
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            backdrop-filter: blur(var(--glass-blur));
-            z-index: 1200;
-            /* ensure header shows above topbar while visible */
-        }
-
-        .header-inner {
-            width: min(1200px, 95%);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
-        }
-
-        .logo {
-            height: 72px;
-            width: auto;
-            display: block;
-        }
-
-        /* The topbar is sticky: it stays in normal flow under the header, then "sticks" to top when scrolled */
-        .topbar {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            /* will stick to top of viewport when it reaches it */
-            height: var(--topbar-height);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 18px;
-            z-index: 1100;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.12));
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .topbar-inner {
-            width: min(1200px, 95%);
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            justify-content: center;
-            position: relative;
-        }
-
-        .topbar .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 22px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 0.2px;
-            font-size: 15px;
-            padding: 8px 6px;
-            border-radius: 6px;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .topbar-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: auto;
-        }
-
-        .btn-ghost {
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 8px 12px;
-            border-radius: 8px;
-            background: transparent;
-            color: var(--accent);
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background: rgba(255, 255, 255, 0.95);
-            color: #111;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        /* mobile menu */
-        .mobile-toggle {
-            display: none;
-            background: transparent;
-            border: none;
-            color: var(--accent);
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        @media (max-width:880px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-toggle {
-                display: inline-flex;
-            }
-
-            .topbar-cta .btn-ghost,
-            .topbar-cta .btn-primary {
-                display: none;
-            }
-
-            /* mobile menu positioned under the nav bar (absolute relative to nav) */
-            .mobile-menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(0, 0, 0, 0.95);
-                backdrop-filter: blur(8px);
-                padding: 12px 20px;
-                display: none;
-                flex-direction: column;
-                gap: 10px;
-                z-index: 1090;
-            }
-
-            .mobile-menu a {
-                padding: 10px;
-                border-radius: 8px;
-                color: var(--accent);
-                text-decoration: none;
-            }
-        }
-
-        body {
-            margin: 0;
-            font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background: #0b0b0b;
-            color: #fff;
-        }
-
-        /* make each anchored section offset nicely from the fixed/sticky topbar when jumping to anchors */
-        section[id] {
-            scroll-margin-top: calc(var(--topbar-height) + 12px);
-        }
-
-        /* small visual helpers */
-        .section-title-small {
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 10px;
-        }
-
-        .section-sub {
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        /* content wrappers used later */
-        .about-wrap {
-            width: 80%;
-            margin: 40px auto;
-            color: #fff;
-        }
-
-        .csr-wrap {
-            width: 80%;
-            margin: 40px auto;
-            color: #fff;
-        }
-
-        .csr-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 18px;
-        }
-
-        .csr-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 18px;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .footer-inner {
-            width: min(1200px, 95%);
-            margin: 0 auto;
-            display: flex;
-            gap: 24px;
-            justify-content: space-between;
-            padding: 32px 0;
-        }
-
-        .footer-col h4 {
-            margin: 0 0 8px 0;
-        }
-
-        .social-links .social-item {
-            display: inline-flex;
-            gap: 8px;
-            align-items: center;
-            text-decoration: none;
-            color: var(--accent);
-        }
-    </style>
 </head>
 
 <body>
-
     <div class="page-1-2">
-        <!-- Page 1 -->
+        <!--
+  
+    
+    BIG SECTION / "Page 1" with background image bg1.jpeg
+    Contains: header, About Us, spacer, partners row
+  -->
         <section class="page page-1" id="page1" aria-label="Main section with background 1">
 
-            <!-- Header: kept at top (above the topbar) -->
+            <!-- Header: two logos — left and right. The header area visually occupies 95% width (centered)
+         but the logos are positioned flush toward the viewport edges to match your request.
+    -->
             <header class="site-header">
                 <div class="header-inner">
+                    <!-- Left logo (flush to left edge of viewport) -->
                     <img src="fhg-logo.png" alt="FH Group Left Logo" class="logo logo-left" />
+                    <!-- Right logo (flush to right edge of viewport) -->
                     <img src="fhg-h-logo.png" alt="FH Group Right Logo" class="logo logo-right" />
                 </div>
             </header>
 
-            <!-- TOPBAR: sticky at top of viewport after scrolling (behaves like fixed once stuck) -->
-            <nav class="topbar" role="navigation" aria-label="Main navigation">
-                <div class="topbar-inner">
-                    <div class="nav-links" role="menubar" aria-label="Primary">
-                        <a href="#about" role="menuitem">About Us</a>
-                        <a href="#join" role="menuitem">Join Us</a>
-                        <a href="#brands" role="menuitem">Our Brands</a>
-                        <a href="#csr" role="menuitem">Our CSR</a>
-                        <a href="#contact" role="menuitem">Contact</a>
-                    </div>
-
-                    <!-- <div class="topbar-cta" aria-hidden="false">
-                        <a class="btn-ghost" href="#join">Send CV</a>
-                        <a class="btn-primary" href="#contact">Contact Us</a>
-                        <button class="mobile-toggle" aria-expanded="false" aria-label="Open menu">☰</button>
-                    </div> -->
-
-                    <!-- mobile menu container (hidden by default, toggled via script) -->
-                    <!-- <div class="mobile-menu" aria-hidden="true">
-                        <a href="#about">About Us</a>
-                        <a href="#join">Join Us</a>
-                        <a href="#brands">Our Brands</a>
-                        <a href="#csr">Our CSR</a>
-                        <a href="#contact">Contact</a>
-                        <a class="btn-primary" href="#join">Send CV</a>
-                    </div> -->
-                </div>
-            </nav>
-
-            <!-- About us block (anchor) -->
-            <div class="about-wrap" id="about">
+            <!-- About us block: white large title + centered paragraph
+         The content block width is 60% as requested and centered within the section.
+    -->
+            <div class="about-wrap">
                 <h1 class="about-title">About Us</h1>
-                <p class="about-text">Established in 1966, the Fernand Hosri Group is a multinational company serving
-                    the Middle East region, with established offices in Lebanon, the UAE, and Saudi Arabia. Over the
-                    years, the group has expanded its presence across various sectors in both local and international
-                    markets, focusing on Security, Telecommunications, Building Automation & Communication, Renewable
-                    Energy, B2B and B2C Distribution, as well as Insurance consultancy and brokerage.</p>
+                <p class="about-text">
+                    Established in 1966, the Fernand Hosri Group is a multinational company serving the Middle East
+                    region, with established offices in Lebanon, the UAE, and Saudi Arabia. Over the years, the group
+                    has expanded its presence across various sectors in both local and international markets, focusing
+                    on Security, Telecommunications, Building Automation & Communication, Renewable Energy, B2B and B2C
+                    Distribution, as well as Insurance consultancy and brokerage.
+                </p>
             </div>
 
-            <!-- small spacer -->
+            <!-- Space separator: 200px high empty area -->
+            <!-- <div class="big-space" aria-hidden="true"></div> -->
 
-            <!-- Partners row kept as-is -->
+            <!-- Partners: horizontally scrollable row of simple cards (logo + company name)
+         The row occupies 70% of the section width, centered. Cards are visually "bare" (no background)
+         — just logo + company name (white text). Logos listed per your names.
+    -->
+            <div class="partners-wrap">
+                <button class="scroll-btn left" aria-label="Scroll left"></button>
+                <div class="partners-row">
 
-        </section>
+                    <div class="partner-card small">
+                        <a href="https://sacotel.com">
+                            <img class="img-small" src="sacotel-Logo.png" alt="Sacotel" />
+                        </a>
+                        <div class="partner-text">
+                            <div class="partner-description">
+                                Telecom, Security, Automation and Renewable Energy.
+                                <br>
+                            </div>
+                            <a href="https://sacotel.com" class="partner-click-here">Visit our website</a>
+                        </div>
+                    </div>
 
-        <!-- JOIN / Join our group section -->
-        <section class="page section-join" id="join" aria-label="Join our group (send CV)">
-            <div style="width:70%; margin: 60px auto; text-align:center;">
-                <h2 class="section-title-small">Join Our Group</h2>
-                <p class="section-sub">Interested in joining Fernand Hosri Group? Send your CV and a short cover letter
-                    to <a href="mailto:careers@fhg.com">careers@fhg.com</a> or use the contact form below.</p>
-                <div style="margin-top:18px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-                    <a class="btn-primary" href="mailto:careers@fhg.com">Send CV</a>
-                    <a class="btn-ghost" href="#contact">Contact HR</a>
+                    <div class="partner-card large">
+                        <a href="https://sacotelurmet.com">
+                            <img src="s_urmet-Logo.png" alt="Sacotel Urmet" />
+                        </a>
+                        <div class="partner-text">
+                            <div class="partner-description">
+                                specification, trade, design, installation and after sales service for the Building
+                                communication, Automation
+                                and
+                                Security systems
+                                <br>
+                                solutions of all Urmet Group Brands in the Middle east Territory.
+                                <br>
+                            </div>
+                            <a href="https://sacotelurmet.com" class="partner-click-here">Visit our website</a>
+                        </div>
+                    </div>
+
+                    <div class="partner-card">
+                        <a href="https://hosri-insurance-services.com/">
+                            <img src="HIS-Logo.gif" alt="HIS" />
+                        </a>
+                        <div class="partner-text">
+                            <div class="partner-description">
+                                Insurance, Telecom, Security, Firefighting, Engineering, Import & Distribution as well
+                                as Editing and
+                                Publishing
+                                <br>
+                            </div>
+                            <a href="https://hosri-insurance-services.com/" class="partner-click-here">Visit our
+                                website</a>
+
+                        </div>
+                    </div>
+
+                    <div class="partner-card">
+                        <a href="https://7express.store">
+                            <img src="7express-Logo.png" alt="7express Store" />
+                        </a>
+
+                        <div class="partner-text">
+                            <div class="partner-description">
+                                <div class="text-preview">
+                                    In addition to groceries, we sell chilled foods, fresh bread, milk, juices, fresh
+                                    fruit and vegetables along
+                                    with a
+                                    range of household items.
+                                    <br>
+                                    We are also introducing our renown butcher, and guarantee to serve fresh chicken,
+                                    beef, turkey, lamb, pork,
+                                    fish, and
+                                    sea food.
+                                    <br>
+                                    You can always ask for our menu of daily dish prepared by our experienced chef at
+                                    Queasine.
+                                </div>
+                                <!-- <span class="read-more">Read more</span> -->
+                            </div>
+                            <a href="https://7express.store" class="partner-click-here">Visit our website</a>
+
+                        </div>
+                    </div>
+
+                    <div class="partner-card">
+                        <a href="https://www.sacotelznshine.com">
+                            <img src="s_znshine-logo.png" alt="Sacotel Znshine" />
+                        </a>
+
+                        <div class="partner-text">
+                            <div class="partner-description">
+                                <div class="text-preview">
+                                    57 Years Local Partner Middle East & GCC Experience.
+                                    <br>
+                                    Member of UN Global Compact.
+                                    <br>
+                                    32 Years Manufacturing Experience.
+                                    <br>
+                                    Extensive PV Project Development.
+                                    <br>
+                                    Utility
+                                    ,
+                                    Commercial
+                                    ,
+                                    Residential
+                                </div>
+                                <!-- <span class="read-more">Read more</span> -->
+                            </div>
+                            <a href="https://www.sacotelznshine.com" class="partner-click-here">Visit our website</a>
+
+                        </div>
+                    </div>
+
+                    <div class="partner-card medium">
+                        <a href="">
+                            <img class="img-medium" src="OfficeOnLine-Logo.gif" alt="OfficeOnLine" />
+                        </a>
+
+                        <div class="partner-text">
+                            <div class="partner-description">
+                                <div class="text-preview">
+                                    57 Years Local Partner Middle East & GCC Experience.
+                                    <br>
+                                    Member of UN Global Compact.
+                                    <br>
+                                    32 Years Manufacturing Experience.
+                                    <br>
+                                    Extensive PV Project Development.
+                                </div>
+                                <!-- <span class="read-more">Read more</span> -->
+                            </div>
+                            <a href="" class="partner-click-here">Visit our website</a>
+
+                        </div>
+                    </div>
+
+
+                    <div class="partner-card xsmall">
+                        <a href="https://mese-co.com/">
+                            <img class="img-xsmall" src="MESE-logo.png" alt="MESE" />
+                        </a>
+
+                        <div class="partner-text">
+                            <div class="partner-description">
+                                <div>
+                                    <div class="text-preview">
+                                        <h6>Fire Protection</h6>
+                                        <p>
+                                            We are experts in fire protection solutions including alarm systems,
+                                            sprinkler systems, fire extinguishers, and emergency lights.
+                                            Our team will ensure that all installations comply with local regulations
+                                            and the highest international standards.
+                                            With us you can rest assured and focus on running your operation smoothly.
+                                        </p>
+
+                                        <h6>Security Systems</h6>
+                                        <p>
+                                            We provide state of the art security systems, including CCTV surveillance,
+                                            access control, intruder alarms, and intercom systems.
+                                            Our solutions enhance the safety and security of our client premises.
+                                        </p>
+
+                                        <h6>Maintenance Support and Civil Defence Licencing</h6>
+                                        We offer regular maintenance and support services to ensure our clients'
+                                        fire protection and security systems are always in optimal condition.
+                                        Our team is available to offer the necessary support and perform the
+                                        necessary drills mitigating all potential risks.
+
+                                    </div>
+                                    <!-- <span class="read-more">Read more</span> -->
+                                </div>
+                            </div>
+                            <br>
+                            <a href="https://mese-co.com/" class="partner-click-here">Visit our website</a>
+
+                        </div>
+                    </div>
+
                 </div>
+                <button class="scroll-btn right" aria-label="Scroll right"></button>
             </div>
+
         </section>
 
-        <!-- OUR BRANDS (simple cards) -->
-        <section class="page section-brands" id="brands" aria-label="Our Brands">
-            <div style="width:80%; margin:60px auto;color: #fff;">
-                <h2 class="section-title-small">Our Brands</h2>
-                <div
-                    style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:18px; margin-top:18px;">
-                    <!-- lightweight brand cards (use existing logo files) -->
-                    <div class="brand-card">
-                        <img src="sacotel-Logo.png" alt="Sacotel"
-                            style="max-width:160px; display:block; margin-bottom:10px;" />
-                        <div>Telecom & Security solutions</div>
-                    </div>
-                    <div class="brand-card">
-                        <img src="s_urmet-Logo.png" alt="Urmet"
-                            style="max-width:160px; display:block; margin-bottom:10px;" />
-                        <div>Building communication & automation</div>
-                    </div>
-                    <div class="brand-card">
-                        <img src="HIS-Logo.gif" alt="HIS" style="max-width:160px; display:block; margin-bottom:10px;" />
-                        <div>Insurance & Consultancy</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!--
+    BIG SECTION / "Page 2" with background image bg2.jpeg
+    Contains: Our SRC area (50% width content) + two simple cards (same style as partners) + footer
+  -->
+        <section class="page page-2" id="page2" aria-label="Secondary section with background 2">
 
-        <!-- OUR CSR (anchor to existing CSR area) -->
-        <section class="page page-2" id="csr" aria-label="Secondary section with background 2">
             <div class="csr-wrap">
                 <h2 class="csr-title">Our CSR</h2>
+
                 <div class="csr-cards">
-                    <!-- existing CSR cards kept -->
+
                     <div class="csr-card">
                         <a href="https://eywa-lb.org/">
                             <img src="eywa-logo.png" alt="Eywa" />
                         </a>
+
                         <div class="csr-text">
                             <div class="csr-description">
-                                <div class="csr-text-preview">EYWA enables women to recreate what they can be and what
-                                    it is they can accomplish through assisting them to proper education...</div>
+                                <div class="csr-text-preview">
+                                    EYWA enables women to recreate what they can be and what it is they can accomplish
+                                    through assisting them to
+                                    proper
+                                    education. Increased literacy and status will allow those women to raise better
+                                    generations and enhance the
+                                    quality of
+                                    our human resources.
+                                    <br>
+                                    <br>
+                                    EYWA empowers women economically by matching them with appropriate jobs and drafting
+                                    their CVs and tackling
+                                    their main
+                                    concern, their time constraints. 80% of underprivileged non-working moms are
+                                    deprived from access to jobs
+                                    due to the
+                                    need of caring for their children and not affording Day Care services.
+                                </div>
+
+                                <!-- <span class="csr-read-more">Read more</span> -->
                                 <br>
                                 <a href="https://eywa-lb.org/" class="csr-click-here">Visit our website</a>
                             </div>
@@ -382,78 +282,291 @@
                         <a href="https://unleashyourcreativitylb.com/">
                             <img src="unleash-logo.png" alt="Unleash" />
                         </a>
+
                         <div class="csr-text">
                             <div class="csr-description">
                                 <div class="csr-text-preview">
-                                    <h6>UNLEASH YOUR CREATIVITY</h6> The annual interuniversity competition has
-                                    amplified the challenge for 2025...
+                                    <h6>UNLEASH YOUR CREATIVITY</h6>
+                                    The annual interuniversity competition has amplified the challenge for 2025. After
+                                    10 successful years we
+                                    have lifted
+                                    the bar in this 11th edition.
                                 </div>
+
+                                <!-- <span class="csr-read-more">Read more</span> -->
                                 <a href="https://unleashyourcreativitylb.com/" class="csr-click-here">Visit our
                                     website</a>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
-            <!-- footer kept at bottom of this section -->
-            <footer class="site-footer" id="contact">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Footer: 3 columns (location, social media, numbers), width 80% centered.
+         No extra background provided — default / transparent.
+    -->
+            <footer class="site-footer">
                 <div class="footer-inner">
                     <div class="footer-col">
                         <h4>Location</h4>
                         <p>📍 162 Badaro Street 2058162 &nbsp; Beirut – Lebanon</p>
                         <p>📍 Dubai Airport Free Zone 6EA 110</p>
                         <p>📍 Jeddah – Saudi Arabia</p>
+
                     </div>
                     <div class="footer-col">
                         <h4>Social</h4>
                         <div class="social-links">
                             <a class="social-item" href="https://www.linkedin.com/company/40817162/" target="_blank">
                                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg"
-                                    alt="LinkedIn" style="height:18px; width:auto;">
+                                    alt="LinkedIn">
                                 <span>LinkedIn</span>
                             </a>
                         </div>
                     </div>
+
+
+
+
                     <div class="footer-col">
+                        <!-- <h4>Numbers</h4> -->
                         <h4>Contact Information</h4>
-                        <p>Tel +961 1 38 68 68 <br> Fax +961 1 38 68 68 <br> 31 317508, Dubai – UAE <br> Tel +971 50 104
-                            2550</p>
+                        <p>Tel +961 1 38 68 68 <br>
+                            Fax +961 1 38 68 68 <br>
+                            31 317508, Dubai – UAE <br>
+                            Tel +971 50 104 2550</p>
+                        <!-- <h4>Contact Information</h4>
+            <h5>Lebanon</h5>
+            Tel: +961 1 38 68 68<br>
+            Fax: +961 1 38 68 68
+            <h5>Dubai – UAE</h5>
+            31 317508, Dubai – UAE<br>
+            Tel: +971 50 104 2550 -->
                     </div>
                 </div>
             </footer>
 
         </section>
+        <div>
+            <script>
+                // select elements
+                const partnersRow = document.querySelector('.partners-row');
+                const leftBtn = document.querySelector('.scroll-btn.left');
+                const rightBtn = document.querySelector('.scroll-btn.right');
 
-    </div>
+                // settings
+                const clickScroll = 120;      // مسافة صغيرة للكبسة السريعة
+                const holdSpeed = 6;          // سرعة التمرير بالكبسة الطويلة (px per frame)
+                const holdDelay = 200;        // بعد قديش ms تتحول لكبسة طويلة
 
-    <!-- small mobile menu script -->
-    <script>
-        const toggle = document.querySelector('.mobile-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
+                let holdInterval = null;
+                let holdTimeout = null;
+                let isHolding = false;
 
-        if (toggle && mobileMenu) {
-            toggle.addEventListener('click', () => {
-                const expanded = toggle.getAttribute('aria-expanded') === 'true';
-                toggle.setAttribute('aria-expanded', (!expanded).toString());
-                if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
-                    mobileMenu.style.display = 'flex';
-                    mobileMenu.setAttribute('aria-hidden', 'false');
-                } else {
-                    mobileMenu.style.display = 'none';
-                    mobileMenu.setAttribute('aria-hidden', 'true');
+                function startHold(direction) {
+                    holdInterval = setInterval(() => {
+                        partnersRow.scrollLeft += direction * holdSpeed;
+                    }, 16); // ~60fps
                 }
-            });
 
-            // hide mobile menu when clicking a link
-            mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-                mobileMenu.style.display = 'none';
-                toggle.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-            }));
-        }
-    </script>
+                function stopHold() {
+                    clearInterval(holdInterval);
+                    clearTimeout(holdTimeout);
+                    holdInterval = null;
+                    holdTimeout = null;
+                    isHolding = false;
+                }
+
+                function setupButton(btn, direction) {
+                    btn.addEventListener('pointerdown', () => {
+                        // نوقف auto scroll (إذا موجود)
+                        if (typeof pauseAuto === 'function') pauseAuto();
+
+                        isHolding = false;
+                        holdTimeout = setTimeout(() => {
+                            isHolding = true;
+                            startHold(direction);
+                        }, holdDelay);
+                    });
+
+                    btn.addEventListener('pointerup', () => {
+                        if (!isHolding) {
+                            // كبسة سريعة → scroll خفيف
+                            partnersRow.scrollBy({
+                                left: direction * clickScroll,
+                                behavior: 'smooth'
+                            });
+                        }
+                        stopHold();
+
+                        // رجّع auto scroll
+                        if (typeof resumeAuto === 'function') resumeAuto(2000);
+                    });
+
+                    btn.addEventListener('pointerleave', () => {
+                        stopHold();
+                        if (typeof resumeAuto === 'function') resumeAuto(1500);
+                    });
+
+                    btn.addEventListener('touchcancel', stopHold);
+                }
+
+                // init buttons
+                setupButton(leftBtn, -1);
+                setupButton(rightBtn, 1);
+
+                // // select elements by class (because no IDs are used)
+                // const partnersRow = document.querySelector('.partners-row');
+                // const leftBtn = document.querySelector('.scroll-btn.left');
+                // const rightBtn = document.querySelector('.scroll-btn.right');
+
+                // const scrollAmount = 300;
+
+                // leftBtn.addEventListener('click', () => {
+                //   partnersRow.scrollBy({
+                //     left: -scrollAmount,
+                //     behavior: 'smooth'
+                //   });
+                // });
+
+                // rightBtn.addEventListener('click', () => {
+                //   partnersRow.scrollBy({
+                //     left: scrollAmount,
+                //     behavior: 'smooth'
+                //   });
+                // });
+
+
+                //auto scroling code
+                // ------- auto gentle continuous scrolling (add this below your existing code) -------
+                const autoSpeed = 0.03; // pixels per millisecond (عندك: 0.03 ≈ 30px/sec). غيّره إذا بدك أسرع/أبطأ
+                let autoDirection = 1; // 1 => يمين، -1 => يسار
+                let isPaused = false;
+                let lastTime = null;
+                let resumeTimeout = null;
+
+                function pauseAuto() {
+                    isPaused = true;
+                    if (resumeTimeout) {
+                        clearTimeout(resumeTimeout);
+                        resumeTimeout = null;
+                    }
+                }
+
+                function resumeAuto(shortDelay = 2000) {
+                    // ترجع التشغيل بعد delay (ms) — القيمة الافتراضية 2000ms
+                    if (resumeTimeout) clearTimeout(resumeTimeout);
+                    resumeTimeout = setTimeout(() => {
+                        isPaused = false;
+                        lastTime = null; // reset to avoid big jump
+                    }, shortDelay);
+                }
+
+                function autoStep(timestamp) {
+                    if (!lastTime) lastTime = timestamp;
+                    const delta = timestamp - lastTime;
+                    lastTime = timestamp;
+
+                    if (!isPaused) {
+                        // move
+                        partnersRow.scrollLeft += autoSpeed * delta * autoDirection;
+
+                        // reverse direction when hitting ends
+                        if (partnersRow.scrollLeft <= 0) {
+                            partnersRow.scrollLeft = 0;
+                            autoDirection = 1;
+                        } else if (partnersRow.scrollLeft + partnersRow.clientWidth >= partnersRow.scrollWidth) {
+                            partnersRow.scrollLeft = partnersRow.scrollWidth - partnersRow.clientWidth;
+                            autoDirection = -1;
+                        }
+                    }
+
+                    requestAnimationFrame(autoStep);
+                }
+
+                // start the loop
+                requestAnimationFrame(autoStep);
+
+                // pause/resume on user interaction (hover, focus, drag, touch)
+                partnersRow.addEventListener('mouseenter', pauseAuto);
+                partnersRow.addEventListener('mouseleave', () => resumeAuto(1000)); // يرجع بسرعة بعد ما يطلع الفأرة
+                partnersRow.addEventListener('focusin', pauseAuto);
+                partnersRow.addEventListener('focusout', () => resumeAuto(2000));
+                partnersRow.addEventListener('pointerdown', () => { pauseAuto(); }); // لو بدّك تجرّك يوقف فوراً
+                partnersRow.addEventListener('pointerup', () => resumeAuto(2500));
+                partnersRow.addEventListener('touchstart', pauseAuto, { passive: true });
+                partnersRow.addEventListener('touchend', () => resumeAuto(2500), { passive: true });
+
+                // إذا بدك، خلي الأزرار توقف التمرير المؤقت أثناء النقر ثم ترجّعه:
+                [leftBtn, rightBtn].forEach(btn => {
+                    btn.addEventListener('pointerdown', pauseAuto);
+                    btn.addEventListener('pointerup', () => resumeAuto(2000));
+                    btn.addEventListener('mouseleave', () => resumeAuto(1000));
+                });
+
+                //end of auto scroling code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                document.querySelectorAll('.read-more').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const wrapper = btn.closest('.partner-description');
+                        const text = wrapper.querySelector('.text-preview');
+
+                        const expanded = text.classList.toggle('expanded');
+                        btn.textContent = expanded ? 'Read less' : 'Read more';
+                    });
+                });
+
+
+                document.querySelectorAll('.csr-read-more').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const wrapper = btn.closest('.csr-description');
+                        const text = wrapper.querySelector('.csr-text-preview');
+
+                        const expanded = text.classList.toggle('expanded');
+                        btn.textContent = expanded ? 'Read less' : 'Read more';
+                    });
+                });
+
+            </script>
 
 </body>
+
 
 </html>
