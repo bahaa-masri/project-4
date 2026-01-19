@@ -103,7 +103,7 @@
 
   .btn-primary {
       background: rgba(255, 255, 255, 0.95);
-      color: #111;
+      /* color: #111; */
       padding: 8px 12px;
       border-radius: 8px;
       font-weight: 700;
@@ -138,4 +138,5 @@
   #csr,
   #contact {
       scroll-margin-top: 120px;
+      /* scroll-margin-top: calc(120px + 20vh); */
   }
