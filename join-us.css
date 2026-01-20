@@ -1,0 +1,280 @@
+/* -------------------------------------------------------
+   Scoped "Join Us" styles — safe to drop into your stylesheet
+   Wrap your existing join-us HTML with:
+   <div class="join-us-component"> ...existing markup... </div>
+   ------------------------------------------------------- */
+
+/* container scope */
+.join-us-component {
+    --component-max-width: var(--max-width, 980px);
+    --component-gap: var(--gap, 18px);
+    --component-radius: var(--radius, 12px);
+    --component-accent: var(--accent, #06b6d4);
+    --component-muted: var(--muted, #9aa4b2);
+    padding: 32px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+
+
+    /* Open Positions */
+    color: #505973;
+
+    /* background: linear-gradient(180deg, rgba(10, 14, 16, 0.3), rgba(7, 10, 12, 0.2));
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px); */
+}
+
+/* main grid */
+.join-us-component .join-wrap {
+    width: 100%;
+    max-width: var(--component-max-width);
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: var(--component-gap);
+    align-items: start;
+    box-sizing: border-box;
+}
+
+/* panel base */
+.join-us-component .panel {
+    /* background: linear-gradient(180deg, rgba(9, 147, 201, 0.3), rgba(19, 180, 254, 0.2));
+    */
+    background: rgba(61, 201, 243, 0.1);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+
+
+    border-radius: var(--component-radius);
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
+    /* color: inherit; */
+    box-sizing: border-box;
+}
+
+/* left info */
+.join-us-component .info {
+    padding: 6px 14px;
+}
+
+.join-us-component .info h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.45rem;
+    /* Join Us */
+    color: inherit;
+}
+
+.join-us-component .info p.lead {
+    /* color: var(--component-muted); */
+    /* We’re a small team */
+    color: #2e3033;
+    margin: 0 0 16px;
+    line-height: 1.45;
+}
+
+/* jobs list */
+.join-us-component .jobs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.join-us-component .job {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+.join-us-component .job:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
+    box-shadow: 0 10px 20px rgba(2, 6, 23, 0.45);
+}
+
+.join-us-component .job .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.join-us-component .job h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.join-us-component .job small {
+    /* color: var(--component-muted); */
+    /* Remote — Full-time */
+    color: #ececec;
+    font-size: .85rem;
+}
+
+/* pill */
+.join-us-component .pill {
+    background: rgba(6, 182, 212, 0.2);
+    border: 1px solid rgba(6, 182, 212, 0.12);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    /* color: var(--component-accent); */
+    /* Experienced */
+    color: #e5e6e9;
+    font-size: .85rem;
+    white-space: nowrap;
+}
+
+/* Right: the form column */
+.join-us-component form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.join-us-component label {
+    font-size: .85rem;
+    /* color: var(--component-muted); */
+    /* Full name */
+    color: #505973;
+    display: block;
+    margin-bottom: 4px;
+}
+
+/* Inputs — scoped so global inputs are untouched */
+.join-us-component input[type="text"],
+.join-us-component input[type="email"],
+.join-us-component input[type="tel"],
+.join-us-component select,
+.join-us-component textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: transparent;
+    color: inherit;
+    font-size: .95rem;
+    box-sizing: border-box;
+    transition: box-shadow .14s ease, border-color .14s ease;
+}
+
+#join input,
+#join textarea,
+#join select {
+    background-color: rgba(61, 201, 243, 0.3);
+  color: #ffffff;
+}
+.join-us-component select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* background-color:rgba(61, 201, 243, 0.3); */
+    /* color: inherit; */
+    color: #505973 !important;
+    cursor: pointer;
+}
+
+
+.join-us-component textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* file drop area */
+.join-us-component .file-drop {
+    border: 2px dashed rgba(255, 255, 255, 0.04);
+    padding: 14px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background .12s ease, border-color .12s ease, transform .12s ease;
+}
+
+.join-us-component .file-drop.dragover {
+    background: linear-gradient(90deg, rgba(6, 182, 212, 0.03), rgba(6, 182, 212, 0.01));
+    border-color: rgba(6, 182, 212, 0.18);
+    transform: translateY(-2px);
+}
+
+/* small helper text */
+.join-us-component .file-info {
+    font-size: .9rem;
+    /* color: var(--component-muted); */
+    color: #000000;
+}
+
+/* error */
+.join-us-component .error {
+    color: #ff0101;
+    font-size: .85rem;
+}
+
+/* actions / buttons */
+.join-us-component .actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.join-us-component button.btn {
+    background: linear-gradient(90deg, var(--component-accent), #0ea5b7);
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: #022;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: .95rem;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.35);
+    transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+
+.join-us-component button.btn:active {
+    transform: translateY(1px);
+}
+
+.join-us-component button[disabled] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* note text */
+.join-us-component .note {
+    font-size: .85rem;
+    /* color: var(--component-muted); */
+    color: #000000;
+}
+
+/* focus states — visible but scoped */
+.join-us-component a:focus,
+.join-us-component button:focus,
+.join-us-component input:focus,
+.join-us-component select:focus,
+.join-us-component textarea:focus {
+    outline: 2px dashed rgba(230, 238, 246, 0.95);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.06);
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .join-us-component {
+        padding: 16px;
+    }
+
+    .join-us-component .join-wrap {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .join-us-component .panel {
+        padding: 14px;
+    }
+}
