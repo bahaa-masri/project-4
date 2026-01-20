@@ -19,8 +19,10 @@
       - Topbar.css: styles specifically for the top navigation
       Keep CSS separate for maintainability and easier overrides.
     -->
+  <link rel="stylesheet" href="join-us.css" />
   <link rel="stylesheet" href="Style.css" />
   <link rel="stylesheet" href="Topbar.css" />
+
 
   <!-- Google font used across the site for a clean, professional UI -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -327,6 +329,108 @@
         </div>
       </div>
 
+      <div id="join" class="join-us-component">
+
+        <section class="join-wrap" aria-labelledby="join-title">
+
+          <div class="panel info" id="company-info">
+            <h2 id="join-title">Join Us</h2>
+            <p class="lead">We’re a small team building reliable, maintainable software...</p>
+
+            <div aria-live="polite">
+              <h3 style="font-size:1rem;margin:14px 0 8px 0">Open Positions</h3>
+
+              <div class="jobs" id="jobs-list">
+                <article class="job" data-role="frontend">
+                  <div class="meta">
+                    <h4>Frontend Engineer</h4>
+                    <small>Remote — Full-time</small>
+                  </div>
+                  <div class="pill">Experienced</div>
+                </article>
+
+                <article class="job" data-role="backend">
+                  <div class="meta">
+                    <h4>Backend Engineer</h4>
+                    <small>On-site (Beirut) — 6+ months</small>
+                  </div>
+                  <div class="pill">Backend</div>
+                </article>
+
+                <article class="job" data-role="intern">
+                  <div class="meta">
+                    <h4>Intern - Dev</h4>
+                    <small>Part-time — Internship</small>
+                  </div>
+                  <div class="pill">Entry</div>
+                </article>
+              </div>
+
+              <p class="note" style="margin-top:12px">
+                Common items in a "Join Us" section...
+              </p>
+            </div>
+          </div>
+
+          <aside class="panel" aria-labelledby="apply-title">
+            <h3 id="apply-title">Apply — Send CV</h3>
+
+            <form id="apply-form" method="POST" action="/apply" enctype="multipart/form-data" novalidate>
+
+              <div>
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" required />
+              </div>
+
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" />
+              </div>
+
+              <div>
+                <label for="position">Position</label>
+                <select id="position" name="position">
+                  <option value="">— Select —</option>
+                  <option value="frontend">Frontend Engineer</option>
+                  <option value="backend">Backend Engineer</option>
+                  <option value="devops">DevOps</option>
+                  <option value="intern">Intern</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="cover">Short cover note (optional)</label>
+                <textarea id="cover" name="cover"></textarea>
+              </div>
+
+              <div>
+                <label>Upload CV</label>
+                <div id="drop" class="file-drop" tabindex="0">
+                  <input id="cv" name="cv" type="file" accept=".pdf,.doc,.docx" hidden />
+                  <strong>Drag & drop your CV here</strong>
+                  <div class="file-info">or click to browse</div>
+                </div>
+                <div id="file-status" class="file-info"></div>
+                <div id="file-error" class="error"></div>
+              </div>
+
+              <div class="actions">
+                <button class="btn" type="submit" disabled>Send Application</button>
+              </div>
+
+              <p class="note">Tip: Validate again on server…</p>
+            </form>
+          </aside>
+        </section>
+
+      </div>
+
+
       <!-- Footer: company location and contact details. Keep contact details up-to-date. -->
       <footer id="contact" class="site-footer">
         <div class="footer-inner">
@@ -524,6 +628,268 @@
           });
         });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //join us
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Basic JS: drag/drop + client-side validation + ajax submit example
+        (function () {
+          const MAX_SIZE = 2 * 1024 * 1024; // 2 MB
+          const allowed = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+
+          const drop = document.getElementById('drop');
+          const cvInput = document.getElementById('cv');
+          const fileStatus = document.getElementById('file-status');
+          const fileError = document.getElementById('file-error');
+          const submitBtn = document.getElementById('submit-btn');
+          const form = document.getElementById('apply-form');
+          const sending = document.getElementById('sending');
+          const result = document.getElementById('result');
+
+          let file = null;
+
+          function setError(msg) { fileError.textContent = msg || ''; }
+          function setStatus(msg) { fileStatus.textContent = msg || ''; }
+
+          function validateFile(f) {
+            if (!f) return 'Please attach a CV.';
+            if (f.size > MAX_SIZE) return 'File is too large (max 2 MB).';
+            if (allowed.indexOf(f.type) === -1) {
+              // Some browsers may not provide accurate mime type for .doc/.docx — check extension as fallback
+              const ext = (f.name || '').split('.').pop().toLowerCase();
+              if (!['pdf', 'doc', 'docx'].includes(ext)) return 'Unsupported file type.';
+            }
+            return '';
+          }
+
+          function updateUI() {
+            const err = validateFile(file);
+            if (err) { setError(err); submitBtn.disabled = true; }
+            else { setError(''); submitBtn.disabled = false; }
+            setStatus(file ? `${file.name} — ${(file.size / 1024 | 0)} KB` : 'No file chosen');
+          }
+
+          // click to open file picker
+          drop.addEventListener('click', () => cvInput.click());
+          // keyboard accessibility
+          drop.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cvInput.click(); } });
+
+          // file selected
+          cvInput.addEventListener('change', (e) => {
+            file = e.target.files[0]; updateUI();
+          });
+
+          // drag/drop events
+          drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('dragover'); });
+          drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
+          drop.addEventListener('drop', (e) => {
+            e.preventDefault(); drop.classList.remove('dragover');
+            const f = e.dataTransfer.files && e.dataTransfer.files[0];
+            if (f) { file = f; cvInput.files = e.dataTransfer.files; updateUI(); }
+          });
+
+          // inline form validation hook
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            setError(''); result.textContent = '';
+
+            // validate fields
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            if (!name) { setError('Please type your full name.'); return; }
+            if (!email || !/^\S+@\S+\.\S+$/.test(email)) { setError('Please provide a valid email.'); return; }
+            const fileErr = validateFile(file);
+            if (fileErr) { setError(fileErr); return; }
+
+            // prepare to send via fetch
+            submitBtn.disabled = true; sending.style.display = 'block';
+            const fd = new FormData(form);
+            // ensure file is part of FormData (some older browsers may need special handling)
+            if (file && !fd.get('cv')) fd.append('cv', file);
+
+            // Use YOUR endpoint here. Example shows fetch with JSON-like response expected.
+            fetch(form.action, { method: 'POST', body: fd })
+              .then(async (res) => {
+                sending.style.display = 'none'; submitBtn.disabled = false;
+                if (res.ok) { result.textContent = 'Application sent — thank you!'; form.reset(); file = null; updateUI(); }
+                else {
+                  const txt = await res.text();
+                  result.textContent = 'Server error: ' + (txt || res.statusText);
+                }
+              })
+              .catch((err) => { sending.style.display = 'none'; submitBtn.disabled = false; result.textContent = 'Network error: ' + err.message; });
+          });
+
+          // init status
+          updateUI();
+
+        })();
       </script>
 
 </body>
