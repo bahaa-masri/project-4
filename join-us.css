@@ -166,9 +166,10 @@
 #join input,
 #join textarea,
 #join select {
-    background-color: rgba(61, 201, 243, 0.3);
-  color: #ffffff;
+    background-color: rgba(118, 193, 215, 0.3);
+    color: #ffffff;
 }
+
 .join-us-component select {
     appearance: none;
     -webkit-appearance: none;
