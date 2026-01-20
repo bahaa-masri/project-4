@@ -86,7 +86,7 @@
     align-items: center;
     padding: 12px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.02);
+    /* background: rgba(255, 255, 255, 0.02); */
     border: 1px solid rgba(255, 255, 255, 0.03);
     transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
 }
@@ -170,6 +170,10 @@
 #drop {
     background-color: rgba(118, 193, 215, 0.3);
     color: #ffffff;
+}
+
+.job {
+    background-color: rgba(118, 193, 215, 0.3);
 }
 
 .join-us-component select {
