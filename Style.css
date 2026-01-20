@@ -430,6 +430,25 @@ body {
   text-align: center;
 }
 
+@media (max-width: 900px) {
+  .csr-wrap {
+    width: 90%;
+    height: auto;
+    margin: 40px auto;
+  }
+
+  .csr-cards {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .csr-card {
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
 .csr-title {
   color: #fff;
   font-size: 50px;
