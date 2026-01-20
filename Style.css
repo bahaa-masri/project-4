@@ -558,6 +558,14 @@ body {
   margin-bottom: 18px;
 }
 
+@media (max-width: 600px) {
+  .csr-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 
 
 /* end of ovverid */
