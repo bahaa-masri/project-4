@@ -137,7 +137,8 @@
     gap: 12px;
 }
 
-.join-us-component label {
+.join-us-component label,
+.draganddrop {
     font-size: .85rem;
     /* color: var(--component-muted); */
     /* Full name */
@@ -165,7 +166,8 @@
 
 #join input,
 #join textarea,
-#join select {
+#join select,
+#drop {
     background-color: rgba(118, 193, 215, 0.3);
     color: #ffffff;
 }
