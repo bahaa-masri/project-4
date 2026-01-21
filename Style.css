@@ -651,9 +651,6 @@ body {
 
 /* Small screens: make layout stack nicely */
 @media (max-width:900px) {
-  .about-wrap {
-    width: 90%
-  }
 
   .partners-wrap {
     width: 90%
@@ -682,6 +679,52 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center
+  }
+}
+
+/* =========================
+   Mobile optimization: About section
+   ========================= */
+
+@media (max-width: 768px) {
+
+  .about-wrap {
+    width: 92%;
+    max-width: 100%;
+    padding: 20px 12px;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: 30px;
+    /* كان 44 */
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .about-text {
+    font-size: 17px;
+    /* كان 26 */
+    line-height: 1.65;
+    letter-spacing: 0.2px;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+
+  .about-wrap {
+    padding: 16px 10px;
+  }
+
+  .about-title {
+    font-size: 26px;
+  }
+
+  .about-text {
+    font-size: 16px;
+    line-height: 1.7;
   }
 }
 
