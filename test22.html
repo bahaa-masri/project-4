@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Example: Responsive Mobile Menu (Inline CSS/JS)</title>
+</head>
+
+<body
+    style="margin:0;height:100%;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,#0f1724,#071021 120%);color:#e6eef6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.45;">
+
+    <header role="banner" style="max-width:1100px;margin:0 auto;padding:20px;box-sizing:border-box;">
+        <div
+            style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:rgba(255,255,255,0.02);border-radius:12px;backdrop-filter:blur(6px);">
+            <!-- desktop nav (hidden on mobile by JS) -->
+            <nav aria-label="Main navigation" id="desktop-nav" style="display:none;gap:18px;align-items:center;">
+                <a href="#"
+                    style="color:inherit;text-decoration:none;padding:8px 10px;border-radius:8px;display:inline-block;">Homee</a>
+                <a href="#"
+                    style="color:inherit;text-decoration:none;padding:8px 10px;border-radius:8px;display:inline-block;">Products</a>
+                <a href="#"
+                    style="color:inherit;text-decoration:none;padding:8px 10px;border-radius:8px;display:inline-block;">Services</a>
+                <a href="#"
+                    style="color:inherit;text-decoration:none;padding:8px 10px;border-radius:8px;display:inline-block;">About</a>
+                <a href="#"
+                    style="color:inherit;text-decoration:none;padding:8px 10px;border-radius:8px;display:inline-block;">Contact</a>
+            </nav>
+
+            <!-- hamburger (visible on mobile by default) -->
+            <button id="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false"
+                style="display:inline-grid;place-items:center;width:46px;height:46px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;cursor:pointer;">
+                <span id="bar" aria-hidden="true"
+                    style="width:20px;height:2px;background:#fff;border-radius:2px;position:relative;display:inline-block;transition:transform .25s ease,opacity .25s ease;">
+                    <span
+                        style="content:'';position:absolute;left:0;top:-6px;width:20px;height:2px;background:#fff;border-radius:2px;display:block;transition:transform .25s ease,top .25s ease;"></span>
+                    <span
+                        style="content:'';position:absolute;left:0;bottom:-6px;width:20px;height:2px;background:#fff;border-radius:2px;display:block;transition:transform .25s ease,bottom .25s ease;"></span>
+                </span>
+            </button>
+        </div>
+    </header>
+
+    <!-- overlay -->
+    <div id="overlay" tabindex="-1" aria-hidden="true"
+        style="position:fixed;inset:0;background:rgba(2,6,23,0.5);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:40;">
+    </div>
+
+    <!-- drawer -->
+    <aside id="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true"
+        style="position:fixed;top:0;bottom:0;right:0;width:300px;background:#0b1220;box-shadow:-20px 0 40px rgba(2,6,23,0.6);padding:18px;z-index:50;border-radius:12px 0 0 12px;transform:translateX(100%);transition:transform .28s cubic-bezier(.2,.9,.22,1);will-change:transform;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <div
+                    style="width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#06b6d4,#60a5fa);display:inline-grid;place-items:center;font-weight:700;color:#04263b;">
+                    MH</div>
+                <div>
+                    <div style="font-weight:600;">My Website</div>
+                    <div style="font-size:12px;color:#94a3b8;">Menu</div>
+                </div>
+            </div>
+            <button id="close-drawer" aria-label="Close menu"
+                style="background:transparent;border:0;color:inherit;font-size:20px;cursor:pointer;">✕</button>
+        </div>
+
+        <nav id="drawer-nav" aria-label="Mobile navigation"
+            style="margin-top:18px;display:flex;flex-direction:column;gap:6px;">
+            <a href="#home"
+                style="display:block;padding:10px;border-radius:8px;color:inherit;text-decoration:none;">Homeee</a>
+            <a href="#products"
+                style="display:block;padding:10px;border-radius:8px;color:inherit;text-decoration:none;">Products</a>
+            <a href="#services"
+                style="display:block;padding:10px;border-radius:8px;color:inherit;text-decoration:none;">Services</a>
+            <a href="#about"
+                style="display:block;padding:10px;border-radius:8px;color:inherit;text-decoration:none;">About</a>
+            <a href="#contact"
+                style="display:block;padding:10px;border-radius:8px;color:inherit;text-decoration:none;">Contact</a>
+        </nav>
+    </aside>
+
+    <main id="main-content" style="max-width:1100px;margin:0 auto;padding:28px 20px;box-sizing:border-box;">
+        <section
+            style="background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:24px;border-radius:12px;">
+            <h1>Welcome 👋</h1>
+            <p>This is a clean example of a responsive mobile drawer menu with overlay, ESC close, focus trapping, and
+                proper accessibility handling (all inline).</p>
+        </section>
+
+        <section style="margin-top:18px;">
+            <h2 id="products">Sections</h2>
+            <p style="color:#94a3b8;">Placeholder content to test navigation.</p>
+        </section>
+    </main>
+
+    <script>
+        // All JS is inside the HTML (inline). Behavior mirrors the original file.
+        (function () {
+            const hamburger = document.getElementById('hamburger');
+            const drawer = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('overlay');
+            const closeBtn = document.getElementById('close-drawer');
+            const mainContent = document.getElementById('main-content');
+            const desktopNav = document.getElementById('desktop-nav');
+            const focusableSelector = 'a, button, input, [tabindex]:not([tabindex="-1"])';
+
+            let lastFocused = null;
+
+            // helpers to show/hide via inline styles
+            function setOpenState(isOpen) {
+                if (isOpen) {
+                    hamburger.setAttribute('aria-expanded', 'true');
+                    drawer.style.transform = 'translateX(0)';
+                    overlay.style.opacity = '1';
+                    overlay.style.pointerEvents = 'auto';
+                    drawer.setAttribute('aria-hidden', 'false');
+                    overlay.setAttribute('aria-hidden', 'false');
+                    mainContent.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = 'hidden';
+                    // focus first focusable in drawer
+                    const focusables = drawer.querySelectorAll(focusableSelector);
+                    (focusables[0] || closeBtn).focus();
+                    document.addEventListener('keydown', trapTab, true);
+                    // animate hamburger (simple transform)
+                    const bar = document.getElementById('bar');
+                    if (bar) bar.style.transform = 'rotate(45deg)';
+                } else {
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    drawer.style.transform = 'translateX(100%)';
+                    overlay.style.opacity = '0';
+                    overlay.style.pointerEvents = 'none';
+                    drawer.setAttribute('aria-hidden', 'true');
+                    overlay.setAttribute('aria-hidden', 'true');
+                    mainContent.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = '';
+                    if (lastFocused) lastFocused.focus();
+                    document.removeEventListener('keydown', trapTab, true);
+                    const bar = document.getElementById('bar');
+                    if (bar) bar.style.transform = '';
+                }
+            }
+
+            function openMenu() {
+                lastFocused = document.activeElement;
+                setOpenState(true);
+            }
+
+            function closeMenu() {
+                setOpenState(false);
+            }
+
+            function toggleMenu() {
+                const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                if (expanded) closeMenu(); else openMenu();
+            }
+
+            function trapTab(e) {
+                if (e.key === 'Escape' || e.key === 'Esc') { closeMenu(); return; }
+                if (e.key !== 'Tab') return;
+
+                const focusables = Array.from(drawer.querySelectorAll(focusableSelector));
+                if (!focusables.length) return;
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault(); last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault(); first.focus();
+                }
+            }
+
+            // wire events
+            hamburger.addEventListener('click', toggleMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            // close when link clicked inside drawer
+            drawer.addEventListener('click', (e) => {
+                if (e.target.closest('a')) closeMenu();
+            });
+
+            // responsive handling: since we removed stylesheet media query, control visibility with JS
+            function checkWidth() {
+                if (window.innerWidth >= 820) {
+                    // desktop: show desktop nav, hide hamburger and drawer/overlay
+                    desktopNav.style.display = 'flex';
+                    hamburger.style.display = 'none';
+                    // ensure drawer/overlay are hidden
+                    drawer.style.transform = 'translateX(100%)';
+                    drawer.style.display = 'block'; // keep in flow for accessibility but off-screen
+                    overlay.style.opacity = '0';
+                    overlay.style.pointerEvents = 'none';
+                    drawer.setAttribute('aria-hidden', 'true');
+                    overlay.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                } else {
+                    // mobile: show hamburger, hide desktop nav
+                    desktopNav.style.display = 'none';
+                    hamburger.style.display = 'inline-grid';
+                }
+            }
+            window.addEventListener('resize', checkWidth);
+            checkWidth();
+
+            // ensure initial inline transition styles exist (already in markup), but set computed inline transition for overlay to ensure it animates:
+            overlay.style.transition = 'opacity .25s ease';
+            drawer.style.transition = 'transform .28s cubic-bezier(.2,.9,.22,1)';
+
+            // expose functions to window in case you want to call from attributes (optional)
+            window.openMenuInline = openMenu;
+            window.closeMenuInline = closeMenu;
+            window.toggleMenuInline = toggleMenu;
+        })();
+    </script>
+</body>
+
+</html>

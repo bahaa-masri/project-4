@@ -48,25 +48,51 @@
           Topbar navigation: keep links in a logical order. Using role="navigation" and
           aria-label helps assistive technologies identify the main menu quickly.
         -->
-        <nav class="topbar" role="navigation" aria-label="Main navigation">
+        <nav class="container topbar" role="navigation" aria-label="Main navigation">
             <div class="topbar-inner">
-
-
-
-
                 <!-- Desktop nav (keep as you had it) -->
-                <div class="nav-links" role="menubar" aria-label="Primary" aria-hidden="false">
+                <div class=" desktop-nav nav-links" role="menubar" aria-label="Primary" aria-hidden="false">
                     <a href="#about" role="menuitem">About Us</a>
                     <a href="#join" role="menuitem">Join Us</a>
                     <a href="#brands" role="menuitem">Our Brands</a>
                     <a href="#csr" role="menuitem">Our CSR</a>
                     <a href="#contact" role="menuitem">Contact</a>
                 </div>
+                <!-- Mobile menu button -->
+                <button class="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="bar" aria-hidden="true"></span>
+                </button>
+            </div>
+        </nav>
+        <div class="overlay" id="overlay" tabindex="-1" aria-hidden="true"></div>
+
+        <aside class="mobile-drawer" id="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="drawer-header">
+                <div class="drawer-header-contant" style="display:flex;align-items:center;gap:10px">
+                    <!-- <div class="logo" style="width:40px;height:40px">MH</div> -->
+                    <img src="fhg-h-logo.png" alt="FH Group Right Logo" class="logo logo-right" />
+                    <div class="drawer-header-text">
+                        <div class="site-title">Hosri Group</div>
+                        <!-- <div class="site-tag">Menu</div> -->
+                    </div>
+                </div>
+                <button id="close-drawer" aria-label="Close menu"
+                    style="background:transparent;border:0;color:inherit;font-size:20px;cursor:pointer">✕</button>
             </div>
 
-        </nav>
+            <nav class="drawer-nav" aria-label="Mobile navigation">
+                <a href="#about" role="menuitem">About Us</a>
+                <a href="#join" role="menuitem">Join Us</a>
+                <a href="#brands" role="menuitem">Our Brands</a>
+                <a href="#csr" role="menuitem">Our CSR</a>
+                <a href="#contact" role="menuitem">Contact</a>
+            </nav>
 
-
+            <!-- <div class="drawer-cta">
+            <a class="btn" href="#">Sign up</a>
+        </div> -->
+        </aside>
+        <!-- <main class="container" id="main-content"> -->
 
         <!--
           Section: page-1
@@ -79,9 +105,12 @@
                 <h1 class="about-title">About Us</h1>
                 <p class="about-text">
                     Established in 1966, the Fernand Hosri Group is a multinational company serving the Middle East
-                    region, with established offices in Lebanon, the UAE, and Saudi Arabia. Over the years, the group
-                    has expanded its presence across various sectors in both local and international markets, focusing
-                    on Security, Telecommunications, Building Automation & Communication, Renewable Energy, B2B and B2C
+                    region, with established offices in Lebanon, the UAE, and Saudi Arabia. Over the years, the
+                    group
+                    has expanded its presence across various sectors in both local and international markets,
+                    focusing
+                    on Security, Telecommunications, Building Automation & Communication, Renewable Energy, B2B and
+                    B2C
                     Distribution, as well as Insurance consultancy and brokerage.
                 </p>
             </div>
@@ -135,7 +164,8 @@
                         </a>
                         <div class="partner-text">
                             <div class="partner-description">
-                                Insurance, Telecom, Security, Firefighting, Engineering, Import & Distribution as well
+                                Insurance, Telecom, Security, Firefighting, Engineering, Import & Distribution as
+                                well
                                 as Editing and
                                 Publishing
                                 <br>
@@ -154,17 +184,20 @@
                         <div class="partner-text">
                             <div class="partner-description">
                                 <div class="text-preview">
-                                    In addition to groceries, we sell chilled foods, fresh bread, milk, juices, fresh
+                                    In addition to groceries, we sell chilled foods, fresh bread, milk, juices,
+                                    fresh
                                     fruit and vegetables along
                                     with a
                                     range of household items.
                                     <br>
-                                    We are also introducing our renown butcher, and guarantee to serve fresh chicken,
+                                    We are also introducing our renown butcher, and guarantee to serve fresh
+                                    chicken,
                                     beef, turkey, lamb, pork,
                                     fish, and
                                     sea food.
                                     <br>
-                                    You can always ask for our menu of daily dish prepared by our experienced chef at
+                                    You can always ask for our menu of daily dish prepared by our experienced chef
+                                    at
                                     Queasine.
                                 </div>
                             </div>
@@ -196,7 +229,8 @@
                                     Residential
                                 </div>
                             </div>
-                            <a href="https://www.sacotelznshine.com" class="partner-click-here">Visit our website</a>
+                            <a href="https://www.sacotelznshine.com" class="partner-click-here">Visit our
+                                website</a>
 
                         </div>
                     </div>
@@ -237,14 +271,17 @@
                                         <p>
                                             We are experts in fire protection solutions including alarm systems,
                                             sprinkler systems, fire extinguishers, and emergency lights.
-                                            Our team will ensure that all installations comply with local regulations
+                                            Our team will ensure that all installations comply with local
+                                            regulations
                                             and the highest international standards.
-                                            With us you can rest assured and focus on running your operation smoothly.
+                                            With us you can rest assured and focus on running your operation
+                                            smoothly.
                                         </p>
 
                                         <h6>Security Systems</h6>
                                         <p>
-                                            We provide state of the art security systems, including CCTV surveillance,
+                                            We provide state of the art security systems, including CCTV
+                                            surveillance,
                                             access control, intruder alarms, and intercom systems.
                                             Our solutions enhance the safety and security of our client premises.
                                         </p>
@@ -289,7 +326,8 @@
                         <div class="csr-text">
                             <div class="csr-description">
                                 <div class="csr-text-preview">
-                                    EYWA enables women to recreate what they can be and what it is they can accomplish
+                                    EYWA enables women to recreate what they can be and what it is they can
+                                    accomplish
                                     through assisting them to
                                     proper
                                     education. Increased literacy and status will allow those women to raise better
@@ -298,7 +336,8 @@
                                     our human resources.
                                     <br>
                                     <br>
-                                    EYWA empowers women economically by matching them with appropriate jobs and drafting
+                                    EYWA empowers women economically by matching them with appropriate jobs and
+                                    drafting
                                     their CVs and tackling
                                     their main
                                     concern, their time constraints. 80% of underprivileged non-working moms are
@@ -322,7 +361,8 @@
                             <div class="csr-description">
                                 <div class="csr-text-preview">
                                     <h6>UNLEASH YOUR CREATIVITY</h6>
-                                    The annual interuniversity competition has amplified the challenge for 2025. After
+                                    The annual interuniversity competition has amplified the challenge for 2025.
+                                    After
                                     10 successful years we
                                     have lifted
                                     the bar in this 11th edition.
@@ -477,349 +517,276 @@
           Consider moving to an external JS file (e.g. main.js) and adding the "defer" attribute
           to improve performance and cacheability in production.
         -->
-        <div>
-            <script>
-                // Cache key DOM references for better performance
-                const partnersRow = document.querySelector('.partners-row');
-                const leftBtn = document.querySelector('.scroll-btn.left');
-                const rightBtn = document.querySelector('.scroll-btn.right');
+        <!-- </main> -->
+    </div>
+    <script>
+        /*
+          Unified frontend initializer
+          - Safe guards: each feature only initialises if required DOM exists
+          - No global leaks
+          - Mobile drawer, partners carousel, join-us form, read-more toggles
+        */
+        (function () {
+            'use strict';
 
-                // Configuration: click distance, hold scrolling speed and delay before hold activates
-                const clickScroll = 120;
-                const holdSpeed = 6;
-                const holdDelay = 200;
-
-                // Internal state used by the hold/auto-scrolling logic
-                let holdInterval = null;
-                let holdTimeout = null;
-                let isHolding = false;
-
-                // Start a continuous hold scroll in the chosen direction (-1 left, +1 right)
-                function startHold(direction) {
-                    holdInterval = setInterval(() => {
-                        partnersRow.scrollLeft += direction * holdSpeed;
-                    }, 16); // ~60fps
+            // --- helpers ---
+            const $ = (s, root = document) => root.querySelector(s);
+            const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
+            const createOverlayIfMissing = () => {
+                let ov = $('#overlay');
+                if (!ov) {
+                    ov = document.createElement('div');
+                    ov.id = 'overlay';
+                    ov.className = 'overlay';
+                    ov.setAttribute('aria-hidden', 'true');
+                    document.body.appendChild(ov);
                 }
+                return ov;
+            };
 
-                // Stop any hold behaviour and clear timeouts
-                function stopHold() {
-                    clearInterval(holdInterval);
-                    clearTimeout(holdTimeout);
-                    holdInterval = null;
-                    holdTimeout = null;
-                    isHolding = false;
+            // wait for DOM
+            document.addEventListener('DOMContentLoaded', () => {
+                try {
+                    initMobileDrawer();
+                    initPartnersCarousel();
+                    initJoinUsForm();
+                    initReadMoreToggles();
+                    console.log('Frontend: all initializers ran (where applicable).');
+                } catch (err) {
+                    console.error('Frontend init error:', err);
                 }
+            });
 
-                // Attach pointer/touch behaviour to scroll buttons in a reusable way
-                function setupButton(btn, direction) {
-                    btn.addEventListener('pointerdown', () => {
-                        // If there is an auto-animation, pause it while the user interacts
-                        if (typeof pauseAuto === 'function') pauseAuto();
+            // ----------------------------------------
+            // Mobile drawer (robust, accessible)
+            // ----------------------------------------
+            function initMobileDrawer() {
+                try {
+                    const hamburger = document.querySelector('.hamburger');
+                    const drawer = document.getElementById('mobile-menu');
+                    if (!hamburger || !drawer) {
+                        // nothing to do
+                        console.info('Mobile drawer: missing .hamburger or #mobile-menu — skipped');
+                        return;
+                    }
+                    const closeBtn = document.getElementById('close-drawer') || drawer.querySelector('[aria-label="Close menu"]');
+                    const overlay = createOverlayIfMissing();
+                    const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
+                    // sane attributes
+                    if (!hamburger.hasAttribute('aria-expanded')) hamburger.setAttribute('aria-expanded', 'false');
+                    if (!drawer.hasAttribute('aria-hidden')) drawer.setAttribute('aria-hidden', 'true');
+                    if (!overlay.hasAttribute('aria-hidden')) overlay.setAttribute('aria-hidden', 'true');
+
+                    let lastFocused = null;
+                    let hiddenEls = [];
+
+                    const findElementsToHide = () => Array.from(document.body.children).filter(ch =>
+                        ch !== drawer && ch !== overlay && !ch.contains(drawer) && !ch.contains(overlay)
+                    );
+
+                    function setHiddenOn(el, val) {
+                        if (!el) return;
+                        if (val) el.setAttribute('aria-hidden', 'true');
+                        else el.removeAttribute('aria-hidden');
+                    }
+
+                    function trapTab(e) {
+                        if (e.key === 'Escape') { closeMenu(); return; }
+                        if (e.key !== 'Tab') return;
+                        const focusables = Array.from(drawer.querySelectorAll(FOCUSABLE)).filter(el => el.offsetParent !== null);
+                        if (!focusables.length) return;
+                        const first = focusables[0], last = focusables[focusables.length - 1];
+                        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+                    }
+
+                    function openMenu() {
+                        lastFocused = document.activeElement;
+                        hamburger.setAttribute('aria-expanded', 'true');
+                        drawer.classList.add('open');
+                        overlay.classList.add('open');
+                        drawer.setAttribute('aria-hidden', 'false');
+                        overlay.setAttribute('aria-hidden', 'false');
+                        document.body.style.overflow = 'hidden';
+
+                        hiddenEls = findElementsToHide();
+                        hiddenEls.forEach(el => setHiddenOn(el, true));
+
+                        const focusables = Array.from(drawer.querySelectorAll(FOCUSABLE)).filter(el => el.offsetParent !== null);
+                        (focusables[0] || closeBtn || drawer).focus();
+
+                        document.addEventListener('keydown', trapTab, true);
+                    }
+
+                    function closeMenu() {
+                        hamburger.setAttribute('aria-expanded', 'false');
+                        drawer.classList.remove('open');
+                        overlay.classList.remove('open');
+                        drawer.setAttribute('aria-hidden', 'true');
+                        overlay.setAttribute('aria-hidden', 'true');
+                        document.body.style.overflow = '';
+
+                        hiddenEls.forEach(el => setHiddenOn(el, false));
+                        hiddenEls = [];
+
+                        if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+                        document.removeEventListener('keydown', trapTab, true);
+                    }
+
+                    hamburger.addEventListener('click', (ev) => {
+                        ev.preventDefault();
+                        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+                        expanded ? closeMenu() : openMenu();
+                    });
+
+                    if (closeBtn) closeBtn.addEventListener('click', (e) => { e.preventDefault(); closeMenu(); });
+                    overlay.addEventListener('click', (e) => { e.preventDefault(); closeMenu(); });
+
+                    // close on link click (nice UX)
+                    drawer.addEventListener('click', (e) => {
+                        if (e.target.closest('a')) closeMenu();
+                    });
+
+                    // ensure close on resize to avoid stuck state
+                    window.addEventListener('resize', () => {
+                        if (window.innerWidth >= 820 && drawer.classList.contains('open')) closeMenu();
+                    });
+
+                    console.log('Mobile drawer initialized');
+                } catch (err) {
+                    console.error('initMobileDrawer error', err);
+                }
+            }
+
+            // ----------------------------------------
+            // Partners carousel (safe init)
+            // ----------------------------------------
+            function initPartnersCarousel() {
+                try {
+                    const partnersRow = document.querySelector('.partners-row');
+                    const leftBtn = document.querySelector('.scroll-btn.left');
+                    const rightBtn = document.querySelector('.scroll-btn.right');
+                    if (!partnersRow || !leftBtn || !rightBtn) {
+                        console.info('Partners carousel: required elements missing — skipped');
+                        return;
+                    }
+
+                    // config
+                    const clickScroll = 120;
+                    const holdSpeed = 6;
+                    const holdDelay = 200;
+                    let holdInterval = null;
+                    let holdTimeout = null;
+                    let isHolding = false;
+
+                    function startHold(direction) {
+                        holdInterval = setInterval(() => { partnersRow.scrollLeft += direction * holdSpeed; }, 16);
+                    }
+                    function stopHold() {
+                        clearInterval(holdInterval);
+                        clearTimeout(holdTimeout);
+                        holdInterval = null;
+                        holdTimeout = null;
                         isHolding = false;
-                        // If the user holds the pointer, begin smooth continuous scrolling
-                        holdTimeout = setTimeout(() => {
-                            isHolding = true;
-                            startHold(direction);
-                        }, holdDelay);
-                    });
-
-                    btn.addEventListener('pointerup', () => {
-                        // If not a hold, perform a single click scroll; otherwise stop the hold
-                        if (!isHolding) {
-                            partnersRow.scrollBy({
-                                left: direction * clickScroll,
-                                behavior: 'smooth'
-                            });
-                        }
-                        stopHold();
-
-                        // Resume auto scrolling after a short delay (if auto exists)
-                        if (typeof resumeAuto === 'function') resumeAuto(2000);
-                    });
-
-                    // If the pointer leaves, stop holding and resume auto behaviour
-                    btn.addEventListener('pointerleave', () => {
-                        stopHold();
-                        if (typeof resumeAuto === 'function') resumeAuto(1500);
-                    });
-
-                    btn.addEventListener('touchcancel', stopHold);
-                }
-
-                // Initialize both left and right scroll buttons
-                setupButton(leftBtn, -1);
-                setupButton(rightBtn, 1);
-
-                // Auto scroll configuration — subtle auto-scroll to create motion
-                const autoSpeed = 0.03;
-                let autoDirection = 1;
-                let isPaused = false;
-                let lastTime = null;
-                let resumeTimeout = null;
-
-                function pauseAuto() {
-                    isPaused = true;
-                    if (resumeTimeout) {
-                        clearTimeout(resumeTimeout);
-                        resumeTimeout = null;
-                    }
-                }
-
-                function resumeAuto(shortDelay = 2000) {
-                    if (resumeTimeout) clearTimeout(resumeTimeout);
-                    resumeTimeout = setTimeout(() => {
-                        isPaused = false;
-                        lastTime = null;
-                    }, shortDelay);
-                }
-
-                // Main animation loop — use requestAnimationFrame for smoothness and low CPU use
-                function autoStep(timestamp) {
-                    if (!lastTime) lastTime = timestamp;
-                    const delta = timestamp - lastTime;
-                    lastTime = timestamp;
-
-                    if (!isPaused) {
-                        partnersRow.scrollLeft += autoSpeed * delta * autoDirection;
-
-                        // Reverse direction at the bounds for a natural back-and-forth motion
-                        if (partnersRow.scrollLeft <= 0) {
-                            partnersRow.scrollLeft = 0;
-                            autoDirection = 1;
-                        } else if (partnersRow.scrollLeft + partnersRow.clientWidth >= partnersRow.scrollWidth) {
-                            partnersRow.scrollLeft = partnersRow.scrollWidth - partnersRow.clientWidth;
-                            autoDirection = -1;
-                        }
                     }
 
+                    function setupButton(btn, direction) {
+                        if (!btn) return;
+                        btn.addEventListener('pointerdown', () => {
+                            isHolding = false;
+                            holdTimeout = setTimeout(() => { isHolding = true; startHold(direction); }, holdDelay);
+                        });
+                        btn.addEventListener('pointerup', () => {
+                            if (!isHolding) {
+                                partnersRow.scrollBy({ left: direction * clickScroll, behavior: 'smooth' });
+                            }
+                            stopHold();
+                        });
+                        btn.addEventListener('pointerleave', () => stopHold());
+                        btn.addEventListener('touchcancel', stopHold);
+                    }
+
+                    setupButton(leftBtn, -1);
+                    setupButton(rightBtn, 1);
+
+                    // subtle auto-scroll
+                    let autoSpeed = 0.03;
+                    let autoDirection = 1;
+                    let isPaused = false;
+                    let lastTime = null;
+                    let resumeTimeout = null;
+
+                    function pauseAuto() {
+                        isPaused = true;
+                        if (resumeTimeout) { clearTimeout(resumeTimeout); resumeTimeout = null; }
+                    }
+                    function resumeAuto(shortDelay = 2000) {
+                        if (resumeTimeout) clearTimeout(resumeTimeout);
+                        resumeTimeout = setTimeout(() => { isPaused = false; lastTime = null; }, shortDelay);
+                    }
+
+                    function autoStep(ts) {
+                        if (!lastTime) lastTime = ts;
+                        const delta = ts - lastTime;
+                        lastTime = ts;
+                        if (!isPaused) {
+                            partnersRow.scrollLeft += autoSpeed * delta * autoDirection;
+                            // bounce at ends
+                            if (partnersRow.scrollLeft <= 0) {
+                                partnersRow.scrollLeft = 0;
+                                autoDirection = 1;
+                            } else if (partnersRow.scrollLeft + partnersRow.clientWidth >= partnersRow.scrollWidth) {
+                                partnersRow.scrollLeft = partnersRow.scrollWidth - partnersRow.clientWidth;
+                                autoDirection = -1;
+                            }
+                        }
+                        requestAnimationFrame(autoStep);
+                    }
                     requestAnimationFrame(autoStep);
+
+                    // interaction pauses
+                    ['mouseenter', 'focusin', 'pointerdown', 'touchstart'].forEach(ev => {
+                        partnersRow.addEventListener(ev, pauseAuto, { passive: true });
+                    });
+                    ['mouseleave', 'focusout', 'pointerup', 'touchend'].forEach(ev => {
+                        partnersRow.addEventListener(ev, () => resumeAuto(1500), { passive: true });
+                    });
+
+                    // attach pause/resume to buttons too
+                    [leftBtn, rightBtn].forEach(btn => {
+                        btn.addEventListener('pointerdown', pauseAuto);
+                        btn.addEventListener('pointerup', () => resumeAuto(1500));
+                        btn.addEventListener('mouseleave', () => resumeAuto(1000));
+                    });
+
+                    console.log('Partners carousel initialized');
+                } catch (err) {
+                    console.error('initPartnersCarousel error', err);
                 }
-
-                requestAnimationFrame(autoStep);
-
-                // Pause auto on hover/focus/interaction to improve UX for keyboard & pointer users
-                partnersRow.addEventListener('mouseenter', pauseAuto);
-                partnersRow.addEventListener('mouseleave', () => resumeAuto(1000));
-                partnersRow.addEventListener('focusin', pauseAuto);
-                partnersRow.addEventListener('focusout', () => resumeAuto(2000));
-                partnersRow.addEventListener('pointerdown', () => { pauseAuto(); });
-                partnersRow.addEventListener('pointerup', () => resumeAuto(2500));
-                partnersRow.addEventListener('touchstart', pauseAuto, { passive: true });
-                partnersRow.addEventListener('touchend', () => resumeAuto(2500), { passive: true });
-
-                // Buttons also pause/resume auto behaviour when interacted with
-                [leftBtn, rightBtn].forEach(btn => {
-                    btn.addEventListener('pointerdown', pauseAuto);
-                    btn.addEventListener('pointerup', () => resumeAuto(2000));
-                    btn.addEventListener('mouseleave', () => resumeAuto(1000));
-                });
-
-                // Utility: toggles for 'Read more' / 'Read less' interaction on partner descriptions
-                document.querySelectorAll('.read-more').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const wrapper = btn.closest('.partner-description');
-                        const text = wrapper.querySelector('.text-preview');
-
-                        const expanded = text.classList.toggle('expanded');
-                        btn.textContent = expanded ? 'Read less' : 'Read more';
-                    });
-                });
-
-
-                document.querySelectorAll('.csr-read-more').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const wrapper = btn.closest('.csr-description');
-                        const text = wrapper.querySelector('.csr-text-preview');
-
-                        const expanded = text.classList.toggle('expanded');
-                        btn.textContent = expanded ? 'Read less' : 'Read more';
-                    });
-                });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                //join us
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                // Basic JS: drag/drop + client-side validation + ajax submit example
-                (function () {
-                    const MAX_SIZE = 2 * 1024 * 1024; // 2 MB
-                    const allowed = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-
+            }
+
+            // ----------------------------------------
+            // Join-us: drag/drop file + client validation + submit hook
+            // ----------------------------------------
+            function initJoinUsForm() {
+                try {
+                    const form = document.getElementById('apply-form');
                     const drop = document.getElementById('drop');
                     const cvInput = document.getElementById('cv');
                     const fileStatus = document.getElementById('file-status');
                     const fileError = document.getElementById('file-error');
-                    const submitBtn = document.getElementById('submit-btn');
-                    const form = document.getElementById('apply-form');
-                    const sending = document.getElementById('sending');
-                    const result = document.getElementById('result');
+                    if (!form || !drop || !cvInput || !fileStatus || !fileError) {
+                        console.info('Join-us form: required elements missing — skipped');
+                        return;
+                    }
+
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const sending = document.getElementById('sending'); // optional
+                    const result = document.getElementById('result'); // optional
+
+                    const MAX_SIZE = 2 * 1024 * 1024; // 2MB
+                    const allowedExt = ['pdf', 'doc', 'docx'];
 
                     let file = null;
 
@@ -829,195 +796,105 @@
                     function validateFile(f) {
                         if (!f) return 'Please attach a CV.';
                         if (f.size > MAX_SIZE) return 'File is too large (max 2 MB).';
-                        if (allowed.indexOf(f.type) === -1) {
-                            // Some browsers may not provide accurate mime type for .doc/.docx — check extension as fallback
-                            const ext = (f.name || '').split('.').pop().toLowerCase();
-                            if (!['pdf', 'doc', 'docx'].includes(ext)) return 'Unsupported file type.';
-                        }
+                        const ext = (f.name || '').split('.').pop().toLowerCase();
+                        if (!allowedExt.includes(ext)) return 'Unsupported file type.';
                         return '';
                     }
 
                     function updateUI() {
                         const err = validateFile(file);
-                        if (err) { setError(err); submitBtn.disabled = true; }
-                        else { setError(''); submitBtn.disabled = false; }
-                        setStatus(file ? `${file.name} — ${(file.size / 1024 | 0)} KB` : 'No file chosen');
+                        if (err) { setError(err); if (submitBtn) submitBtn.disabled = true; }
+                        else { setError(''); if (submitBtn) submitBtn.disabled = false; }
+                        setStatus(file ? `${file.name} — ${Math.round(file.size / 1024)} KB` : 'No file chosen');
                     }
 
-                    // click to open file picker
+                    // interactions
                     drop.addEventListener('click', () => cvInput.click());
-                    // keyboard accessibility
                     drop.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cvInput.click(); } });
 
-                    // file selected
-                    cvInput.addEventListener('change', (e) => {
-                        file = e.target.files[0]; updateUI();
-                    });
+                    cvInput.addEventListener('change', (e) => { file = e.target.files[0]; updateUI(); });
 
-                    // drag/drop events
                     drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('dragover'); });
                     drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
                     drop.addEventListener('drop', (e) => {
                         e.preventDefault(); drop.classList.remove('dragover');
-                        const f = e.dataTransfer.files && e.dataTransfer.files[0];
+                        const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
                         if (f) { file = f; cvInput.files = e.dataTransfer.files; updateUI(); }
                     });
 
-                    // inline form validation hook
+                    // submit handler
                     form.addEventListener('submit', (e) => {
                         e.preventDefault();
-                        setError(''); result.textContent = '';
-
-                        // validate fields
-                        const name = document.getElementById('name').value.trim();
-                        const email = document.getElementById('email').value.trim();
+                        setError(''); if (result) result.textContent = '';
+                        const name = (form.querySelector('#name')?.value || '').trim();
+                        const email = (form.querySelector('#email')?.value || '').trim();
                         if (!name) { setError('Please type your full name.'); return; }
                         if (!email || !/^\S+@\S+\.\S+$/.test(email)) { setError('Please provide a valid email.'); return; }
                         const fileErr = validateFile(file);
                         if (fileErr) { setError(fileErr); return; }
 
-                        // prepare to send via fetch
-                        submitBtn.disabled = true; sending.style.display = 'block';
+                        // show sending UI if present
+                        if (submitBtn) submitBtn.disabled = true;
+                        if (sending) sending.style.display = 'block';
+
                         const fd = new FormData(form);
-                        // ensure file is part of FormData (some older browsers may need special handling)
                         if (file && !fd.get('cv')) fd.append('cv', file);
 
-                        // Use YOUR endpoint here. Example shows fetch with JSON-like response expected.
+                        // NOTE: uses the form.action endpoint — adjust server to accept multipart/form-data
                         fetch(form.action, { method: 'POST', body: fd })
                             .then(async (res) => {
-                                sending.style.display = 'none'; submitBtn.disabled = false;
-                                if (res.ok) { result.textContent = 'Application sent — thank you!'; form.reset(); file = null; updateUI(); }
-                                else {
+                                if (sending) sending.style.display = 'none';
+                                if (submitBtn) submitBtn.disabled = false;
+                                if (res.ok) {
+                                    if (result) result.textContent = 'Application sent — thank you!';
+                                    form.reset();
+                                    file = null;
+                                    updateUI();
+                                } else {
                                     const txt = await res.text();
-                                    result.textContent = 'Server error: ' + (txt || res.statusText);
+                                    if (result) result.textContent = 'Server error: ' + (txt || res.statusText);
                                 }
                             })
-                            .catch((err) => { sending.style.display = 'none'; submitBtn.disabled = false; result.textContent = 'Network error: ' + err.message; });
+                            .catch((err) => {
+                                if (sending) sending.style.display = 'none';
+                                if (submitBtn) submitBtn.disabled = false;
+                                if (result) result.textContent = 'Network error: ' + err.message;
+                            });
                     });
 
-                    // init status
+                    // initialise UI
                     updateUI();
-
-                })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                // Mobile menu toggle — accessible, focus-managed
-
-            </script>
+                    console.log('Join-us form initialized');
+                } catch (err) {
+                    console.error('initJoinUsForm error', err);
+                }
+            }
+
+            // ----------------------------------------
+            // Read-more toggles (delegated)
+            // ----------------------------------------
+            function initReadMoreToggles() {
+                try {
+                    // delegation: handle both .read-more and .csr-read-more
+                    document.addEventListener('click', (e) => {
+                        const rm = e.target.closest('.read-more, .csr-read-more');
+                        if (!rm) return;
+                        const isCSR = rm.classList.contains('csr-read-more');
+                        const wrapper = rm.closest(isCSR ? '.csr-description' : '.partner-description');
+                        if (!wrapper) return;
+                        const text = wrapper.querySelector(isCSR ? '.csr-text-preview' : '.text-preview');
+                        if (!text) return;
+                        const expanded = text.classList.toggle('expanded');
+                        rm.textContent = expanded ? 'Read less' : 'Read more';
+                    });
+                    console.log('Read-more toggles ready');
+                } catch (err) {
+                    console.error('initReadMoreToggles error', err);
+                }
+            }
+
+        })();
+    </script>
 
 </body>
 
