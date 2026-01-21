@@ -637,6 +637,39 @@ body {
   font-size: 14px;
 }
 
+@media (max-width: 900px) {
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    /* يصير عمود */
+    align-items: flex-start;
+    /* يبدأ كل شيء من أول السطر */
+    gap: 20px;
+    /* المسافة بين الأعمدة */
+  }
+
+  .footer-col {
+    width: 100%;
+    /* ياخد عرض كامل */
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    /* يصير عمود */
+    align-items: flex-start;
+    /* يبدأ من أول السطر */
+    gap: 12px;
+  }
+
+  .social-item {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    /* أيقونة + نص يبلش من أول السطر */
+  }
+}
+
 .social-item img {
   width: 22px;
   height: 22px;
