@@ -779,16 +779,10 @@ input:focus {
 
 
 
-
-
-/* يطبق على أي عنصر نصي تريد */
-* {
-  text-align: justify;
-  /* يبدأ من اليسار وينتهي على اليمين */
-  text-align-last: left;
-  /* السطر الأخير يبدأ من اليسار */
-  word-break: break-word;
-  /* يكسر الكلمات الكبيرة جداً بدل ما يخرجوا من السطر */
-  overflow-wrap: break-word;
-  /* متوافق مع كل المتصفحات الحديثة */
+/* Footer text alignment for small screens */
+@media (max-width: 768px) {
+  .site-footer p {
+    text-align: justify;
+    text-align-last: left;
+  }
 }
