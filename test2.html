@@ -51,20 +51,28 @@
           aria-label helps assistive technologies identify the main menu quickly.
         -->
         <nav class="container topbar" role="navigation" aria-label="Main navigation">
-            <div class="topbar-inner">
-                <!-- Desktop nav (keep as you had it) -->
-                <div class=" desktop-nav nav-links" role="menubar" aria-label="Primary" aria-hidden="false">
-                    <a href="#about" role="menuitem">About Us</a>
-                    <a href="#join" role="menuitem">Join Us</a>
-                    <a href="#brands" role="menuitem">Our Brands</a>
-                    <a href="#csr" role="menuitem">Our CSR</a>
-                    <a href="#contact" role="menuitem">Contact</a>
-                </div>
-                <!-- Mobile menu button -->
-                <button class="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
-                    <span class="bar" aria-hidden="true"></span>
-                </button>
-            </div>
+        <div class="topbar-inner">
+            <!-- small left logo (topbar) -->
+            <img src="fhg-logo.png" alt="FH Group" class="topbar-logo topbar-logo--left">
+        
+            <!-- centered desktop nav (remains centered regardless of logo widths) -->
+            <nav class="desktop-nav nav-links" role="menubar" aria-label="Primary">
+                <a href="#about" role="menuitem">About Us</a>
+                <a href="#join" role="menuitem">Join Us</a>
+                <a href="#brands" role="menuitem">Our Brands</a>
+                <a href="#csr" role="menuitem">Our CSR</a>
+                <a href="#contact" role="menuitem">Contact</a>
+            </nav>
+        
+            <!-- small right logo (topbar) -->
+            <img src="fhg-h-logo.png" alt="FH Group H" class="topbar-logo topbar-logo--right">
+        
+            <!-- keep hamburger for mobile -->
+            <button class="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="bar" aria-hidden="true"></span>
+            </button>
+        </div>
+
         </nav>
         
         <div class="overlay" id="overlay" tabindex="-1" aria-hidden="true"></div>
@@ -897,6 +905,147 @@
             }
 
         })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        (function () {
+                const logos = Array.from(document.querySelectorAll('.topbar-logo'));
+                if (!logos.length) return;
+
+                logos.forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(-6px)';
+                    el.style.transition = 'opacity 220ms ease, transform 220ms ease';
+                    el.style.willChange = 'opacity, transform';
+                });
+
+                let ticking = false;
+
+                function updateLogos() {
+                    const topbar = document.querySelector('.topbar-inner');
+                    if (!topbar) return;
+
+                    const rect = topbar.getBoundingClientRect();
+
+                    // بدل console.log، نعمل border مؤقت يبين إذا topbar عم يتحرك
+                    topbar.style.border = `2px solid rgba(255,0,0,${Math.min(Math.max(rect.top / 50, 0), 1)})`;
+
+                    const atTop = rect.top <= 0;
+
+                    logos.forEach(el => {
+                        if (atTop) {
+                            el.style.opacity = '1';
+                            el.style.transform = 'translateY(0)';
+                        } else {
+                            el.style.opacity = '0';
+                            el.style.transform = 'translateY(-6px)';
+                        }
+                    });
+                }
+
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            updateLogos();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                });
+
+                updateLogos();
+            })();
+
     </script>
 
 </body>

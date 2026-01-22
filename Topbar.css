@@ -42,6 +42,7 @@
 
   /* Topbar */
   .topbar {
+    margin: 0 auto;
       position: sticky;
       top: 40px;
       top: 0px;
@@ -49,22 +50,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 18px;
+      /* padding: 0 18px; */
       z-index: 100;
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.12));
 
       backdrop-filter: blur(var(--glass-blur));
       -webkit-backdrop-filter: blur(var(--glass-blur)); 
-
+      width: 100% !important;
 
       /* border-bottom: 1px solid rgba(255, 255, 255, 0.03); */
   }
 
   .topbar-inner {
-      width: min(1200px, 95%);
+      /* width: min(1200px, 95%) !important; */
+    width: 97% !important;
+    /* width: 95% !important; */
       display: flex;
       align-items: center;
-      gap: 18px;
+      /* gap: 18px; */
       justify-content: center;
       /* desktop */
   }
@@ -505,4 +508,182 @@
 
   .mobile-drawer {
       position: fixed;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* sizing variables (سهّل التعديل لاحقاً) */
+  :root {
+      --topbar-logo-maxh: 44px;
+      /* الحجم الافتراضي للوجوه فالتوب بار */
+      --topbar-padding-inline: 18px;
+  }
+
+  /* make topbar-inner a relative container */
+  .topbar-inner {
+      position: relative;
+      /* width: min(1200px, 95%); */
+      /* margin: 0 auto; */
+      height: var(--topbar-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* nav will be centered via absolute */
+      /* padding: 0 var(--topbar-padding-inline); */
+  }
+
+  /* center the nav exactly in the middle of the topbar */
+  .desktop-nav {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      z-index: 10;
+      /* above logos if needed */
+  }
+
+  /* small logos positioned at ends */
+  .topbar-logo {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      max-height: var(--topbar-logo-maxh);
+      width: auto;
+      display: block;
+      z-index: 20;
+  }
+
+  /* left & right anchors */
+  .topbar-logo--left {
+      left: var(--topbar-padding-inline);
+  }
+
+  .topbar-logo--right {
+      right: var(--topbar-padding-inline);
+  }
+
+  /* keep hamburger visible on mobile (and hide desktop nav there) */
+  @media (max-width: 819px) {
+      .desktop-nav {
+          display: none;
+      }
+
+      /* use mobile drawer instead */
+      .topbar-inner {
+          justify-content: space-between;
+      }
+
+      /* for small screens, make logos not absolute so they layout naturally */
+      .topbar-logo {
+          position: relative;
+          transform: none;
+          max-height: 36px;
+      }
+
+      .topbar-logo--left {
+          order: 0;
+          margin-right: 8px;
+      }
+
+      .hamburger {
+          order: 2;
+          margin-left: auto;
+      }
+
+      /* hamburger at the right */
+      .topbar-logo--right {
+          display: none;
+      }
+
+      /* optional: hide right logo on small screens */
   }

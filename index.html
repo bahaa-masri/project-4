@@ -1,293 +1,903 @@
-/* -------------------------------------------------------
-Scoped "Join Us" styles — safe to drop into your stylesheet
-Wrap your existing join-us HTML with:
-<div class="join-us-component"> ...existing markup... </div>
-------------------------------------------------------- */
+<!--
+  Fernand Hosri Group — Demo Layout (Commented Version)
+  Purpose: Demo landing layout with partners carousel, CSR section, and contact footer.
+  Notes: Professional inline comments were added to clarify structure, accessibility, and behaviour.
+  Keep asset files (images, CSS) in the same folder or update paths as needed.
+-->
+<!doctype html>
+<html lang="en">
 
-/* container scope */
-.join-us-component {
---component-max-width: var(--max-width, 980px);
---component-gap: var(--gap, 18px);
---component-radius: var(--radius, 12px);
---component-accent: var(--accent, #06b6d4);
---component-muted: var(--muted, #9aa4b2);
-padding: 32px;
-box-sizing: border-box;
-display: flex;
-justify-content: center;
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fernand Hosri Group — Demo Layout</title>
+  <link rel="icon" type="image/png" href="fhg-h-logo.png" />
 
-/* Open Positions */
-color: #505973;
-
-/* background: linear-gradient(180deg, rgba(10, 14, 16, 0.3), rgba(7, 10, 12, 0.2));
-backdrop-filter: blur(6px);
--webkit-backdrop-filter: blur(6px); */
-
-display: flex;
-justify-content: center;
-flex-direction: column;
-align-items: center;
-text-align: center;
-}
-
-/* main grid */
-.join-us-component .join-wrap {
-width: 100%;
-max-width: var(--component-max-width);
-display: grid;
-grid-template-columns: 1fr 420px;
-gap: var(--component-gap);
-align-items: start;
-box-sizing: border-box;
-}
-
-/* panel base */
-.join-us-component .panel {
-/* background: linear-gradient(180deg, rgba(9, 147, 201, 0.3), rgba(19, 180, 254, 0.2));
-*/
-background: rgba(61, 201, 243, 0.1);
-backdrop-filter: blur(6px);
--webkit-backdrop-filter: blur(6px);
+  <!--
+      Stylesheets:
+      - Style.css: main layout & components
+      - Topbar.css: styles specifically for the top navigation
+      Keep CSS separate for maintainability and easier overrides.
+    -->
+  <link rel="stylesheet" href="join-us.css" />
+  <link rel="stylesheet" href="Style.css" />
+  <link rel="stylesheet" href="Topbar.css" />
 
 
+  <!-- Google font used across the site for a clean, professional UI -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
 
-border-radius: var(--component-radius);
-padding: 20px;
-box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
-/* color: inherit; */
-box-sizing: border-box;
-}
+<body>
+  <!--
+      Page wrapper (page-1-2) contains two main visual sections (page-1, page-2).
+      Using semantic and ARIA attributes improves accessibility for screen readers.
+    -->
+  <div class="page-1-2">
 
-/* left info */
-.join-us-component .info {
-padding: 6px 14px;
-}
+    <!-- Header: company logos / primary branding -->
+    <header class="site-header">
+      <div class="header-inner">
+        <!-- Left and right logos: use descriptive alt text for accessibility -->
+        <img src="fhg-logo.png" alt="FH Group Left Logo" class="logo logo-left" />
+        <img src="fhg-h-logo.png" alt="FH Group Right Logo" class="logo logo-right" />
+      </div>
+    </header>
 
-.join-us-component .info h2 {
-margin: 0 0 8px 0;
-font-size: 1.45rem;
-/* Join Us */
-color: inherit;
-}
+    <!--
+          Topbar navigation: keep links in a logical order. Using role="navigation" and
+          aria-label helps assistive technologies identify the main menu quickly.
+        -->
+    <nav class="container topbar" role="navigation" aria-label="Main navigation">
+      <div class="topbar-inner">
+        <!-- Desktop nav (keep as you had it) -->
+        <div class=" desktop-nav nav-links" role="menubar" aria-label="Primary" aria-hidden="false">
+          <a href="#about" role="menuitem">About Us</a>
+          <a href="#join" role="menuitem">Join Us</a>
+          <a href="#brands" role="menuitem">Our Brands</a>
+          <a href="#csr" role="menuitem">Our CSR</a>
+          <a href="#contact" role="menuitem">Contact</a>
+        </div>
+        <!-- Mobile menu button -->
+        <button class="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </nav>
 
-.join-us-component .info p.lead {
-/* color: var(--component-muted); */
-/* We’re a small team */
-color: #2e3033;
-margin: 0 0 16px;
-line-height: 1.45;
-}
+    <div class="overlay" id="overlay" tabindex="-1" aria-hidden="true"></div>
 
-/* jobs list */
-.join-us-component .jobs {
-display: flex;
-flex-direction: column;
-gap: 10px;
-}
+    <aside class="mobile-drawer" id="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-header-contant" style="display:flex;align-items:center;gap:10px">
+          <!-- <div class="logo" style="width:40px;height:40px">MH</div> -->
+          <img src="fhg-h-logo.png" alt="FH Group Right Logo" class="logo logo-right" />
+          <div class="drawer-header-text">
+            <div class="site-title">Hosri Group</div>
+            <!-- <div class="site-tag">Menu</div> -->
+          </div>
+        </div>
+        <button id="close-drawer" aria-label="Close menu"
+          style="background:transparent;border:0;color:inherit;font-size:20px;cursor:pointer">✕</button>
+      </div>
 
-.join-us-component .job {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 12px;
-border-radius: 10px;
-/* background: rgba(255, 255, 255, 0.02); */
-border: 1px solid rgba(255, 255, 255, 0.03);
-transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-}
+      <nav class="drawer-nav" aria-label="Mobile navigation">
+        <a href="#about" role="menuitem">About Us</a>
+        <a href="#join" role="menuitem">Join Us</a>
+        <a href="#brands" role="menuitem">Our Brands</a>
+        <a href="#csr" role="menuitem">Our CSR</a>
+        <a href="#contact" role="menuitem">Contact</a>
+      </nav>
 
-.join-us-component .job:hover {
-transform: translateY(-4px);
-background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
-box-shadow: 0 10px 20px rgba(2, 6, 23, 0.45);
-}
+      <!-- <div class="drawer-cta">
+            <a class="btn" href="#">Sign up</a>
+        </div> -->
+    </aside>
+    <!-- <main class="container" id="main-content"> -->
 
-.join-us-component .job .meta {
-display: flex;
-flex-direction: column;
-gap: 2px;
-}
+    <!--
+          Section: page-1
+          Contains: About text + partners carousel. Use descriptive aria-label for assistive tools.
+        -->
+    <section class="page page-1" id="page1" aria-label="Main section with background 1">
 
-.join-us-component .job h4 {
-margin: 0;
-font-size: 1rem;
-font-weight: 700;
-}
+      <!-- About block: short company description. Keep copy concise and factual. -->
+      <div id="about" class="about-wrap">
+        <h1 class="about-title">About Us</h1>
+        <p class="about-text">
+          Established in 1966, the Fernand Hosri Group is a multinational company serving the Middle East
+          region, with established offices in Lebanon, the UAE, and Saudi Arabia. Over the years, the
+          group
+          has expanded its presence across various sectors in both local and international markets,
+          focusing
+          on Security, Telecommunications, Building Automation & Communication, Renewable Energy, B2B and
+          B2C
+          Distribution, as well as Insurance consultancy and brokerage.
+        </p>
+      </div>
 
-.join-us-component .job small {
-/* color: var(--component-muted); */
-/* Remote — Full-time */
-color: #ececec;
-font-size: .85rem;
-}
+      <!--
+              Partners / Brands carousel. The visual row is horizontally scrollable and controls are provided.
+              Each partner-card should be a consistent, focusable unit for keyboard users.
+            -->
+      <div id="brands" class="partners-wrap">
+        <!-- Scroll buttons provide quick navigation for keyboard / pointer users -->
+        <button class="scroll-btn left" aria-label="Scroll left"></button>
+        <div class="partners-row">
 
-/* pill */
-.join-us-component .pill {
-background: rgba(6, 182, 212, 0.2);
-border: 1px solid rgba(6, 182, 212, 0.12);
-padding: 6px 10px;
-border-radius: 999px;
-font-weight: 700;
-/* color: var(--component-accent); */
-/* Experienced */
-color: #e5e6e9;
-font-size: .85rem;
-white-space: nowrap;
-}
+          <!-- Example partner card (small). Keep link targets explicit and include alt text. -->
+          <div class="partner-card small">
+            <a href="https://sacotel.com">
+              <img class="img-small" src="sacotel-Logo.png" alt="Sacotel" />
+            </a>
+            <div class="partner-text">
+              <div class="partner-description">
+                Telecom, Security, Automation and Renewable Energy.
+                <br>
+              </div>
+              <a href="https://sacotel.com" class="partner-click-here">Visit our website</a>
+            </div>
+          </div>
 
-/* Right: the form column */
-.join-us-component form {
-display: flex;
-flex-direction: column;
-gap: 12px;
-}
+          <!-- Larger card demonstrates variety in card sizes for the carousel -->
+          <div class="partner-card large">
+            <a href="https://sacotelurmet.com">
+              <img src="s_urmet-Logo.png" alt="Sacotel Urmet" />
+            </a>
+            <div class="partner-text">
+              <div class="partner-description">
+                specification, trade, design, installation and after sales service for the Building
+                communication, Automation
+                and
+                Security systems
+                <br>
+                solutions of all Urmet Group Brands in the Middle east Territory.
+                <br>
+              </div>
+              <a href="https://sacotelurmet.com" class="partner-click-here">Visit our website</a>
+            </div>
+          </div>
 
-.join-us-component label,
-.draganddrop {
-font-size: .85rem;
-/* color: var(--component-muted); */
-/* Full name */
-color: #505973;
-display: block;
-margin-bottom: 4px;
-}
+          <!-- Repeatable partner-card pattern: keep markup consistent for easy styling and JS control -->
+          <div class="partner-card">
+            <a href="https://hosri-insurance-services.com/">
+              <img src="HIS-Logo.gif" alt="HIS" />
+            </a>
+            <div class="partner-text">
+              <div class="partner-description">
+                Insurance, Telecom, Security, Firefighting, Engineering, Import & Distribution as
+                well
+                as Editing and
+                Publishing
+                <br>
+              </div>
+              <a href="https://hosri-insurance-services.com/" class="partner-click-here">Visit our
+                website</a>
 
-/* Inputs — scoped so global inputs are untouched */
-.join-us-component input[type="text"],
-.join-us-component input[type="email"],
-.join-us-component input[type="tel"],
-.join-us-component select,
-.join-us-component textarea {
-width: 100%;
-padding: 10px;
-border-radius: 8px;
-border: 1px solid rgba(255, 255, 255, 0.04);
-background: transparent;
-color: inherit;
-font-size: .95rem;
-box-sizing: border-box;
-transition: box-shadow .14s ease, border-color .14s ease;
-}
+            </div>
+          </div>
 
-#join input,
-#join textarea,
-#join select,
-#drop {
-background-color: rgba(118, 193, 215, 0.3);
-color: #ffffff;
-}
+          <div class="partner-card">
+            <a href="https://7express.store">
+              <img src="7express-Logo.png" alt="7express Store" />
+            </a>
 
-.job {
-background-color: rgba(118, 193, 215, 0.3);
-}
+            <div class="partner-text">
+              <div class="partner-description">
+                <div class="text-preview">
+                  In addition to groceries, we sell chilled foods, fresh bread, milk, juices,
+                  fresh
+                  fruit and vegetables along
+                  with a
+                  range of household items.
+                  <br>
+                  We are also introducing our renown butcher, and guarantee to serve fresh
+                  chicken,
+                  beef, turkey, lamb, pork,
+                  fish, and
+                  sea food.
+                  <br>
+                  You can always ask for our menu of daily dish prepared by our experienced chef
+                  at
+                  Queasine.
+                </div>
+              </div>
+              <a href="https://7express.store" class="partner-click-here">Visit our website</a>
 
-.join-us-component select {
-appearance: none;
--webkit-appearance: none;
--moz-appearance: none;
+            </div>
+          </div>
 
-/* background-color:rgba(61, 201, 243, 0.3); */
-/* color: inherit; */
-color: #505973 !important;
-cursor: pointer;
-}
+          <div class="partner-card">
+            <a href="https://www.sacotelznshine.com">
+              <img src="s_znshine-logo.png" alt="Sacotel Znshine" />
+            </a>
+
+            <div class="partner-text">
+              <div class="partner-description">
+                <div class="text-preview">
+                  57 Years Local Partner Middle East & GCC Experience.
+                  <br>
+                  Member of UN Global Compact.
+                  <br>
+                  32 Years Manufacturing Experience.
+                  <br>
+                  Extensive PV Project Development.
+                  <br>
+                  Utility
+                  ,
+                  Commercial
+                  ,
+                  Residential
+                </div>
+              </div>
+              <a href="https://www.sacotelznshine.com" class="partner-click-here">Visit our
+                website</a>
+
+            </div>
+          </div>
+
+          <div class="partner-card medium">
+            <a href="">
+              <img class="img-medium" src="OfficeOnLine-Logo.gif" alt="OfficeOnLine" />
+            </a>
+
+            <div class="partner-text">
+              <div class="partner-description">
+                <div class="text-preview">
+                  57 Years Local Partner Middle East & GCC Experience.
+                  <br>
+                  Member of UN Global Compact.
+                  <br>
+                  32 Years Manufacturing Experience.
+                  <br>
+                  Extensive PV Project Development.
+                </div>
+              </div>
+              <a href="" class="partner-click-here">Visit our website</a>
+
+            </div>
+          </div>
 
 
-.join-us-component textarea {
-min-height: 120px;
-resize: vertical;
-}
+          <div class="partner-card xsmall">
+            <a href="https://mese-co.com/">
+              <img class="img-xsmall" src="MESE-logo.png" alt="MESE" />
+            </a>
 
-/* file drop area */
-.join-us-component .file-drop {
-border: 2px dashed rgba(255, 255, 255, 0.04);
-padding: 14px;
-border-radius: 10px;
-text-align: center;
-cursor: pointer;
-transition: background .12s ease, border-color .12s ease, transform .12s ease;
-}
+            <div class="partner-text">
+              <div class="partner-description">
+                <div>
+                  <div class="text-preview">
+                    <h6>Fire Protection</h6>
+                    <p>
+                      We are experts in fire protection solutions including alarm systems,
+                      sprinkler systems, fire extinguishers, and emergency lights.
+                      Our team will ensure that all installations comply with local
+                      regulations
+                      and the highest international standards.
+                      With us you can rest assured and focus on running your operation
+                      smoothly.
+                    </p>
 
-.join-us-component .file-drop.dragover {
-background: linear-gradient(90deg, rgba(6, 182, 212, 0.03), rgba(6, 182, 212, 0.01));
-border-color: rgba(6, 182, 212, 0.18);
-transform: translateY(-2px);
-}
+                    <h6>Security Systems</h6>
+                    <p>
+                      We provide state of the art security systems, including CCTV
+                      surveillance,
+                      access control, intruder alarms, and intercom systems.
+                      Our solutions enhance the safety and security of our client premises.
+                    </p>
 
-/* small helper text */
-.join-us-component .file-info {
-font-size: .9rem;
-/* color: var(--component-muted); */
-color: #000000;
-}
+                    <h6>Maintenance Support and Civil Defence Licencing</h6>
+                    We offer regular maintenance and support services to ensure our clients'
+                    fire protection and security systems are always in optimal condition.
+                    Our team is available to offer the necessary support and perform the
+                    necessary drills mitigating all potential risks.
 
-/* error */
-.join-us-component .error {
-color: #ff0101;
-font-size: .85rem;
-}
+                  </div>
+                </div>
+              </div>
+              <br>
+              <a href="https://mese-co.com/" class="partner-click-here">Visit our website</a>
 
-/* actions / buttons */
-.join-us-component .actions {
-display: flex;
-gap: 10px;
-align-items: center;
-}
+            </div>
+          </div>
 
-.join-us-component button.btn {
-background: linear-gradient(90deg, var(--component-accent), #0ea5b7);
-border: none;
-padding: 10px 14px;
-border-radius: 10px;
-color: #022;
-cursor: pointer;
-font-weight: 800;
-font-size: .95rem;
-box-shadow: 0 6px 18px rgba(2, 6, 23, 0.35);
-transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
-}
+        </div>
+        <button class="scroll-btn right" aria-label="Scroll right"></button>
+      </div>
 
-.join-us-component button.btn:active {
-transform: translateY(1px);
-}
+    </section>
 
-.join-us-component button[disabled] {
-opacity: 0.55;
-cursor: not-allowed;
-transform: none;
-}
+    <!--
+          Section: page-2 contains CSR cards and footer contact details.
+          Keep CSR short but meaningful — link to full pages for long descriptions.
+        -->
+    <section class="page page-2" id="page2" aria-label="Secondary section with background 2">
 
-/* note text */
-.join-us-component .note {
-font-size: .85rem;
-/* color: var(--component-muted); */
-color: #000000;
-}
+      <div id="csr" class="csr-wrap">
+        <h2 class="csr-title">Our CSR</h2>
 
-/* focus states — visible but scoped */
-.join-us-component a:focus,
-.join-us-component button:focus,
-.join-us-component input:focus,
-.join-us-component select:focus,
-.join-us-component textarea:focus {
-outline: 2px dashed rgba(230, 238, 246, 0.95);
-outline-offset: 3px;
-box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.06);
-}
+        <div class="csr-cards">
 
-/* responsive */
-@media (max-width: 900px) {
-.join-us-component {
-padding: 16px;
-}
+          <div class="csr-card">
+            <a href="https://eywa-lb.org/">
+              <img src="eywa-logo.png" alt="Eywa" />
+            </a>
 
-.join-us-component .join-wrap {
-grid-template-columns: 1fr;
-gap: 12px;
-}
+            <div class="csr-text">
+              <div class="csr-description">
+                <div class="csr-text-preview">
+                  EYWA enables women to recreate what they can be and what it is they can
+                  accomplish
+                  through assisting them to
+                  proper
+                  education. Increased literacy and status will allow those women to raise better
+                  generations and enhance the
+                  quality of
+                  our human resources.
+                  <br>
+                  <br>
+                  EYWA empowers women economically by matching them with appropriate jobs and
+                  drafting
+                  their CVs and tackling
+                  their main
+                  concern, their time constraints. 80% of underprivileged non-working moms are
+                  deprived from access to jobs
+                  due to the
+                  need of caring for their children and not affording Day Care services.
+                </div>
 
-.join-us-component .panel {
-padding: 14px;
-}
-}
+                <br>
+                <a href="https://eywa-lb.org/" class="csr-click-here">Visit our website</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="csr-card">
+            <a href="https://unleashyourcreativitylb.com/">
+              <img src="unleash-logo.png" alt="Unleash" />
+            </a>
+
+            <div class="csr-text">
+              <div class="csr-description">
+                <div class="csr-text-preview">
+                  <h6>UNLEASH YOUR CREATIVITY</h6>
+                  The annual interuniversity competition has amplified the challenge for 2025.
+                  After
+                  10 successful years we
+                  have lifted
+                  the bar in this 11th edition.
+                </div>
+
+                <a href="https://unleashyourcreativitylb.com/" class="csr-click-here">Visit our
+                  website</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="join" class="join-us-component">
+        <h2 class="csr-title">Join Us</h2>
+        <section class="join-wrap" aria-labelledby="join-title">
+
+          <div class="panel info" id="company-info">
+            <h2 id="join-title">Join Us</h2>
+            <p class="lead">We’re a small team building reliable, maintainable software...</p>
+
+            <div aria-live="polite">
+              <h3 style="font-size:1rem;margin:14px 0 8px 0">Open Positions</h3>
+
+              <div class="jobs" id="jobs-list">
+                <article class="job" data-role="frontend">
+                  <div class="meta">
+                    <h4>Frontend Engineer</h4>
+                    <small>Remote — Full-time</small>
+                  </div>
+                  <div class="pill">Experienced</div>
+                </article>
+
+                <article class="job" data-role="backend">
+                  <div class="meta">
+                    <h4>Backend Engineer</h4>
+                    <small>On-site (Beirut) — 6+ months</small>
+                  </div>
+                  <div class="pill">Backend</div>
+                </article>
+
+                <article class="job" data-role="intern">
+                  <div class="meta">
+                    <h4>Intern - Dev</h4>
+                    <small>Part-time — Internship</small>
+                  </div>
+                  <div class="pill">Entry</div>
+                </article>
+              </div>
+
+              <p class="note" style="margin-top:12px">
+                Common items in a "Join Us" section...
+              </p>
+            </div>
+          </div>
+
+          <aside class="panel" aria-labelledby="apply-title">
+            <h3 id="apply-title">Apply — Send CV</h3>
+
+            <form id="apply-form" method="POST" action="/apply" enctype="multipart/form-data" novalidate>
+
+              <div>
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" required />
+              </div>
+
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" />
+              </div>
+
+              <div>
+                <label for="position">Position</label>
+                <select id="position" name="position">
+                  <option value="">— Select —</option>
+                  <option value="frontend">Frontend Engineer</option>
+                  <option value="backend">Backend Engineer</option>
+                  <option value="devops">DevOps</option>
+                  <option value="intern">Intern</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="cover">Short cover note (optional)</label>
+                <textarea id="cover" name="cover"></textarea>
+              </div>
+
+              <div>
+                <label>Upload CV</label>
+                <div id="drop" class="file-drop" tabindex="0">
+                  <input id="cv" name="cv" type="file" accept=".pdf,.doc,.docx" hidden />
+                  <strong class="draganddrop">Drag & drop your CV here</strong>
+                  <div class="file-info">or click to browse</div>
+                </div>
+                <div id="file-status" class="file-info"></div>
+                <div id="file-error" class="error"></div>
+              </div>
+
+              <div class="actions">
+                <button class="btn" type="submit" disabled>Send Application</button>
+              </div>
+
+              <p class="note">Tip: Validate again on server…</p>
+            </form>
+          </aside>
+        </section>
+
+      </div>
+
+
+      <!-- Footer: company location and contact details. Keep contact details up-to-date. -->
+      <footer id="contact" class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-col">
+            <h4>Location</h4>
+            <p>📍 162 Badaro Street 2058162 &nbsp; Beirut – Lebanon</p>
+            <p>📍 Dubai Airport Free Zone 6EA 110</p>
+            <p>📍 Jeddah – Saudi Arabia</p>
+
+          </div>
+          <div class="footer-col">
+            <h4>Social</h4>
+            <div class="social-links">
+              <a class="social-item" href="https://www.linkedin.com/company/40817162/" target="_blank">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Contact Information</h4>
+            <p>Tel +961 1 38 68 68 <br>
+              Fax +961 1 38 68 68 <br>
+              31 317508, Dubai – UAE <br>
+              Tel +971 50 104 2550</p>
+          </div>
+        </div>
+      </footer>
+
+    </section>
+
+    <!--
+          Inline script: carousel behaviour and user interaction.
+          Consider moving to an external JS file (e.g. main.js) and adding the "defer" attribute
+          to improve performance and cacheability in production.
+        -->
+    <!-- </main> -->
+  </div>
+  <script>
+    /*
+      Unified frontend initializer
+      - Safe guards: each feature only initialises if required DOM exists
+      - No global leaks
+      - Mobile drawer, partners carousel, join-us form, read-more toggles
+    */
+    (function () {
+      'use strict';
+
+      // --- helpers ---
+      const $ = (s, root = document) => root.querySelector(s);
+      const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
+      const createOverlayIfMissing = () => {
+        let ov = $('#overlay');
+        if (!ov) {
+          ov = document.createElement('div');
+          ov.id = 'overlay';
+          ov.className = 'overlay';
+          ov.setAttribute('aria-hidden', 'true');
+          document.body.appendChild(ov);
+        }
+        return ov;
+      };
+
+      // wait for DOM
+      document.addEventListener('DOMContentLoaded', () => {
+        try {
+          initMobileDrawer();
+          initPartnersCarousel();
+          initJoinUsForm();
+          initReadMoreToggles();
+          console.log('Frontend: all initializers ran (where applicable).');
+        } catch (err) {
+          console.error('Frontend init error:', err);
+        }
+      });
+
+      // ----------------------------------------
+      // Mobile drawer (robust, accessible)
+      // ----------------------------------------
+      function initMobileDrawer() {
+        try {
+          const hamburger = document.querySelector('.hamburger');
+          const drawer = document.getElementById('mobile-menu');
+          if (!hamburger || !drawer) {
+            // nothing to do
+            console.info('Mobile drawer: missing .hamburger or #mobile-menu — skipped');
+            return;
+          }
+          const closeBtn = document.getElementById('close-drawer') || drawer.querySelector('[aria-label="Close menu"]');
+          const overlay = createOverlayIfMissing();
+          const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+          // sane attributes
+          if (!hamburger.hasAttribute('aria-expanded')) hamburger.setAttribute('aria-expanded', 'false');
+          if (!drawer.hasAttribute('aria-hidden')) drawer.setAttribute('aria-hidden', 'true');
+          if (!overlay.hasAttribute('aria-hidden')) overlay.setAttribute('aria-hidden', 'true');
+
+          let lastFocused = null;
+          let hiddenEls = [];
+
+          const findElementsToHide = () => Array.from(document.body.children).filter(ch =>
+            ch !== drawer && ch !== overlay && !ch.contains(drawer) && !ch.contains(overlay)
+          );
+
+          function setHiddenOn(el, val) {
+            if (!el) return;
+            if (val) el.setAttribute('aria-hidden', 'true');
+            else el.removeAttribute('aria-hidden');
+          }
+
+          function trapTab(e) {
+            if (e.key === 'Escape') { closeMenu(); return; }
+            if (e.key !== 'Tab') return;
+            const focusables = Array.from(drawer.querySelectorAll(FOCUSABLE)).filter(el => el.offsetParent !== null);
+            if (!focusables.length) return;
+            const first = focusables[0], last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+          }
+
+          function openMenu() {
+            lastFocused = document.activeElement;
+            hamburger.setAttribute('aria-expanded', 'true');
+            drawer.classList.add('open');
+            overlay.classList.add('open');
+            drawer.setAttribute('aria-hidden', 'false');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+
+            hiddenEls = findElementsToHide();
+            hiddenEls.forEach(el => setHiddenOn(el, true));
+
+            const focusables = Array.from(drawer.querySelectorAll(FOCUSABLE)).filter(el => el.offsetParent !== null);
+            (focusables[0] || closeBtn || drawer).focus();
+
+            document.addEventListener('keydown', trapTab, true);
+          }
+
+          function closeMenu() {
+            hamburger.setAttribute('aria-expanded', 'false');
+            drawer.classList.remove('open');
+            overlay.classList.remove('open');
+            drawer.setAttribute('aria-hidden', 'true');
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+
+            hiddenEls.forEach(el => setHiddenOn(el, false));
+            hiddenEls = [];
+
+            if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+            document.removeEventListener('keydown', trapTab, true);
+          }
+
+          hamburger.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+            expanded ? closeMenu() : openMenu();
+          });
+
+          if (closeBtn) closeBtn.addEventListener('click', (e) => { e.preventDefault(); closeMenu(); });
+          overlay.addEventListener('click', (e) => { e.preventDefault(); closeMenu(); });
+
+          // close on link click (nice UX)
+          drawer.addEventListener('click', (e) => {
+            if (e.target.closest('a')) closeMenu();
+          });
+
+          // ensure close on resize to avoid stuck state
+          window.addEventListener('resize', () => {
+            if (window.innerWidth >= 820 && drawer.classList.contains('open')) closeMenu();
+          });
+
+          console.log('Mobile drawer initialized');
+        } catch (err) {
+          console.error('initMobileDrawer error', err);
+        }
+      }
+
+      // ----------------------------------------
+      // Partners carousel (safe init)
+      // ----------------------------------------
+      function initPartnersCarousel() {
+        try {
+          const partnersRow = document.querySelector('.partners-row');
+          const leftBtn = document.querySelector('.scroll-btn.left');
+          const rightBtn = document.querySelector('.scroll-btn.right');
+          if (!partnersRow || !leftBtn || !rightBtn) {
+            console.info('Partners carousel: required elements missing — skipped');
+            return;
+          }
+
+          // config
+          const clickScroll = 120;
+          const holdSpeed = 6;
+          const holdDelay = 200;
+          let holdInterval = null;
+          let holdTimeout = null;
+          let isHolding = false;
+
+          function startHold(direction) {
+            holdInterval = setInterval(() => { partnersRow.scrollLeft += direction * holdSpeed; }, 16);
+          }
+          function stopHold() {
+            clearInterval(holdInterval);
+            clearTimeout(holdTimeout);
+            holdInterval = null;
+            holdTimeout = null;
+            isHolding = false;
+          }
+
+          function setupButton(btn, direction) {
+            if (!btn) return;
+            btn.addEventListener('pointerdown', () => {
+              isHolding = false;
+              holdTimeout = setTimeout(() => { isHolding = true; startHold(direction); }, holdDelay);
+            });
+            btn.addEventListener('pointerup', () => {
+              if (!isHolding) {
+                partnersRow.scrollBy({ left: direction * clickScroll, behavior: 'smooth' });
+              }
+              stopHold();
+            });
+            btn.addEventListener('pointerleave', () => stopHold());
+            btn.addEventListener('touchcancel', stopHold);
+          }
+
+          setupButton(leftBtn, -1);
+          setupButton(rightBtn, 1);
+
+          // subtle auto-scroll
+          let autoSpeed = 0.03;
+          let autoDirection = 1;
+          let isPaused = false;
+          let lastTime = null;
+          let resumeTimeout = null;
+
+          function pauseAuto() {
+            isPaused = true;
+            if (resumeTimeout) { clearTimeout(resumeTimeout); resumeTimeout = null; }
+          }
+          function resumeAuto(shortDelay = 2000) {
+            if (resumeTimeout) clearTimeout(resumeTimeout);
+            resumeTimeout = setTimeout(() => { isPaused = false; lastTime = null; }, shortDelay);
+          }
+
+          function autoStep(ts) {
+            if (!lastTime) lastTime = ts;
+            const delta = ts - lastTime;
+            lastTime = ts;
+            if (!isPaused) {
+              partnersRow.scrollLeft += autoSpeed * delta * autoDirection;
+              // bounce at ends
+              if (partnersRow.scrollLeft <= 0) {
+                partnersRow.scrollLeft = 0;
+                autoDirection = 1;
+              } else if (partnersRow.scrollLeft + partnersRow.clientWidth >= partnersRow.scrollWidth) {
+                partnersRow.scrollLeft = partnersRow.scrollWidth - partnersRow.clientWidth;
+                autoDirection = -1;
+              }
+            }
+            requestAnimationFrame(autoStep);
+          }
+          requestAnimationFrame(autoStep);
+
+          // interaction pauses
+          ['mouseenter', 'focusin', 'pointerdown', 'touchstart'].forEach(ev => {
+            partnersRow.addEventListener(ev, pauseAuto, { passive: true });
+          });
+          ['mouseleave', 'focusout', 'pointerup', 'touchend'].forEach(ev => {
+            partnersRow.addEventListener(ev, () => resumeAuto(1500), { passive: true });
+          });
+
+          // attach pause/resume to buttons too
+          [leftBtn, rightBtn].forEach(btn => {
+            btn.addEventListener('pointerdown', pauseAuto);
+            btn.addEventListener('pointerup', () => resumeAuto(1500));
+            btn.addEventListener('mouseleave', () => resumeAuto(1000));
+          });
+
+          console.log('Partners carousel initialized');
+        } catch (err) {
+          console.error('initPartnersCarousel error', err);
+        }
+      }
+
+      // ----------------------------------------
+      // Join-us: drag/drop file + client validation + submit hook
+      // ----------------------------------------
+      function initJoinUsForm() {
+        try {
+          const form = document.getElementById('apply-form');
+          const drop = document.getElementById('drop');
+          const cvInput = document.getElementById('cv');
+          const fileStatus = document.getElementById('file-status');
+          const fileError = document.getElementById('file-error');
+          if (!form || !drop || !cvInput || !fileStatus || !fileError) {
+            console.info('Join-us form: required elements missing — skipped');
+            return;
+          }
+
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const sending = document.getElementById('sending'); // optional
+          const result = document.getElementById('result'); // optional
+
+          const MAX_SIZE = 2 * 1024 * 1024; // 2MB
+          const allowedExt = ['pdf', 'doc', 'docx'];
+
+          let file = null;
+
+          function setError(msg) { fileError.textContent = msg || ''; }
+          function setStatus(msg) { fileStatus.textContent = msg || ''; }
+
+          function validateFile(f) {
+            if (!f) return 'Please attach a CV.';
+            if (f.size > MAX_SIZE) return 'File is too large (max 2 MB).';
+            const ext = (f.name || '').split('.').pop().toLowerCase();
+            if (!allowedExt.includes(ext)) return 'Unsupported file type.';
+            return '';
+          }
+
+          function updateUI() {
+            const err = validateFile(file);
+            if (err) { setError(err); if (submitBtn) submitBtn.disabled = true; }
+            else { setError(''); if (submitBtn) submitBtn.disabled = false; }
+            setStatus(file ? `${file.name} — ${Math.round(file.size / 1024)} KB` : 'No file chosen');
+          }
+
+          // interactions
+          drop.addEventListener('click', () => cvInput.click());
+          drop.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cvInput.click(); } });
+
+          cvInput.addEventListener('change', (e) => { file = e.target.files[0]; updateUI(); });
+
+          drop.addEventListener('dragover', (e) => { e.preventDefault(); drop.classList.add('dragover'); });
+          drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
+          drop.addEventListener('drop', (e) => {
+            e.preventDefault(); drop.classList.remove('dragover');
+            const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+            if (f) { file = f; cvInput.files = e.dataTransfer.files; updateUI(); }
+          });
+
+          // submit handler
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            setError(''); if (result) result.textContent = '';
+            const name = (form.querySelector('#name')?.value || '').trim();
+            const email = (form.querySelector('#email')?.value || '').trim();
+            if (!name) { setError('Please type your full name.'); return; }
+            if (!email || !/^\S+@\S+\.\S+$/.test(email)) { setError('Please provide a valid email.'); return; }
+            const fileErr = validateFile(file);
+            if (fileErr) { setError(fileErr); return; }
+
+            // show sending UI if present
+            if (submitBtn) submitBtn.disabled = true;
+            if (sending) sending.style.display = 'block';
+
+            const fd = new FormData(form);
+            if (file && !fd.get('cv')) fd.append('cv', file);
+
+            // NOTE: uses the form.action endpoint — adjust server to accept multipart/form-data
+            fetch(form.action, { method: 'POST', body: fd })
+              .then(async (res) => {
+                if (sending) sending.style.display = 'none';
+                if (submitBtn) submitBtn.disabled = false;
+                if (res.ok) {
+                  if (result) result.textContent = 'Application sent — thank you!';
+                  form.reset();
+                  file = null;
+                  updateUI();
+                } else {
+                  const txt = await res.text();
+                  if (result) result.textContent = 'Server error: ' + (txt || res.statusText);
+                }
+              })
+              .catch((err) => {
+                if (sending) sending.style.display = 'none';
+                if (submitBtn) submitBtn.disabled = false;
+                if (result) result.textContent = 'Network error: ' + err.message;
+              });
+          });
+
+          // initialise UI
+          updateUI();
+          console.log('Join-us form initialized');
+        } catch (err) {
+          console.error('initJoinUsForm error', err);
+        }
+      }
+
+      // ----------------------------------------
+      // Read-more toggles (delegated)
+      // ----------------------------------------
+      function initReadMoreToggles() {
+        try {
+          // delegation: handle both .read-more and .csr-read-more
+          document.addEventListener('click', (e) => {
+            const rm = e.target.closest('.read-more, .csr-read-more');
+            if (!rm) return;
+            const isCSR = rm.classList.contains('csr-read-more');
+            const wrapper = rm.closest(isCSR ? '.csr-description' : '.partner-description');
+            if (!wrapper) return;
+            const text = wrapper.querySelector(isCSR ? '.csr-text-preview' : '.text-preview');
+            if (!text) return;
+            const expanded = text.classList.toggle('expanded');
+            rm.textContent = expanded ? 'Read less' : 'Read more';
+          });
+          console.log('Read-more toggles ready');
+        } catch (err) {
+          console.error('initReadMoreToggles error', err);
+        }
+      }
+
+    })();
+  </script>
+
+</body>
+
+</html>
