@@ -251,7 +251,7 @@ body {
 .partner-card.medium {
   width: 250px;
   min-width: 160px;
-  text-align: center;
+  /* text-align: center; */
   font-size: 14px;
   opacity: 0.95;
   flex: 0 0 auto;
@@ -856,7 +856,10 @@ body {
 
 /* Small screens: make layout stack nicely */
 @media (max-width:900px) {
+.logo-left {
 
+    margin-top: 40px;
+  }
   .partners-wrap {
     width: 90%
   }
