@@ -597,7 +597,7 @@
 
 
 
-
+/* 
   :root {
       --topbar-logo-maxh: 44px;
       --topbar-padding-inline: 18px;
@@ -639,4 +639,4 @@
 
   .topbar-logo--right {
       right: var(--topbar-padding-inline);
-  }
+  } */
