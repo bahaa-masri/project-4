@@ -598,29 +598,21 @@
 
 
 
-
-
-  /* sizing variables (سهّل التعديل لاحقاً) */
   :root {
       --topbar-logo-maxh: 44px;
-      /* الحجم الافتراضي للوجوه فالتوب بار */
       --topbar-padding-inline: 18px;
   }
 
-  /* make topbar-inner a relative container */
   .topbar-inner {
       position: relative;
-      /* width: min(1200px, 95%); */
-      /* margin: 0 auto; */
+
       height: var(--topbar-height);
       display: flex;
       align-items: center;
       justify-content: center;
-      /* nav will be centered via absolute */
-      /* padding: 0 var(--topbar-padding-inline); */
+
   }
 
-  /* center the nav exactly in the middle of the topbar */
   .desktop-nav {
       position: absolute;
       left: 50%;
@@ -629,10 +621,8 @@
       gap: 22px;
       align-items: center;
       z-index: 10;
-      /* above logos if needed */
   }
 
-  /* small logos positioned at ends */
   .topbar-logo {
       position: absolute;
       top: 50%;
@@ -643,47 +633,10 @@
       z-index: 20;
   }
 
-  /* left & right anchors */
   .topbar-logo--left {
       left: var(--topbar-padding-inline);
   }
 
   .topbar-logo--right {
       right: var(--topbar-padding-inline);
-  }
-
-  /* keep hamburger visible on mobile (and hide desktop nav there) */
-  @media (max-width: 819px) {
-      .desktop-nav {
-          display: none;
-      }
-
-      /* use mobile drawer instead */
-      .topbar-inner {
-          justify-content: space-between;
-      }
-
-      /* for small screens, make logos not absolute so they layout naturally */
-      .topbar-logo {
-          position: relative;
-          transform: none;
-          max-height: 36px;
-      }
-
-      .topbar-logo--left {
-          order: 0;
-          margin-right: 8px;
-      }
-
-      .hamburger {
-          order: 2;
-          margin-left: auto;
-      }
-
-      /* hamburger at the right */
-      .topbar-logo--right {
-          display: none;
-      }
-
-      /* optional: hide right logo on small screens */
   }

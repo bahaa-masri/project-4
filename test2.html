@@ -998,55 +998,56 @@
 
 
 
-        (function () {
-                const logos = Array.from(document.querySelectorAll('.topbar-logo'));
-                if (!logos.length) return;
+        // (function () {
+        //         const logos = Array.from(document.querySelectorAll('.topbar-logo'));
+        //         if (!logos.length) return;
 
-                logos.forEach(el => {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(-6px)';
-                    el.style.transition = 'opacity 220ms ease, transform 220ms ease';
-                    el.style.willChange = 'opacity, transform';
-                });
+        //         logos.forEach(el => {
+        //             el.style.opacity = '0';
+        //             el.style.transform = 'translateY(-6px)';
+        //             el.style.transition = 'opacity 220ms ease, transform 220ms ease';
+        //             el.style.willChange = 'opacity, transform';
+        //         });
 
-                let ticking = false;
+        //         let ticking = false;
 
-                function updateLogos() {
-                    const topbar = document.querySelector('.topbar-inner');
-                    if (!topbar) return;
+        //         function updateLogos() {
+        //             const topbar = document.querySelector('.topbar-inner');
+        //             if (!topbar) return;
 
-                    const rect = topbar.getBoundingClientRect();
+        //             const rect = topbar.getBoundingClientRect();
 
-                    // بدل console.log، نعمل border مؤقت يبين إذا topbar عم يتحرك
-                    topbar.style.border = `2px solid rgba(255,0,0,${Math.min(Math.max(rect.top / 50, 0), 1)})`;
+        //             // بدل console.log، نعمل border مؤقت يبين إذا topbar عم يتحرك
+        //             topbar.style.border = `2px solid rgba(255,0,0,${Math.min(Math.max(rect.top / 50, 0), 1)})`;
 
-                    const atTop = rect.top <= 0;
+        //             const atTop = rect.top <= 0;
 
-                    logos.forEach(el => {
-                        if (atTop) {
-                            el.style.opacity = '1';
-                            el.style.transform = 'translateY(0)';
-                        } else {
-                            el.style.opacity = '0';
-                            el.style.transform = 'translateY(-6px)';
-                        }
-                    });
-                }
+        //             logos.forEach(el => {
+        //                 if (atTop) {
+        //                     el.style.opacity = '1';
+        //                     el.style.transform = 'translateY(0)';
+        //                 } else {
+        //                     el.style.opacity = '0';
+        //                     el.style.transform = 'translateY(-6px)';
+        //                 }
+        //             });
+        //         }
 
-                window.addEventListener('scroll', () => {
-                    if (!ticking) {
-                        window.requestAnimationFrame(() => {
-                            updateLogos();
-                            ticking = false;
-                        });
-                        ticking = true;
-                    }
-                });
+        //         window.addEventListener('scroll', () => {
+        //             if (!ticking) {
+        //                 window.requestAnimationFrame(() => {
+        //                     updateLogos();
+        //                     ticking = false;
+        //                 });
+        //                 ticking = true;
+        //             }
+        //         });
 
-                updateLogos();
-            })();
+        //         updateLogos();
+        //     })();
 
-    </script>
+
+</script>
 
 </body>
 
