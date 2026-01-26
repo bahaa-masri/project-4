@@ -42,7 +42,7 @@
 
   /* Topbar */
   .topbar {
-    margin: 0 auto;
+      margin: 0 auto;
       position: sticky;
       top: 40px;
       top: 0px;
@@ -55,7 +55,7 @@
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.12));
 
       backdrop-filter: blur(var(--glass-blur));
-      -webkit-backdrop-filter: blur(var(--glass-blur)); 
+      -webkit-backdrop-filter: blur(var(--glass-blur));
       width: 100% !important;
 
       /* border-bottom: 1px solid rgba(255, 255, 255, 0.03); */
@@ -63,8 +63,8 @@
 
   .topbar-inner {
       /* width: min(1200px, 95%) !important; */
-    width: 97% !important;
-    /* width: 95% !important; */
+      width: 97% !important;
+      /* width: 95% !important; */
       display: flex;
       align-items: center;
       /* gap: 18px; */
@@ -235,8 +235,10 @@
       .nav-links {
           display: none;
       }
-           .topbar-inner {
-               justify-content: flex-end;}
+
+      .topbar-inner {
+          justify-content: flex-end;
+      }
   }
 
 
@@ -437,12 +439,14 @@
       /* Y */
       align-items: end;
   }
+
   @media(min-width:600px) {
       .hamburger {
           display: none
       }
-      
-    }
+
+  }
+
   @media(min-width:820px) {
       .hamburger {
           display: none
@@ -476,22 +480,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   /* ===== FIX: mobile drawer stacking ===== */
 
   .overlay {
@@ -509,134 +497,3 @@
   .mobile-drawer {
       position: fixed;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-  :root {
-      --topbar-logo-maxh: 44px;
-      --topbar-padding-inline: 18px;
-  }
-
-  .topbar-inner {
-      position: relative;
-
-      height: var(--topbar-height);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-  }
-
-  .desktop-nav {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 22px;
-      align-items: center;
-      z-index: 10;
-  }
-
-  .topbar-logo {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      max-height: var(--topbar-logo-maxh);
-      width: auto;
-      display: block;
-      z-index: 20;
-  }
-
-  .topbar-logo--left {
-      left: var(--topbar-padding-inline);
-  }
-
-  .topbar-logo--right {
-      right: var(--topbar-padding-inline);
-  } */
