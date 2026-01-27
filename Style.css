@@ -61,8 +61,8 @@ body {
 }
 
 .page-1-2 {
-  /* background-image: url('bg.jpeg'); */
-  background-image: url('wbg.jpg');
+  background-image: url('bg.jpeg');
+  /* background-image: url('wbg.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -112,7 +112,7 @@ body {
 
   /* height:500px; */
   /* height: 430px; */
-  min-height: 520px;
+  min-height: 540px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,7 +134,7 @@ body {
 
 
 .about-title {
-  font-size: 44px;
+  font-size: 55px;
   color: var(--white);
   /* margin-bottom: 18px; */
   margin-bottom: 50px;
@@ -154,6 +154,12 @@ body {
       text-align-last: left;
       hyphens: auto;
       word-spacing: 0.02em;
+}
+.about-wrap h3 {
+    color: var(--white);
+      font-size: 26px;
+      line-height: 1.7;
+      padding-bottom: 15px;
 }
 
 .partners-wrap {
@@ -359,20 +365,66 @@ body {
 
 
 
-
+/* 
   max-width: 65ch;
     line-height: 1.7;
     text-align: justify;
     text-align-last: left;
     hyphens: auto;
-    word-spacing: 0.02em;
+    word-spacing: 0.02em; */
 
 
-    
+
+/* max-width: 55ch;
+  line-height: 1.5;
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+  word-spacing: 0.01em;
+  overflow-wrap: break-word;
+    word-wrap: break-word;
+     */
       
+
+  /* text-align: justify;
+    text-align-last: left;
+  
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  
+    word-spacing: normal;
+    hyphens: auto; */
+/* 
+      max-width: 55ch;
+        line-height: 1.5;
+        text-align: justify;
+        text-align-last: left;
+      
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+      
+        overflow-wrap: anywhere;
+    
+        white-space: normal; */
+          max-width: 55ch;
+            line-height: 1.5;
+            text-align: justify;
+            text-align-last: left;
+          
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+          
+            overflow-wrap: anywhere;
+            word-wrap: break-word;
+            white-space: normal;
+          
+            
 }
-
-
+.partner-description {
+  word-break: break-all;
+}
 .partner-description .text-preview {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -457,14 +509,15 @@ body {
 /* end of click here old code */
 
 
-
 .partner-click-here {
-  display: inline-flex;
+  display: block;
+  width: fit-content;
+  margin: 8px auto 0;
+
   align-items: center;
   justify-content: center;
 
   padding: 8px 16px;
-  margin-top: 8px;
 
   font-size: 14px;
   font-weight: 600;
@@ -472,10 +525,7 @@ body {
 
   color: #ffffff;
   background-color: rgba(30, 115, 190, 0.4);
-  /* 50% شفافية */
-  /* background-color: transparent; */
   border: 2px solid #1e73be;
-  /* blue button */
   border-radius: 6px;
 
   transition: all 0.25s ease;
