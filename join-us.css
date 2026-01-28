@@ -1,37 +1,50 @@
-/* -------------------------------------------------------
-   Scoped "Join Us" styles — safe to drop into your stylesheet
-   Wrap your existing join-us HTML with:
-   <div class="join-us-component"> ...existing markup... </div>
-   ------------------------------------------------------- */
-
-/* container scope */
 .join-us-component {
     --component-max-width: var(--max-width, 980px);
     --component-gap: var(--gap, 18px);
     --component-radius: var(--radius, 12px);
     --component-accent: var(--accent, #06b6d4);
     --component-muted: var(--muted, #9aa4b2);
+
+    --join-text: #505973;
+    --panel-bg: rgba(61, 201, 243, 0.1);
+    --panel-shadow-color: rgba(2, 6, 23, 0.6);
+    --lead-color: #2e3033;
+    --job-border-color: rgba(255, 255, 255, 0.03);
+    --job-hover-bg-start: rgba(255, 255, 255, 0.02);
+    --job-hover-bg-end: rgba(255, 255, 255, 0.03);
+    --job-hover-shadow-color: rgba(2, 6, 23, 0.45);
+    --job-small-color: #ececec;
+    --pill-bg: rgba(6, 182, 212, 0.2);
+    --pill-border: rgba(6, 182, 212, 0.12);
+    --pill-color: #e5e6e9;
+    --input-border-color: rgba(255, 255, 255, 0.04);
+    --input-bg: rgba(118, 193, 215, 0.3);
+    --select-color: #505973;
+    --textarea-min-height: 120px;
+    --file-drop-border: rgba(255, 255, 255, 0.04);
+    --file-drop-drag-bg-start: rgba(6, 182, 212, 0.03);
+    --file-drop-drag-bg-end: rgba(6, 182, 212, 0.01);
+    --file-drop-drag-border: rgba(6, 182, 212, 0.18);
+    --file-info-color: #000000;
+    --error-color: #ff0101;
+    --note-color: #000000;
+    --btn-bg-start: var(--component-accent);
+    --btn-bg-end: #0ea5b7;
+    --btn-text-color: #022;
+    --btn-shadow-color: rgba(2, 6, 23, 0.35);
+    --focus-outline-color: rgba(230, 238, 246, 0.95);
     padding: 32px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-
-
-    /* Open Positions */
-    color: #505973;
-
-    /* background: linear-gradient(180deg, rgba(10, 14, 16, 0.3), rgba(7, 10, 12, 0.2));
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px); */
-
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+    color: var(--join-text);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-/* main grid */
 .join-us-component .join-wrap {
     width: 100%;
     max-width: var(--component-max-width);
@@ -42,24 +55,16 @@
     box-sizing: border-box;
 }
 
-/* panel base */
 .join-us-component .panel {
-    /* background: linear-gradient(180deg, rgba(9, 147, 201, 0.3), rgba(19, 180, 254, 0.2));
-    */
-    background: rgba(61, 201, 243, 0.1);
+    background: var(--panel-bg);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-
-
-
     border-radius: var(--component-radius);
     padding: 20px;
-    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
-    /* color: inherit; */
+    box-shadow: 0 6px 18px var(--panel-shadow-color);
     box-sizing: border-box;
 }
 
-/* left info */
 .join-us-component .info {
     padding: 6px 14px;
 }
@@ -67,19 +72,15 @@
 .join-us-component .info h2 {
     margin: 0 0 8px 0;
     font-size: 1.45rem;
-    /* Join Us */
     color: inherit;
 }
 
 .join-us-component .info p.lead {
-    /* color: var(--component-muted); */
-    /* We’re a small team */
-    color: #2e3033;
+    color: var(--lead-color);
     margin: 0 0 16px;
     line-height: 1.45;
 }
 
-/* jobs list */
 .join-us-component .jobs {
     display: flex;
     flex-direction: column;
@@ -92,15 +93,14 @@
     align-items: center;
     padding: 12px;
     border-radius: 10px;
-    /* background: rgba(255, 255, 255, 0.02); */
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--job-border-color);
     transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
 }
 
 .join-us-component .job:hover {
     transform: translateY(-4px);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
-    box-shadow: 0 10px 20px rgba(2, 6, 23, 0.45);
+    background: linear-gradient(180deg, var(--job-hover-bg-start), var(--job-hover-bg-end));
+    box-shadow: 0 10px 20px var(--job-hover-shadow-color);
 }
 
 .join-us-component .job .meta {
@@ -116,44 +116,36 @@
 }
 
 .join-us-component .job small {
-    /* color: var(--component-muted); */
-    /* Remote — Full-time */
-    color: #ececec;
+    color: var(--job-small-color);
     font-size: .85rem;
 }
 
-/* pill */
 .join-us-component .pill {
-    background: rgba(6, 182, 212, 0.2);
-    border: 1px solid rgba(6, 182, 212, 0.12);
+    background: var(--pill-bg);
+    border: 1px solid var(--pill-border);
     padding: 6px 10px;
     border-radius: 999px;
     font-weight: 700;
-    /* color: var(--component-accent); */
-    /* Experienced */
-    color: #e5e6e9;
+    color: var(--pill-color);
     font-size: .85rem;
     white-space: nowrap;
 }
 
-/* Right: the form column */
 .join-us-component form {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    text-align: left;
 }
 
 .join-us-component label,
 .draganddrop {
     font-size: .85rem;
-    /* color: var(--component-muted); */
-    /* Full name */
-    color: #505973;
+    color: var(--join-text);
     display: block;
     margin-bottom: 4px;
 }
 
-/* Inputs — scoped so global inputs are untouched */
 .join-us-component input[type="text"],
 .join-us-component input[type="email"],
 .join-us-component input[type="tel"],
@@ -162,7 +154,7 @@
     width: 100%;
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--input-border-color);
     background: transparent;
     color: inherit;
     font-size: .95rem;
@@ -174,34 +166,30 @@
 #join textarea,
 #join select,
 #drop {
-    background-color: rgba(118, 193, 215, 0.3);
+    background-color: var(--input-bg);
     color: #ffffff;
+
 }
 
 .job {
-    background-color: rgba(118, 193, 215, 0.3);
+    background-color: var(--input-bg);
 }
 
 .join-us-component select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-
-    /* background-color:rgba(61, 201, 243, 0.3); */
-    /* color: inherit; */
-    color: #505973 !important;
+    color: var(--select-color) !important;
     cursor: pointer;
 }
 
-
 .join-us-component textarea {
-    min-height: 120px;
+    min-height: var(--textarea-min-height);
     resize: vertical;
 }
 
-/* file drop area */
 .join-us-component .file-drop {
-    border: 2px dashed rgba(255, 255, 255, 0.04);
+    border: 2px dashed var(--file-drop-border);
     padding: 14px;
     border-radius: 10px;
     text-align: center;
@@ -210,25 +198,21 @@
 }
 
 .join-us-component .file-drop.dragover {
-    background: linear-gradient(90deg, rgba(6, 182, 212, 0.03), rgba(6, 182, 212, 0.01));
-    border-color: rgba(6, 182, 212, 0.18);
+    background: linear-gradient(90deg, var(--file-drop-drag-bg-start), var(--file-drop-drag-bg-end));
+    border-color: var(--file-drop-drag-border);
     transform: translateY(-2px);
 }
 
-/* small helper text */
 .join-us-component .file-info {
     font-size: .9rem;
-    /* color: var(--component-muted); */
-    color: #000000;
+    color: var(--file-info-color);
 }
 
-/* error */
 .join-us-component .error {
-    color: #ff0101;
+    color: var(--error-color);
     font-size: .85rem;
 }
 
-/* actions / buttons */
 .join-us-component .actions {
     display: flex;
     gap: 10px;
@@ -236,15 +220,15 @@
 }
 
 .join-us-component button.btn {
-    background: linear-gradient(90deg, var(--component-accent), #0ea5b7);
+    background: linear-gradient(90deg, var(--btn-bg-start), var(--btn-bg-end));
     border: none;
     padding: 10px 14px;
     border-radius: 10px;
-    color: #022;
+    color: var(--btn-text-color);
     cursor: pointer;
     font-weight: 800;
     font-size: .95rem;
-    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.35);
+    box-shadow: 0 6px 18px var(--btn-shadow-color);
     transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
 }
 
@@ -258,25 +242,21 @@
     transform: none;
 }
 
-/* note text */
 .join-us-component .note {
     font-size: .85rem;
-    /* color: var(--component-muted); */
-    color: #000000;
+    color: var(--note-color);
 }
 
-/* focus states — visible but scoped */
 .join-us-component a:focus,
 .join-us-component button:focus,
 .join-us-component input:focus,
 .join-us-component select:focus,
 .join-us-component textarea:focus {
-    outline: 2px dashed rgba(230, 238, 246, 0.95);
+    outline: 2px dashed var(--focus-outline-color);
     outline-offset: 3px;
     box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.06);
 }
 
-/* responsive */
 @media (max-width: 900px) {
     .join-us-component {
         padding: 16px;
