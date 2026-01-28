@@ -63,7 +63,7 @@ h2 {
 
 /*root for wbg*/
 :root {
-  color1: #000000;
+  --color1: #000000;
 
   --max-width-center: 1200px;
   --page-padding: 60px;
@@ -212,6 +212,8 @@ body {
   justify-content: center;
   transition: background 0.2s ease, transform 0.2s ease;
   margin-inline: -50px;
+  /* background-color:  var(--primary); */
+  
 }
 
 .scroll-btn::before {
@@ -221,22 +223,27 @@ body {
   border-top: 2px solid var(--color1);
   border-right: 2px solid var(--color1);
   display: block;
+  
 }
 
 .scroll-btn.left::before {
   transform: rotate(-135deg);
+
 }
 
 .scroll-btn.right::before {
   transform: rotate(45deg);
+ 
 }
 
 .scroll-btn.left {
   left: -60px;
+
 }
 
 .scroll-btn.right {
   right: -60px;
+    
 }
 
 .scroll-btn:hover {
