@@ -29,6 +29,7 @@
     --error-color: #ff0101;
     --note-color: #000000;
     --btn-bg-start: var(--component-accent);
+    --btn-bg-start:#ffffff;
     --btn-bg-end: #0ea5b7;
     --btn-text-color: #022;
     --btn-shadow-color: rgba(2, 6, 23, 0.35);

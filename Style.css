@@ -1,4 +1,5 @@
-@font-face {
+
+  @font-face {
   font-family: "Acumin";
   src: url("fonts/AcuminVariableConcept.otf") format("opentype");
   font-weight: 100 900;
@@ -21,8 +22,8 @@ h1,
 h2 {
   font-family: "Calisto", Arial, sans-serif;
 }
-
-/* :root {
+/* 
+:root {
   --color1: #ffffff;
   --max-width-center: 1200px;
   --page-padding: 60px;
@@ -30,6 +31,7 @@ h2 {
   --black: #000000;
   --overlay-04: rgba(0, 0, 0, 0.4);
   --overlay-02: rgba(0, 0, 0, 0.2);
+  --glass-blur: 6px;
   --overlay-045: rgba(0, 0, 0, 0.45);
   --overlay-065: rgba(0, 0, 0, 0.65);
 
@@ -58,21 +60,20 @@ h2 {
    background-size: cover;
  }
 
- */
 
+ */
 
 /*root for wbg*/
 :root {
-  --color1: #000000;
+  /* --color1: #000000; */
+--color1: #1e73be;
 
   --max-width-center: 1200px;
   --page-padding: 60px;
 
-  --black: #000000;
+  /* --black: #000000; */
+--black: #1e73be;
   
-  --overlay-04: rgba(255, 255, 255, 0.4);
-  --overlay-02: rgba(255, 255, 255, 0.2);
-
   --overlay-04: rgba(255, 255, 255, 0);
   --overlay-02: rgba(255, 255, 255, 0);
   --glass-blur: 0px;
@@ -85,8 +86,7 @@ h2 {
   --primary-bg: rgba(30, 115, 190, 0.15);
   --primary-dark: #155a96;
 
-  --card-bg: rgba(0, 0, 0, 0.05);
-
+--card-bg:rgba(61, 201, 243, 0.1);
 
   --shadow-025: rgba(0, 0, 0, 0.1);
  
@@ -94,7 +94,7 @@ h2 {
 
   --link: #1e73be;
   
-}
+}  
 
 
 * {
@@ -606,8 +606,8 @@ body {
 
 .csr-card {
   background: var(--card-bg);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+ backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border-radius: 18px;
   padding: 24px 22px 26px;
   box-shadow: 0 12px 30px var(--shadow-025);
