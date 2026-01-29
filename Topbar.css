@@ -1,6 +1,6 @@
 /* :root {
     --header-height: 120px;
-    --topbar-height: 72px;
+    --topbar-height: 50px;
     --glass-blur: 6px;
     --max-width123: 1100px;
     --drawer-width123: 300px;
@@ -34,7 +34,7 @@
 /*wbg*/
 :root {
     --header-height: 120px;
-    --topbar-height: 72px;
+    --topbar-height: 50px;
     --glass-blur: 6px;
     --max-width123: 1100px;
     --drawer-width123: 300px;
@@ -44,7 +44,8 @@
     --text-dark: #1e73be;
 /* 
     --muted: rgba(0, 0, 0, 0.7); */
-    --muted: #0d47a1;
+    /* --muted: #0d47a1; */
+    --muted: var(--Sbleu);
 
     --muted123: #555555;
 
