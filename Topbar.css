@@ -40,11 +40,8 @@
     --drawer-width123: 300px;
 
     --accent: #0d47a1;
-    /* --text-dark: #111; */
     --text-dark: #1e73be;
-/* 
-    --muted: rgba(0, 0, 0, 0.7); */
-    /* --muted: #0d47a1; */
+
     --muted: var(--Sbleu);
 
     --muted123: #555555;
@@ -67,6 +64,8 @@
     --accent123: #0d47a1;
     --outline-cyan-018: rgba(13, 71, 161, 0.18);
 }
+
+
 html {
     scroll-behavior: smooth;
 }

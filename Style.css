@@ -24,6 +24,7 @@ h2 {
 }
 :root{
   --Sbleu: #1e73be;
+  --titlesize: 45px;
 }
 /* 
 :root {
@@ -63,19 +64,18 @@ h2 {
    background-repeat: no-repeat;
    background-size: cover;
  }
-
-
  */
+
+
 
 /*root for wbg*/
 :root {
-  /* --color1: #000000; */
 --color1: var(--Sbleu);
 --color_2_1:var(--color1);
   --max-width-center: 1200px;
   --page-padding: 60px;
 
-  /* --black: #000000; */
+  
 --black: var(--color_2_1);
   
   --overlay-04: rgba(255, 255, 255, 0);
@@ -167,7 +167,7 @@ body {
 }
 
 .about-title {
-  font-size: 55px;
+  font-size: var(--titlesize);
   color: var(--color1);
   margin-bottom: 20px;
 }
@@ -491,7 +491,8 @@ body {
     margin: 0 auto 10px !important;
   }
 
-  .csr-text,
+
+  /* .csr-text,
   .csr-description,
   .csr-description p,
   .csr-text-preview,
@@ -499,11 +500,13 @@ body {
     word-break: break-word !important;
     overflow-wrap: break-word !important;
     hyphens: auto !important;
-  }
+  } */
 
   .csr-description {
+      height: 300px !important;
     font-size: 14px !important;
     line-height: 1.4 !important;
+    align-items: space-between !important;
   }
 
   .csr-text-preview {
@@ -542,7 +545,7 @@ body {
 
 .csr-title {
   color: var(--color1);
-  font-size: 50px;
+  font-size: var(--titlesize);
   font-weight: 600;
   margin-bottom: 80px;
 }
@@ -558,7 +561,7 @@ body {
 .csr-card {
   width: 40%;
     font-size: 14px;
-    height: 250px;
+    height: 300px;
 
   background: var(--card-bg);
   backdrop-filter: blur(var(--glass-blur));
@@ -642,7 +645,18 @@ body {
 .csr-card img {
   margin-bottom: 18px;
 }
-
+.csr-text {
+  flex: 1;
+  height: 150px;
+}
+.csr-description {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+  line-height: 1.4;
+}
 .site-footer {
   margin: 50px auto 0;
   padding: 40px 0;
@@ -803,9 +817,9 @@ input:focus {
   }
 }
 
-
-/* مؤقت للdebug */
-/* body,
-body * {
-  color: var(--color1) !important;
+/* .page-1-2 {
+filter: invert(32%) sepia(83%) saturate(748%) hue-rotate(178deg) brightness(95%) contrast(92%);
+  opacity: 0.99;
 } */
+
+
