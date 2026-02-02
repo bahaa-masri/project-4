@@ -51,7 +51,7 @@ h2 {
 
   --link: blue;
 } 
-  
+ /* 
 .site-header {
   background: linear-gradient(180deg, var(--overlay-04), var(--overlay-02));
   backdrop-filter: blur(var(--glass-blur));
