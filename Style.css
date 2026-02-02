@@ -72,6 +72,7 @@ h2 {
 :root {
 --color1: var(--Sbleu);
 --color_2_1:var(--color1);
+--titlecolor :#173967;
   --max-width-center: 1200px;
   --page-padding: 60px;
 
@@ -88,7 +89,7 @@ h2 {
   --primary: var(--color_2_1);
  
   --primary-bg: rgba(30, 115, 190, 0.15);
-  --primary-dark: #155a96;
+  --primary-dark:var( --titlecolor);
 
 --card-bg:rgba(61, 201, 243, 0.1);
 
@@ -160,6 +161,7 @@ body {
   max-width: 800px;
   margin: 0px auto 0 auto;
   min-height: 440px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -168,7 +170,7 @@ body {
 
 .about-title {
   font-size: var(--titlesize);
-  color: var(--color1);
+  color: var(--titlecolor, var(--color1));
   margin-bottom: 20px;
 }
 
@@ -183,6 +185,7 @@ body {
 .about-text {
   color: var(--color1);
   font-size: 20px;
+    font-size: 14px;
   line-height: 1.7;
   max-width: 65ch;
 
@@ -427,6 +430,7 @@ body {
 
 .partner-click-here:hover {
   background-color: var(--primary-dark);
+  color: #fff;
   transform: translateY(-1px);
 }
 
@@ -544,7 +548,7 @@ body {
 }
 
 .csr-title {
-  color: var(--color1);
+  color: var(--titlecolor, var(--color1));
   font-size: var(--titlesize);
   font-weight: 600;
   margin-bottom: 80px;
@@ -671,7 +675,8 @@ body {
 
 .footer-col h4 {
   margin-bottom: 8px;
-  font-size: 24px
+  font-size: 24px;
+  color: var(--titlecolor, var(--black));
 }
 
 .footer-col p {

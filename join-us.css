@@ -40,7 +40,8 @@
     --btn-bg-start:#ffffff;
     --btn-bg-end: #0ea5b7;
     /* --btn-text-color: #022; */
-    --btn-text-color: #1000ff;
+    --btn-text-color-tmp: #0100ff;
+    --btn-text-color: var(--btn-text-color-tmp , --titlecolor, #002);
     --btn-shadow-color: rgba(2, 6, 23, 0.35);
     --focus-outline-color: rgba(230, 238, 246, 0.95);
     padding: 32px;
@@ -82,7 +83,12 @@
 .join-us-component .info h2 {
     margin: 0 0 8px 0;
     font-size: 1.45rem;
-    color: inherit;
+    /* color: var(--titlecolor, var(--color1)); */
+}
+.join-us-component .panel h2 , .join-us-component .panel h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.45rem;
+    color: var(--titlecolor, var(--color1));
 }
 
 .join-us-component .info p.lead {
@@ -241,6 +247,30 @@
     box-shadow: 0 6px 18px var(--btn-shadow-color);
     transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .join-us-component button.btn:active {
     transform: translateY(1px);
